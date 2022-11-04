@@ -1,4 +1,4 @@
 public class Character
 {
-    private string Name {get set; }
+    private string Name { get; set; }
 }
