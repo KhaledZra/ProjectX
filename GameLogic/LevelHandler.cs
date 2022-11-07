@@ -25,12 +25,29 @@ public class LevelHandler
             return (int)expResult;
         }
         
-        expResult = _groundExperience * Math.Pow(_levelScaler, (Level - 1));
+        expResult = (_groundExperience * Math.Pow(_levelScaler, (Level - 1))) - Experience;
         return (int)expResult;
     }
 
-    public void CheckIfLevelUp(int experienceGained)
+    public void GainExperience(int experienceGained)
     {
+        while (true)
+        {
+            // if exp = 0; gained 200;
+            int expToLevel = CalculateExperienceToLevel(); // 100
         
+            Experience += experienceGained; // exp = exp + 200;
+
+            if (expToLevel <= Experience)
+            {
+                Level++;
+                Experience = 0;
+                experienceGained -= expToLevel;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }
