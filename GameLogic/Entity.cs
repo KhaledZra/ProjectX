@@ -14,7 +14,6 @@ abstract class Entity
         this.Level = level;
     }
 
-
         public override string ToString()
         {
             return $"{Name} {Id} {Health} {Level}";

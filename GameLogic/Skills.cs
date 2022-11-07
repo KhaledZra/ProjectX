@@ -1,17 +1,22 @@
 namespace GameLogic;
-class Skills 
+abstract class Skills 
 {
-    public int Melee { get; set; }
-    public int Spell { get; set; }
-    public int Archer { get; set; }
+    public static int Melee { get; set; } = 200;
+    public static int Spell { get; set; } = 150;
+    public static int Archer { get; set; } = 100;
 
-    public Skills(int melee, int spell, int archer)
+    public static void SetMelee(Entity entity)
     {
-
+        entity.Health = Melee;
     }
 
-    public override string ToString()
+    public static void SetSpell(Entity entity)
     {
-        return $"{Melee} {Spell} {Archer}";
+        entity.Health = Spell;
+    }
+    
+    public static void SetArcher(Entity entity)
+    {
+        entity.Health = Archer;
     }
 }
