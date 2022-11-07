@@ -1,5 +1,5 @@
 ﻿namespace UserInterface;
-public class Class1
+public class Input
 {
 
 }
