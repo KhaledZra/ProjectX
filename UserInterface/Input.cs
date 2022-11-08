@@ -19,33 +19,16 @@ public class Input
         return tempDict;
     }
 
-    public void CheckIfMovementInput(ConsoleKey consoleKey) // vi hittar
+    public ConsoleKey CheckIfMovementInput(ConsoleKey consoleKey) // vi hittar
     {
         foreach (var item in _movementInputDict)
         {
             if (item.Value == consoleKey)
             {
-               HandleMovementInput(consoleKey);
+                return consoleKey;
             }
         }
-    }
 
-    public void HandleMovementInput(ConsoleKey movementKey) // vi hanterar om vi hittar knappen
-    {
-        switch (movementKey)
-        {
-            case ConsoleKey.UpArrow:
-                //MovementLogicHandler();
-                break;
-            case ConsoleKey.DownArrow:
-                //MovementLogicHandler();
-                break;
-            case ConsoleKey.LeftArrow:
-                //MovementLogicHandler();
-                break;
-            case ConsoleKey.RightArrow:
-                //MovementLogicHandler();
-                break;
-        }
+        return ConsoleKey.Z;
     }
 }

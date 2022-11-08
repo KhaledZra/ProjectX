@@ -5,14 +5,22 @@ using System.Text;
 namespace UserInterface;
 //run in high contrast theme preferably
 
+struct TwoOCoords //two coordinates flera variabler i en variabler, används ofta för koordinater
+    //bättre såhär så man kan välja namnet ist för (int, int)
+{
+    public int x { get; set; }
+    public int y { get; set; }
+}
+    
+struct LastPlayerCoords //two coordinates flera variabler i en variabler, används ofta för koordinater
+    //bättre såhär så man kan välja namnet ist för (int, int)
+{
+    public int x { get; set; }
+    public int y { get; set; }
+}
 public class Draw
 {
-    struct TwoOCoords //two coordinates flera variabler i en variabler, används ofta för koordinater
-        //bättre såhär så man kan välja namnet ist för (int, int)
-    {
-        public int x { get; set; }
-        public int y { get; set; }
-    }
+    private static LastPlayerCoords _lastPlayerCoords = new LastPlayerCoords();
 
     static void DrawThisAtXY(string text, int x, int y)
     {
@@ -27,7 +35,7 @@ public class Draw
         RenderBackground(0, 0, 60, 15);
         RenderStructures();
         DrawExitArea(27, 15, 26, 15);
-        RenderPlayer(29, 7);
+        //RenderPlayer(29, 7);
         //Input.ToggleCharacter(RenderPlayer(29, 7));
         Console.BackgroundColor = ConsoleColor.Black;
         Console.ForegroundColor = ConsoleColor.White;
@@ -36,10 +44,15 @@ public class Draw
 
     public static void RenderPlayer(int playerx, int playery) //player drawing (int playerx, int playery)
     {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.BackgroundColor = ConsoleColor.DarkGray;
+        DrawThisAtXY("▒▒", _lastPlayerCoords.x, _lastPlayerCoords.y); //▒
         Console.BackgroundColor = ConsoleColor.DarkGreen;
         Console.ForegroundColor = ConsoleColor.White;
         DrawThisAtXY("-Q¤", playerx, playery); //DrawThisAtXY("-Q¤", playerx, playery);
         Console.ResetColor();
+        _lastPlayerCoords.x = playerx;
+        _lastPlayerCoords.y = playery;
     }
 
     private static void RenderGrid() //Grid size set
@@ -73,11 +86,13 @@ public class Draw
         {
             DrawThisAtXY("█", 60, i); //x ställer bredd på right grid
         }
+        Console.ResetColor();
     }
 
     private static void RenderBackground(int bgStartx, int bgStarty, int bgEndX, int bgEndY)
     {
         Console.ForegroundColor = ConsoleColor.Green;
+        Console.BackgroundColor = ConsoleColor.DarkGray;
         for (int i = bgStarty + 1; i < bgEndY; i++)
         {
             for (int j = bgStartx + 1; j < bgStartx + bgEndX; j++)
