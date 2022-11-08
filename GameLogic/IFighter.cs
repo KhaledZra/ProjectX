@@ -1,0 +1,6 @@
+namespace GameLogic;
+
+class IFighter
+{
+    
+}
