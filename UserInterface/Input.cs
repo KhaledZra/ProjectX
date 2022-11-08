@@ -4,6 +4,7 @@ public class Input
 {
     public static ConsoleKeyInfo KeyPress { get; set; }
 
+    
     /*
     public static void KeyActionHandler()
     {
