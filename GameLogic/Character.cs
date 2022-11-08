@@ -1,5 +1,5 @@
 namespace GameLogic;
-class Character : Entity
+public class Character : Entity
 {
     public string GoodGuy { get; set; }
     public int CoordX { get; set; }
