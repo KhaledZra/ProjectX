@@ -2,10 +2,32 @@ namespace GameLogic;
 class Character : Entity
 {
     public string GoodGuy { get; set; }
+    public int CoordX { get; set; }
+    public int CoordY { get; set; }
 
     public Character(string name, int id, int health, int level) : base(name, id, health, level)
     {
+        
+    }
 
+    public void MoveUp()
+    {
+        CoordY --;
+    } 
+
+    public void MoveDown()
+    {
+        CoordY ++;
+    }
+   
+    public void MoveLeft()
+    {
+        CoordX --;
+    }
+  
+    public void MoveRight()
+    {
+        CoordX ++;
     }
 
     // public static void ChooseCharcter()
