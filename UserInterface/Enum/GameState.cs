@@ -1,4 +1,4 @@
-namespace GameLogic;
+namespace UserInterface;
 
 public enum GameState
 {
