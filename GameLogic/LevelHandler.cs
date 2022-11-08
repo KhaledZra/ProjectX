@@ -11,43 +11,38 @@ public class LevelHandler
     {
         _groundExperience = 100;
         _levelScaler = 1.5f;
-        Level = 0;
+        Level = 1;
         Experience = 0;
     }
 
-    public int CalculateExperienceToLevel()
+    private int CalculateExperienceToLevel()
     {
         double expResult;
         
         if (Level == 1)
         {
-            expResult = _groundExperience - Experience;
-            return (int)expResult;
+            return _groundExperience;
         }
         
-        expResult = (_groundExperience * Math.Pow(_levelScaler, (Level - 1))) - Experience;
+        expResult = _groundExperience * Math.Pow(_levelScaler, (Level - 1));
         return (int)expResult;
     }
 
     public void GainExperience(int experienceGained)
     {
-        while (true)
-        {
-            // if exp = 0; gained 200;
-            int expToLevel = CalculateExperienceToLevel(); // 100
+        if (experienceGained <= -1) return;
         
-            Experience += experienceGained; // exp = exp + 200;
-
-            if (expToLevel <= Experience)
-            {
-                Level++;
-                Experience = 0;
-                experienceGained -= expToLevel;
-            }
-            else
-            {
-                return;
-            }
+        Experience += experienceGained;
+        
+        while (Experience >= CalculateExperienceToLevel())
+        {
+            Experience -= CalculateExperienceToLevel();
+            Level++;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"Experience: {Experience}\nLevel: {Level}\nNeeded to level: {CalculateExperienceToLevel()}";
     }
 }
