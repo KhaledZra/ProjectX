@@ -2,33 +2,35 @@
 
 public class GameStateHandler
 {
-    private Dictionary<string, ConsoleKey> _movementInputDict;
 
-    public GameStateHandler()
+    public static void SwitchMenu()
     {
-        _movementInputDict = SetMovementInput();
-    }
+        char ch = Convert.ToChar(Console.ReadLine());
 
-    private Dictionary<string, ConsoleKey> SetMovementInput()
-    {
-        Dictionary<string, ConsoleKey> tempDict = new();
-        tempDict.Add("ArrowUp", ConsoleKey.UpArrow);
-        tempDict.Add("ArrowDown", ConsoleKey.DownArrow);
-        tempDict.Add("ArrowLeft", ConsoleKey.LeftArrow);
-        tempDict.Add("ArrowRight", ConsoleKey.RightArrow);
-        return tempDict;
-    }
-
-    public ConsoleKey CheckIfMovementInput(ConsoleKey consoleKey) // vi hittar
-    {
-        foreach (var item in _movementInputDict)
+        switch (ch)
         {
-            if (item.Value == consoleKey)
-            {
-                return consoleKey;
-            }
-        }
+            case '1':
 
-        return ConsoleKey.Z;
+                DrawMenu.MainMenu();
+                DrawMenu.CharacterMenu();
+                DrawMenu.CharacterName();
+                DrawMenu.ChooseCharacterClass();
+                break;
+
+            case '2':
+
+                //DrawRoaming();
+                break;
+
+            case '3':
+
+                //ShopMenu();    
+                break;
+
+            case '4':
+
+                //TutorialMenu();
+                break;
+        }
     }
 }
