@@ -12,10 +12,9 @@ public abstract class Entity
         Health = 0;
         Level = new LevelHandler();
     }
-
-        public override string ToString()
-        {
-            return $"{Id}, {Name}, {Health}, {Level.ToString()}";
-        }
-
+    public override string ToString()
+    {
+        return $"{Id}, {Name}, {Health}, {Level.ToString()}";
     }
+
+}
