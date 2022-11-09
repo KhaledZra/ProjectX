@@ -29,5 +29,32 @@ public class DrawMenu
         Console.WriteLine("[W]arrior");
     }
 
+    public static void ShopMenu()
+    {
+        Console.WriteLine("Welcome to Heretics shop");
+        Console.WriteLine("[B]uy \n[Sell]");
+    }
+
+    public static void TutorialMenu()
+    {
+        Console.WriteLine("Hi! {NickName} are you ready to practis");
+        Console.WriteLine("You are done with your practis! GOOD JOB!!");
+    }
+
+    public static void FightingMenu()
+    {
+        Console.WriteLine("{NickName} your are fighting our enemies, SEND THEM TO HELL");
+    }
+
+    public static void WonMenu()
+    {
+        Console.WriteLine("You the battle good job Soldier!!");
+    }
+
+    public static void LooseMenu()
+    {
+        Console.WriteLine("REST IN PEACE WE GONNA ALWYS HAVE YOU IN OUR MINDS HERO");
+    }
+
 }
 
