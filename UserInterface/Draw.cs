@@ -12,23 +12,27 @@ struct TwoOCoords //two coordinates flera variabler i en variabler, används oft
     public int x { get; set; }
     public int y { get; set; }
 }
-    
+
 struct LastPlayerCoords //two coordinates flera variabler i en variabler, används ofta för koordinater
     //bättre såhär så man kan välja namnet ist för (int, int)
 {
     public int x { get; set; }
     public int y { get; set; }
 }
+
 public class Draw
 {
+    //Bör vara kvar i denna klass så länge.
     private static LastPlayerCoords _lastPlayerCoords = new LastPlayerCoords();
 
+//oklart var denna ska vara eller ens vara kvar.
     static void DrawThisAtXY(string text, int x, int y)
     {
         Console.SetCursorPosition(x, +y);
         Console.Write(text);
     }
 
+//Bör vara kvar i Draw.cs-klassen då denna ska knyta samman Draw med statehandlers som kopplar subklasserna DrawMap osv.
     public static void RenderMap()
     {
         Console.Clear();
@@ -43,9 +47,9 @@ public class Draw
         DrawThisAtXY("", 0, 16);
     }
 
+//flyttad till DrawPlayer
     public static void RenderPlayer(int playerx, int playery) //player drawing (int playerx, int playery)
     {
-        
         Console.ForegroundColor = ConsoleColor.Green;
         Console.BackgroundColor = ConsoleColor.DarkGray;
         DrawThisAtXY("▒▒", _lastPlayerCoords.x, _lastPlayerCoords.y); //▒
@@ -57,6 +61,7 @@ public class Draw
         _lastPlayerCoords.y = playery;
     }
 
+//flyttad till DrawGrid
     private static void RenderGrid() //Grid size set
     {
         Console.ForegroundColor = ConsoleColor.Gray;
@@ -88,9 +93,11 @@ public class Draw
         {
             DrawThisAtXY("█", 60, i); //x ställer bredd på right grid
         }
+
         Console.ResetColor();
     }
 
+//flyttad till DrawMap
     private static void RenderBackground(int bgStartx, int bgStarty, int bgEndX, int bgEndY)
     {
         Console.ForegroundColor = ConsoleColor.Green;
@@ -106,6 +113,7 @@ public class Draw
         Console.ResetColor();
     }
 
+//flyttad till DrawMap
     private static void RenderStructures() // map houses @ x/y/ with bannertext
     {
         //startingx sätter djup, startingy sätter höjd
@@ -118,6 +126,7 @@ public class Draw
         DrawThisAtXY("", 0, 16);
     }
 
+//flyttad till DrawMap
     private static void DrawWestWingHouse(int startingx, int startingy, string bannerSign)
     {
         //taket
@@ -161,6 +170,7 @@ public class Draw
         Console.ResetColor();
     }
 
+//flyttad till DrawMap
     private static void DrawEastWingHouse(int startingx, int startingy, string bannerSign)
     {
         //taket
@@ -201,6 +211,7 @@ public class Draw
         DrawThisAtXY("██", startingx + 4, startingy + 3);
     }
 
+//flyttad till DrawMap
     private static void DrawNorthEastMountain(int startingx, int startingy, string bannerSign)
     {
         //taket
@@ -295,7 +306,7 @@ public class Draw
         DrawThisAtXY("██", mtStartingX + 4, mtStartingY + 3);
     }
     */
-
+//flyttad till DrawMap
     private static void DrawExitArea(int exitBaseX, int exitBaseY, int exitLayerX, int exitLayerY)
     {
         /*Console.BackgroundColor = ConsoleColor.DarkGreen;
