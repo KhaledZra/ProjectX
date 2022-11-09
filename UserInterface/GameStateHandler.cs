@@ -1,10 +1,10 @@
 ﻿namespace UserInterface;
 
-public class Input
+public class GameStateHandler
 {
     private Dictionary<string, ConsoleKey> _movementInputDict;
 
-    public Input()
+    public GameStateHandler()
     {
         _movementInputDict = SetMovementInput();
     }
