@@ -22,10 +22,10 @@ public class GameStateHandler
             {
                 case '1':
 
-                    DrawMenu.MainMenu();
-                    DrawMenu.CharacterMenu();
-                    DrawMenu.CharacterName();
-                    DrawMenu.ChooseCharacterClass();
+                    MenuOutput.MainMenu();
+                    MenuOutput.CharacterMenu();
+                    MenuOutput.CharacterName();
+                    MenuOutput.ChooseCharacterClass();
                     break;
 
                 case '2':
@@ -35,27 +35,27 @@ public class GameStateHandler
 
                 case '3':
 
-                    DrawMenu.ShopMenu();
+                    MenuOutput.ShopMenu();
                     break;
 
                 case '4':
 
-                    DrawMenu.TutorialMenu();
+                    MenuOutput.TutorialMenu();
                     break;
 
                 case '5':
 
-                    DrawMenu.FightingMenu();
+                    MenuOutput.FightingMenu();
                     break;
 
                 case '6':
 
-                    DrawMenu.WonMenu();
+                    MenuOutput.WonMenu();
                     break;
 
                 case '7':
 
-                    DrawMenu.LooseMenu();
+                    MenuOutput.LooseMenu();
                     break;
             }
         }
