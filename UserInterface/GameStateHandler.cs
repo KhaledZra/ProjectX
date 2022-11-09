@@ -5,32 +5,59 @@ public class GameStateHandler
 
     public static void SwitchMenu()
     {
-        char ch = Convert.ToChar(Console.ReadLine());
-
-        switch (ch)
+        while (true)
         {
-            case '1':
+            Console.WriteLine("Menu");
+            Console.WriteLine("\n[1]MainMenu");
+            Console.WriteLine("[2]DrawRoaming");
+            Console.WriteLine("[3]ShopMenu");
+            Console.WriteLine("[4]TutorialMenu");
+            Console.WriteLine("[5]FightingMenu");
+            Console.WriteLine("[6]WonMenu");
+            Console.WriteLine("[7]WonMenu");
 
-                DrawMenu.MainMenu();
-                DrawMenu.CharacterMenu();
-                DrawMenu.CharacterName();
-                DrawMenu.ChooseCharacterClass();
-                break;
+            char ch = Convert.ToChar(Console.ReadLine());
 
-            case '2':
+            switch (ch)
+            {
+                case '1':
 
-                //DrawRoaming();
-                break;
+                    DrawMenu.MainMenu();
+                    DrawMenu.CharacterMenu();
+                    DrawMenu.CharacterName();
+                    DrawMenu.ChooseCharacterClass();
+                    break;
 
-            case '3':
+                case '2':
 
-                //ShopMenu();    
-                break;
+                    //DrawRoaming();
+                    break;
 
-            case '4':
+                case '3':
 
-                //TutorialMenu();
-                break;
+                    DrawMenu.ShopMenu();
+                    break;
+
+                case '4':
+
+                    DrawMenu.TutorialMenu();
+                    break;
+
+                case '5':
+
+                    DrawMenu.FightingMenu();
+                    break;
+
+                case '6':
+
+                    DrawMenu.WonMenu();
+                    break;
+
+                case '7':
+
+                    DrawMenu.LooseMenu();
+                    break;
+            }
         }
     }
 }

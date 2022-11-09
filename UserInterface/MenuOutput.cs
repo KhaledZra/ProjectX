@@ -1,6 +1,6 @@
 ﻿namespace UserInterface;
 
-public class DrawMenu
+public class MenuOutput
 {
 
     public static void MainMenu()
@@ -38,7 +38,7 @@ public class DrawMenu
     public static void TutorialMenu()
     {
         Console.WriteLine("\nHi! {NickName}");
-        Console.WriteLine("You are done with your practice! GOOD JOB!!");
+        Console.WriteLine("You are done with your practi! GOOD JOB!!");
     }
 
     public static void FightingMenu()
