@@ -8,5 +8,6 @@ public enum GameState
     TutorialMenu,
     FightingMenu,
     WonMenu,
-    LostMenu
+    LostMenu,
+    QuitGame
 }

@@ -32,7 +32,8 @@ public class MenuOutput
     public static void ShopMenu()
     {
         Console.WriteLine("\nWelcome to Heretics shop");
-        Console.WriteLine("[B]uy \n[Sell]");
+        Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
+        Console.Write("Choice: ");
     }
 
     public static void TutorialMenu()
