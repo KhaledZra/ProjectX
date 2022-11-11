@@ -5,10 +5,6 @@ public class GameStateHandler
 
     public static GameState SwitchMenu(GameState gameState)
     {
-        Console.Clear();
-        
-        ConsoleKey input = Console.ReadKey().Key;
-        
         switch (gameState)
         {
             case GameState.MainMenu:

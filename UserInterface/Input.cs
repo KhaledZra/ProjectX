@@ -18,6 +18,7 @@ public abstract class Input
 
         return GameState.RoamingMap;
 
+
     }
 
     public static GameState CharacterMenuInput()
