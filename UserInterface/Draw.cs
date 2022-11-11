@@ -9,7 +9,7 @@ using System.Text;
 //varje enskild klass kan
 namespace UserInterface;
 //
-{
-}
+// {
+// }
 
 
