@@ -29,16 +29,25 @@ public class output
 
     {
         Console.WriteLine("\n[E]nter your nickname");
+        Console.WriteLine("[R]eturn to mainMenu");
     }
 
     public static void ShopMenu()
     {
         Console.WriteLine("\nWelcome to Heretics shop");
         Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
-        Console.Write("Choice: ");
+        Console.Write("Choice: ");        
+    }
+
+    public static void BuyFromShopMenu()
+    {
         Console.WriteLine("--------BUYING---------");
-        Console.WriteLine("The sword is yours now!");
-            
+        Console.WriteLine("The sword is yours now!"); 
+    }
+
+    public static void SellInShop()
+    {
+        Console.WriteLine("--------SELLING---------");
     }
 
     public static void TutorialMenu()

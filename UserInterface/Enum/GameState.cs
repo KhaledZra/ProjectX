@@ -9,6 +9,8 @@ public enum GameState
     SetCharacterClass,
     SetCharacterName,
     ShopMenu,
+    BuyFromShop,
+    SellInShop,
     TutorialMenu,
     FightingMenu,
     WonMenu,

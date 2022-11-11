@@ -6,12 +6,12 @@ public abstract class Input
     {
         ConsoleKey input = Console.ReadKey().Key;
 
-        if(input == ConsoleKey.P)
+        if (input == ConsoleKey.P)
         {
-           return GameState.CharacterHandler;
+            return GameState.CharacterHandler;
         }
 
-        else if(input == ConsoleKey.Q)
+        else if (input == ConsoleKey.Q)
         {
             return GameState.QuitGame;
         }
@@ -19,62 +19,64 @@ public abstract class Input
         return GameState.RoamingMap;
 
     }
-    
-    public static GameState CharacterMenuInput() 
+
+    public static GameState CharacterMenuInput()
     {
         ConsoleKey input = Console.ReadKey().Key;
-        
-        if(input == ConsoleKey.C)
+
+        if (input == ConsoleKey.C)
         {
             return GameState.SetCharacterClass;
         }
 
-        else if(input == ConsoleKey.L)
+        else if (input == ConsoleKey.L)
         {
             return GameState.LoadCharacter;
         }
 
-        else if(input == ConsoleKey.R)
+        else if (input == ConsoleKey.R)
         {
             return GameState.MainMenu;
         }
 
-        return GameState.MainMenu;
+        return GameState.CharacterHandler;
 
     }
-    
-    public static GameState CharacterNameInput() 
+
+    public static GameState CharacterNameInput()
     {
         ConsoleKey input = Console.ReadKey().Key;
 
-        if(input == ConsoleKey.E)
+        if (input == ConsoleKey.E)
         {
             return GameState.SetCharacterName;
         }
-        return GameState.MainMenu;
+
+        else if (input == ConsoleKey.L)
+        {
+            return GameState.MainMenu;
+        }
+        return GameState.SetCharacterName;
     }
-    
-    public static GameState ShopMenuInput() 
+
+    public static GameState ShopMenuInput()
     {
         ConsoleKey input = Console.ReadKey().Key;
         Console.Clear();
-        
-        if(input == ConsoleKey.L)
+
+        if (input == ConsoleKey.L)
         {
             return GameState.RoamingMap;
         }
-        
-        if(input == ConsoleKey.B)
+
+        if (input == ConsoleKey.B)
         {
-            Console.WriteLine("--------BUYING---------");
-            // Console.WriteLine("[S]word");
-            Console.ReadKey(true);
+            return GameState.BuyFromShop;
         }
-        else if(input == ConsoleKey.S)
+
+        else if (input == ConsoleKey.S)
         {
-            Console.WriteLine("--------SELLING---------");
-            Console.ReadKey(true);
-            // input = Console.ReadKey(true).Key;
+            return GameState.SellInShop;
         }
 
         return GameState.ShopMenu;
@@ -84,24 +86,24 @@ public abstract class Input
     {
         ConsoleKey input = Console.ReadKey().Key;
 
-        if(input == ConsoleKey.D)
+        if (input == ConsoleKey.D)
         {
-            return GameState.MainMenu;
+            return GameState.RoamingMap;
         }
-
-        return GameState.RoamingMap;
+        
+        return GameState.TutorialMenu;
     }
 
     public static GameState FightingMenuInput()
     {
         ConsoleKey input = Console.ReadKey().Key;
 
-        if(input == ConsoleKey.F)
+        if (input == ConsoleKey.F)
         {
             return GameState.WonMenu;
         }
 
-        return GameState.LostMenu;
+        return GameState.RoamingMap;
     }
-    
+
 }

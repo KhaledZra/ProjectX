@@ -37,15 +37,27 @@ public class GameStateHandler
                 output.ShopMenu();
                 gameState = Input.ShopMenuInput();
                 break;
+
+                case GameState.BuyFromShop:
+        
+                output.BuyFromShopMenu();
+                gameState = Input.ShopMenuInput();
+                break;
+
+                case GameState.SellInShop:
+                
+                output.SellInShop();
+                gameState = Input.ShopMenuInput();
+                break;
     
             case GameState.TutorialMenu:
-                // Switch on GameState.TutorialMenu
+                
                 output.TutorialMenu();
-                // Returns GameState.RoamingMap
+                gameState = Input.TutorialMenuInput();
                 break;
 
             case GameState.FightingMenu:
-                // Switch on GameState.FigtingMenu
+              
                 output.FightingMenu();
                 // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
                 break;
