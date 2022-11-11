@@ -28,9 +28,11 @@ public class LevelHandler
         return (int)expResult;
     }
 
-    public void GainExperience(int experienceGained)
+    public int GainExperience(int experienceGained)
     {
-        if (experienceGained <= -1) return;
+        int levelsGained = 0;
+        
+        if (experienceGained <= -1) return levelsGained;
         
         Experience += experienceGained;
         
@@ -38,11 +40,16 @@ public class LevelHandler
         {
             Experience -= CalculateExperienceToLevel();
             Level++;
+            levelsGained++;
         }
+        
+        return levelsGained;
     }
 
     public override string ToString()
     {
-        return $"Experience: {Experience}\nLevel: {Level}\nNeeded to level: {CalculateExperienceToLevel()}";
+        return $"Current Exp: {Experience}\n" +
+               $"Current Level: {Level}\n" +
+               $"Exp left to next level: {CalculateExperienceToLevel() - Experience}";
     }
 }
