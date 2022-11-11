@@ -17,4 +17,9 @@ public abstract class Entity
         return $"{Id}, {Name}, {Health}, {Level.ToString()}";
     }
 
+    public int DealDamage()
+    {
+        return 1 + Level.Level;
+    }
+
 }
