@@ -1,6 +1,5 @@
 namespace GameLogic;
 
-class IFighter
+public interface IFight
 {
-    
 }
