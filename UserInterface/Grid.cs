@@ -8,15 +8,15 @@ public class Grid
         // Grid X axis
         for (int x = 0; x < twoDMap.GetLength(0); x++)
         {
-            twoDMap[0, x] = 1;
-            twoDMap[twoDMap.GetLength(1)-1, x] = 1;
+            twoDMap[0, x] = 0;
+            twoDMap[twoDMap.GetLength(1)-1, x] = 0;
         }
 
         // Grid Y axis
         for (int y = 0; y < twoDMap.GetLength(1); y++)
         {
-            twoDMap[y, 0] = 1;
-            twoDMap[y, twoDMap.GetLength(0)-1] = 1;
+            twoDMap[y, 0] = 0;
+            twoDMap[y, twoDMap.GetLength(0)-1] = 0;
         }
     }
 
