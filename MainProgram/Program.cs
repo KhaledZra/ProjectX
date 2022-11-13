@@ -1,20 +1,19 @@
 ﻿namespace MainProgram;
+
 using UserInterface;
 using GameLogic;
-
 class Program
 {
     public static void Main(string[] args)
     {
-        Map map = new Map(32, 32);
-        map.ShowMap();
-
-        /*GameState gameState = GameState.ShopMenu;
+        GameState gameState = GameState.MainMenu;
         Game game = new Game("Khaled", "Warrior");
-
-        while (gameState != GameState.QuitGame)
+        
+        Console.Clear();
+        Console.CursorVisible = false;
+        while (gameState != GameState.ExitProgram)
         {
-            gameState = GameStateHandler.SwitchMenu(gameState);
-        }*/
+            gameState = GameStateHandler.SwitchMenu(gameState, game);
+        }
     }
 }
