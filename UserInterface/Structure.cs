@@ -3,6 +3,10 @@
 public class Structure
 {
     public int[,] _twoDHouse;
+    
+    public int XWidth { get; set; }
+    
+    public int YHeight { get; set; }
     public int StarterX { get; set; }
     public int StarterY { get; set; }
     public StructureType StructureType { get; set; }
@@ -15,7 +19,8 @@ public class Structure
         IsFacingRight = isfacingright;
         StarterX = starterX;
         StarterY = starterY;
-        _twoDHouse = new int[xWidth, yHeight];
+        xWidth = xWidth;
+        yHeight = yHeight;
         StructureType = structureType;
         SetupStructure(xWidth, yHeight, twoDMap);
         SetupDoorStructure(xWidth, yHeight, twoDMap);
@@ -72,6 +77,22 @@ public class Structure
         */
 
         //add gray beneath doorsstructure
+    }
+    private void SetupStructureSign(int[,] twoDMap)
+    {
+        int labelStarterY = StarterY + (YHeight/2);
+        int labelXStart = StarterX;
+        int labelXEnd = StarterX + XWidth;
+
+        // for (int x = labelXStart; x < labelXEnd; x++)
+        // {
+        //     twoDMap[x, labelStarterY] = 
+        // }
+
+        Console.SetCursorPosition(labelXStart, labelStarterY);
+        Console.Write(StructureType.ToString());
+        Console.SetCursorPosition(0, 0);
+
     }
 }
 
