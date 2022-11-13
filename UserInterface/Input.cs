@@ -1,3 +1,5 @@
+using GameLogic;
+
 namespace UserInterface;
 
 public abstract class Input
@@ -53,7 +55,7 @@ public abstract class Input
             return GameState.SetCharacterName;
         }
         
-        if (input == ConsoleKey.M)
+        if (input == ConsoleKey.N)
         {
             return GameState.SetCharacterName;
         }
@@ -67,12 +69,12 @@ public abstract class Input
         return GameState.SetCharacterVocation;
     }
 
-    public static GameState CharacterNameInput()
+    public static GameState CharacterNameInput(Character player)
     {
-        string input = Console.ReadLine();
+        player.Name = Console.ReadLine();
         Console.Clear();
 
-        if (!string.IsNullOrWhiteSpace(input))
+        if (!string.IsNullOrWhiteSpace(player.Name))
         {
             return GameState.RoamingMap;
         }

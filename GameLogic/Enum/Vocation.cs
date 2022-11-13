@@ -12,6 +12,6 @@ public enum VocationType
     Boss, // MONSTER
     God, // GM-state, eventually endGameBossMode - The triad of Ohm/Khal/Oxh = "Ohm, Khal, Oxh, The neverending trinity"
     Necromancer, // playable
-    Warrior, // playable
+    //Warrior, // playable
     Wizard // playable
 }

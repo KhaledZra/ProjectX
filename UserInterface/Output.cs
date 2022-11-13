@@ -22,8 +22,10 @@ public class output
     {
         Console.WriteLine("Choose a Vocation");
         Console.WriteLine("[A]rcher");
-        Console.WriteLine("[M]agician");
-        Console.WriteLine("[W]arrior");
+        Console.WriteLine("[N]ecromancer");
+        // Console.WriteLine("[W]arrior");
+        Console.WriteLine("[W]izard");
+
     }
     public static void CharacterName()
     {
@@ -50,15 +52,15 @@ public class output
         Console.WriteLine("[R]eturn");
     }
 
-    public static void TutorialMenu()
+    public static void TutorialMenu(Character player)
     {
-        Console.WriteLine("Hi! {NickName}, Press [D]");
+        Console.WriteLine($"Hi! {player.Name}, Press [D]");
         Console.WriteLine("You are done with your practice! GOOD JOB!!");
     }
     
-    public static void FightStartMenu()
+    public static void FightStartMenu(Character player)
     {
-        Console.WriteLine("{NickName} your are fighting our enemies, SEND THEM TO HELL");
+        Console.WriteLine($"{player.Name} your are fighting our enemies, SEND THEM TO HELL");
         Console.WriteLine("[F]ight!");
         Console.WriteLine("[R]un and live to see another day!");
     }

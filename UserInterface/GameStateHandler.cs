@@ -23,14 +23,14 @@ public class GameStateHandler
                 gameState = GameState.CharacterHandler;
                 break;
             
-            case GameState.SetCharacterVocation: // inte klar än, behöver sätta vocation
+            case GameState.SetCharacterVocation: // Klar
                 output.ChooseCharacterVocation();
                 gameState = Input.CharacterVocationInput();
                 break;
             
-            case GameState.SetCharacterName: // inte klar än, behöver sätta namn
+            case GameState.SetCharacterName: // Klar
                 output.CharacterName();
-                gameState = Input.CharacterNameInput();
+                gameState = Input.CharacterNameInput(game._player);
                 break;
 
             case GameState.RoamingMap: // väntar på robert
@@ -55,12 +55,12 @@ public class GameStateHandler
                 break;
 
             case GameState.TutorialMenu: // inte klar än
-                output.TutorialMenu();
+                output.TutorialMenu(game._player);
                 gameState = Input.TutorialMenuInput();
                 break;
 
             case GameState.FightMenu: // inte klar än, behöver hantera när man vinner
-                output.FightStartMenu();
+                output.FightStartMenu(game._player);
                 gameState = Input.FightingMenuInput();
                 // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
                 break;
