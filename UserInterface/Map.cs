@@ -38,6 +38,11 @@ public class Map
 
             Console.Write("\n");
         }
+
+        foreach (var structure in gameStructures)
+        {
+            structure.SetupStructureSign(_twoDMap);
+        }
     }
 
     public void ColorizeMap(int y, int x)
@@ -77,6 +82,13 @@ public class Map
             Console.Write("   ");
             Console.ResetColor();
         }
+        // else if (_twoDMap[x, y] == 5) //is not roamable // label
+        // {
+        //     Console.BackgroundColor = ConsoleColor.White;
+        //     Console.ForegroundColor = ConsoleColor.White;
+        //     Console.Write("Shop");
+        //     Console.ResetColor();
+        // }
         else
 
         {
