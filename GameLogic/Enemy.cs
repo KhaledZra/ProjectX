@@ -9,7 +9,7 @@ public class Enemy : Entity
     public static Enemy TestEnemy()
     {
         return new Enemy("Goblin_Test") 
-            { Health = 100 , Level = new LevelHandler()
+            { Health = 100 , LevelStats = new LevelHandler()
                 {Experience = 100} };
     }
 }

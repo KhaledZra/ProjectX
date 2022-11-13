@@ -4,65 +4,86 @@ public abstract class Input
 {
     public static GameState MainMenuInput()
     {
-        ConsoleKey input = Console.ReadKey().Key;
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
 
         if (input == ConsoleKey.P)
         {
             return GameState.CharacterHandler;
         }
 
-        else if (input == ConsoleKey.Q)
+        if (input == ConsoleKey.Q)
         {
             return GameState.QuitGame;
         }
 
-        return GameState.RoamingMap;
-
-
+        return GameState.MainMenu;
     }
 
     public static GameState CharacterMenuInput()
     {
-        ConsoleKey input = Console.ReadKey().Key;
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
 
         if (input == ConsoleKey.C)
         {
-            return GameState.SetCharacterClass;
+            return GameState.SetCharacterVocation;
         }
 
-        else if (input == ConsoleKey.L)
+        if (input == ConsoleKey.L)
         {
             return GameState.LoadCharacter;
         }
 
-        else if (input == ConsoleKey.R)
+        if (input == ConsoleKey.R)
         {
             return GameState.MainMenu;
         }
 
         return GameState.CharacterHandler;
-
     }
-
-    public static GameState CharacterNameInput()
+    
+    public static GameState CharacterVocationInput()
     {
-        ConsoleKey input = Console.ReadKey().Key;
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
 
-        if (input == ConsoleKey.E)
+        if (input == ConsoleKey.A)
+        {
+            return GameState.SetCharacterName;
+        }
+        
+        if (input == ConsoleKey.M)
+        {
+            return GameState.SetCharacterName;
+        }
+        
+        if (input == ConsoleKey.W)
         {
             return GameState.SetCharacterName;
         }
 
-        else if (input == ConsoleKey.L)
+        // set Vocation in game object
+        return GameState.SetCharacterVocation;
+    }
+
+    public static GameState CharacterNameInput()
+    {
+        string input = Console.ReadLine();
+        Console.Clear();
+
+        if (!string.IsNullOrWhiteSpace(input))
         {
-            return GameState.MainMenu;
+            return GameState.RoamingMap;
         }
+
+        // set name in game object
         return GameState.SetCharacterName;
     }
 
     public static GameState ShopMenuInput()
     {
-        ConsoleKey input = Console.ReadKey().Key;
+        ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
         if (input == ConsoleKey.L)
@@ -75,17 +96,44 @@ public abstract class Input
             return GameState.BuyFromShop;
         }
 
-        else if (input == ConsoleKey.S)
+        if (input == ConsoleKey.S)
         {
             return GameState.SellInShop;
         }
 
         return GameState.ShopMenu;
     }
+    
+    public static GameState ShopBuyMenuInput()
+    {
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
+
+        if (input == ConsoleKey.R)
+        {
+            return GameState.ShopMenu;
+        }
+
+        return GameState.BuyFromShop;
+    }
+    
+    public static GameState ShopSellMenuInput()
+    {
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
+
+        if (input == ConsoleKey.R)
+        {
+            return GameState.ShopMenu;
+        }
+
+        return GameState.SellInShop;
+    }
 
     public static GameState TutorialMenuInput()
     {
-        ConsoleKey input = Console.ReadKey().Key;
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
 
         if (input == ConsoleKey.D)
         {
@@ -97,14 +145,55 @@ public abstract class Input
 
     public static GameState FightingMenuInput()
     {
-        ConsoleKey input = Console.ReadKey().Key;
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
 
         if (input == ConsoleKey.F)
         {
-            return GameState.WonMenu;
+            return GameState.Fighting;
+        }
+        if (input == ConsoleKey.R)
+        {
+            return GameState.RoamingMap;
+        }
+
+        return GameState.FightMenu;
+    }
+    
+    // public static void FightingInput() // kanske om man behöver göra något mid fight?
+    // {
+    //     // // Fight to death or leave
+    //     // while (Console.ReadKey(true).Key != ConsoleKey.R)
+    //     // {
+    //     //     Console.Clear();
+    //     // }
+    // }
+    
+    public static GameState TestRoamingMenuInput()
+    {
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
+
+        if (input == ConsoleKey.D1)
+        {
+            return GameState.FightMenu;
+        }
+        
+        if (input == ConsoleKey.D2)
+        {
+            return GameState.ShopMenu;
+        }
+        
+        if (input == ConsoleKey.D3)
+        {
+            return GameState.TutorialMenu;
+        }
+        
+        if (input == ConsoleKey.D4)
+        {
+            return GameState.QuitGame;
         }
 
         return GameState.RoamingMap;
     }
-
 }

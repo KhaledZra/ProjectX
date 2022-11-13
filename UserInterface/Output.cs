@@ -1,5 +1,5 @@
-﻿namespace UserInterface;
-
+﻿using GameLogic;
+namespace UserInterface;
 
 public class output
 {
@@ -13,67 +13,84 @@ public class output
 
     public static void CharacterHandlerOutPut()
     {
-        Console.WriteLine("\n[C]reate character");
-        Console.WriteLine("[L]oad character");
+        Console.WriteLine("[C]reate character");
+        Console.WriteLine("[L]oad character"); // not possible yet without db
         Console.WriteLine("[R]eturn to MainMenu");
     }
 
-    public static void ChooseCharacterClass()
+    public static void ChooseCharacterVocation()
     {
-        Console.WriteLine("\nChoose a character");
+        Console.WriteLine("Choose a Vocation");
         Console.WriteLine("[A]rcher");
         Console.WriteLine("[M]agician");
         Console.WriteLine("[W]arrior");
     }
     public static void CharacterName()
-
     {
-        Console.WriteLine("\n[E]nter your nickname");
-        Console.WriteLine("[R]eturn to mainMenu");
+        Console.Write("Set name: ");
     }
 
     public static void ShopMenu()
     {
-        Console.WriteLine("\nWelcome to Heretics shop");
+        Console.WriteLine("Welcome to Heretics shop");
         Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
-        Console.Write("Choice: ");        
     }
 
     public static void BuyFromShopMenu()
     {
         Console.WriteLine("--------BUYING---------");
-        Console.WriteLine("The sword is yours now!"); 
+        Console.WriteLine("Example: The sword is yours now!");
+        Console.WriteLine("[R]eturn");
     }
 
     public static void SellInShop()
     {
         Console.WriteLine("--------SELLING---------");
+        Console.WriteLine("Example: The sword was sold!");
+        Console.WriteLine("[R]eturn");
     }
 
     public static void TutorialMenu()
     {
-        Console.WriteLine("\nHi! {NickName}, Press [D]");
-        Console.WriteLine("You are done with your practi! GOOD JOB!!");
+        Console.WriteLine("Hi! {NickName}, Press [D]");
+        Console.WriteLine("You are done with your practice! GOOD JOB!!");
+    }
+    
+    public static void FightStartMenu()
+    {
+        Console.WriteLine("{NickName} your are fighting our enemies, SEND THEM TO HELL");
+        Console.WriteLine("[F]ight!");
+        Console.WriteLine("[R]un and live to see another day!");
     }
 
-    public static void FightingMenu()
+    public static void FightingMenu(Game game)
     {
-        Console.WriteLine("\n{NickName} your are fighting our enemies, SEND THEM TO HELL");
+        Console.WriteLine(game.HandleFighting(Enemy.TestEnemy())); // ska ändras sen
+        Console.WriteLine("------------");
     }
 
     public static void WonMenu()
     {
-        Console.WriteLine("\nYou won the battle good job Soldier!!");
+        Console.WriteLine("You won the battle good job Soldier!!");
     }
 
     public static void LooseMenu()
     {
-        Console.WriteLine("\nREST IN PEACE WE GONNA ALWYS HAVE YOU IN OUR MINDS HERO");
+        Console.WriteLine("REST IN PEACE WE GONNA ALWYS HAVE YOU IN OUR MINDS HERO");
     }
 
     public static void Quit()
     {
         Console.WriteLine("Bye Solider, See you soon!");
+    }
+
+    public static void TestRoamingMenu()
+    {
+        Console.WriteLine("----walking around----");
+        Console.WriteLine("1. Fight Club");
+        Console.WriteLine("2. Shop");
+        Console.WriteLine("3. tutorial");
+        Console.WriteLine("4. Leave");
     }
 
 }

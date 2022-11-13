@@ -7,7 +7,7 @@ class Item : Entity
     public Item(string name, int health, int level) : base(name)
     {
         Health = health;
-        Level.Level = level;
+        LevelStats.Level = level;
     }
 
     public void SetItemList()

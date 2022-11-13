@@ -1,22 +1,22 @@
 namespace GameLogic;
 abstract class Skills 
 {
-    public static int Melee { get; set; } = 200;
-    public static int Spell { get; set; } = 150;
-    public static int Archer { get; set; } = 100;
+    private static int _melee = 200;
+    private static int _spell = 150;
+    private static int _archer = 100;
 
     public static void SetMelee(Entity entity)
     {
-        entity.Health = Melee;
+        entity.Health = _melee;
     }
 
     public static void SetSpell(Entity entity)
     {
-        entity.Health = Spell;
+        entity.Health = _spell;
     }
     
     public static void SetArcher(Entity entity)
     {
-        entity.Health = Archer;
+        entity.Health = _archer;
     }
 }

@@ -3,18 +3,19 @@ namespace UserInterface;
 public enum GameState
 {
     MainMenu,
-
     RoamingMap,
     CharacterHandler,
-    SetCharacterClass,
+    LoadCharacter, // Ladda character från DB
+    SetCharacterVocation,
     SetCharacterName,
     ShopMenu,
     BuyFromShop,
     SellInShop,
     TutorialMenu,
-    FightingMenu,
+    FightMenu,
+    Fighting,
     WonMenu,
     LostMenu,
-    LoadCharacter, // Lägg character till DB
-    QuitGame
+    QuitGame,
+    ExitProgram
 }
