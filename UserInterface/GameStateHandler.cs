@@ -25,7 +25,7 @@ public class GameStateHandler
             
             case GameState.SetCharacterVocation: // Klar
                 Output.ChooseCharacterVocation();
-                gameState = Input.CharacterVocationInput();
+                gameState = Input.CharacterVocationInput(game._player);
                 break;
             
             case GameState.SetCharacterName: // Klar
@@ -33,7 +33,7 @@ public class GameStateHandler
                 gameState = Input.CharacterNameInput(game._player);
                 break;
 
-            case GameState.RoamingMap: // väntar på robert
+            case GameState.RoamingMap: // KHALED tagit över
                 Output.TestRoamingMenu();
                 gameState = Input.TestRoamingMenuInput();
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
