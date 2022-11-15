@@ -1,10 +1,10 @@
 namespace GameLogic;
-public class Character : Entity
+public class Character : Entity 
 {
     public int CoordX { get; set; }
     public int CoordY { get; set; }
 
-    public Character(string name, int currency = 0) : base(name, currency)
+    public Character(string name, int currency = 0, Vocation vocation = new()) : base(name, vocation, currency)
     {
     
     }
