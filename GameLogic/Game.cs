@@ -18,7 +18,7 @@ public class Game // plumming code
         Inventory = new Inventory(_player.Id);
 
         // use chosenClass to set class
-        Skills.SetMelee(_player);
+        Stats.SetWarrior(_player);
     }
 
     public bool HandleRoaming(int[,] map) // take input and create boundary rules

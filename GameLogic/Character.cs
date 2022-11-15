@@ -1,36 +1,56 @@
 namespace GameLogic;
-public class Character : Entity 
+
+public class Character : Entity
 {
     public int CoordX { get; set; }
     public int CoordY { get; set; }
 
-    public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation, currency)
+    public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
+        currency)
     {
-    
     }
+
+    public static void CheckEntityVocation(Character activePlayer)
+    {
+        if (activePlayer.Vocation == Vocation.Archer)
+        {
+            Stats.SetArcher(activePlayer);
+        }
+
+        if (activePlayer.Vocation == Vocation.Mage)
+        {
+            Stats.SetMage(activePlayer);
+        }
+
+        if (activePlayer.Vocation == Vocation.Warrior)
+        {
+            Stats.SetWarrior(activePlayer);
+        }
+    }
+
 //metod som kollar vocation,
 // använd klassen skills för att kolla setta stats/skills
 //alla metoder i skills är static så går att kalla på
     public void MoveUp()
     {
-        CoordY --;
-    } 
+        CoordY--;
+    }
 
     public void MoveDown()
     {
-        CoordY ++;
+        CoordY++;
     }
-   
+
     public void MoveLeft()
     {
-        CoordX --;
+        CoordX--;
     }
-  
+
     public void MoveRight()
     {
-        CoordX ++;
+        CoordX++;
     }
-    
+
     // public static void ChooseCharcter()
     // {
 
@@ -42,7 +62,7 @@ public class Character : Entity
 
     //     foreach (Character currentCharacter in myCharacter)
     //     {
-            
+
     //     }
 
     //     }
@@ -59,5 +79,4 @@ public class Character : Entity
     //     };
 
     // }
-
 }
