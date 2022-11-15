@@ -9,6 +9,7 @@ public class Item : Entity
         Health = health;
         LevelStats.Level = level;
         Currency = currency;
+        SetItemList();
     }
 
     public void SetItemList()
@@ -38,12 +39,10 @@ public class Item : Entity
         _usableItems.Add(new Item("Stonecutter Axe", 100, 49, 90000));
 
         //end game handheld weapons    <
-        _usableItems.Add(new Item("Newgate's Murakumogiri", 100, 49,9999999)); //legendary
-        _usableItems.Add(new Item("The Vorpal Blade", 100, 50,9999999)); //legendary
-        _usableItems.Add(new Item("Mihawk's Yoru", 1000, 50,9999999)); //legendary
-        _usableItems.Add(new Item("Orcus, Scythe of the Reaper", 1000, 50,9999999)); //mythical
-        _usableItems.Add(new Item("The Sword of Rupture, Ea", 10000, 50,9999999)); //mythical
+        _usableItems.Add(new Item("Newgate's Murakumogiri", 100, 49, 9999999)); //legendary
+        _usableItems.Add(new Item("The Vorpal Blade", 100, 50, 9999999)); //legendary
+        _usableItems.Add(new Item("Mihawk's Yoru", 1000, 50, 9999999)); //legendary
+        _usableItems.Add(new Item("Orcus, Scythe of the Reaper", 1000, 50, 9999999)); //mythical
+        _usableItems.Add(new Item("The Sword of Rupture, Ea", 10000, 50, 9999999)); //mythical
     }
-    
-    
 }
