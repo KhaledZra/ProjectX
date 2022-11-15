@@ -9,12 +9,12 @@ public class GameStateHandler
         switch (gameState)
         {
             case GameState.MainMenu: // klar
-                output.MainMenu();
+                Output.MainMenu();
                 gameState = Input.MainMenuInput();
                 break;
 
             case GameState.CharacterHandler: // klar
-                output.CharacterHandlerOutPut();
+                Output.CharacterHandlerOutPut();
                 gameState = Input.CharacterMenuInput();
                 break;
             
@@ -24,49 +24,49 @@ public class GameStateHandler
                 break;
             
             case GameState.SetCharacterVocation: // Klar
-                output.ChooseCharacterVocation();
+                Output.ChooseCharacterVocation();
                 gameState = Input.CharacterVocationInput();
                 break;
             
             case GameState.SetCharacterName: // Klar
-                output.CharacterName();
+                Output.CharacterName();
                 gameState = Input.CharacterNameInput(game._player);
                 break;
 
             case GameState.RoamingMap: // väntar på robert
-                output.TestRoamingMenu();
+                Output.TestRoamingMenu();
                 gameState = Input.TestRoamingMenuInput();
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
             case GameState.ShopMenu: // inte klar än
-                output.ShopMenu();
+                Output.ShopMenu();
                 gameState = Input.ShopMenuInput();
                 break;
 
             case GameState.BuyFromShop: // inte klar än
-                output.BuyFromShopMenu();
+                Output.BuyFromShopMenu();
                 gameState = Input.ShopBuyMenuInput();
                 break;
 
             case GameState.SellInShop: // inte klar än
-                output.SellInShop();
+                Output.SellInShop();
                 gameState = Input.ShopSellMenuInput();
                 break;
 
             case GameState.TutorialMenu: // inte klar än
-                output.TutorialMenu(game._player);
+                Output.TutorialMenu(game._player);
                 gameState = Input.TutorialMenuInput();
                 break;
 
             case GameState.FightMenu: // inte klar än, behöver hantera när man vinner
-                output.FightStartMenu(game._player);
+                Output.FightStartMenu(game._player);
                 gameState = Input.FightingMenuInput();
                 // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
                 break;
             
             case GameState.Fighting: // inte klar än
-                output.FightingMenu(game);
+                Output.FightingMenu(game);
                 if (game._player.Health <= 0)
                 {
                     gameState = GameState.LostMenu;
@@ -82,17 +82,17 @@ public class GameStateHandler
                 break;
 
             case GameState.WonMenu: // inte klar än
-                output.WonMenu();
+                Output.WonMenu();
                 gameState = GameState.QuitGame;
                 break;
 
             case GameState.LostMenu: // inte klar än
-                output.LooseMenu();
+                Output.LooseMenu();
                 gameState = GameState.QuitGame;
                 break;
 
             case GameState.QuitGame: // inte klar än, behöver spara osv
-                output.Quit();
+                Output.Quit();
                 gameState = GameState.ExitProgram;
                 break;
         }

@@ -1,7 +1,7 @@
 ﻿using GameLogic;
 namespace UserInterface;
 
-public class output
+public class Output
 {
 
     public static void MainMenu()
@@ -13,6 +13,7 @@ public class output
 
     public static void CharacterHandlerOutPut()
     {
+        Console.WriteLine("Character menu:");
         Console.WriteLine("[C]reate character");
         Console.WriteLine("[L]oad character"); // not possible yet without db
         Console.WriteLine("[R]eturn to MainMenu");
@@ -20,11 +21,10 @@ public class output
 
     public static void ChooseCharacterVocation()
     {
-        Console.WriteLine("Choose a Vocation");
-        Console.WriteLine("[A]rcher");
-        Console.WriteLine("[N]ecromancer");
-        // Console.WriteLine("[W]arrior");
-        Console.WriteLine("[W]izard");
+        Console.WriteLine("Choose a class");
+        Console.WriteLine("[A]rcher - An expert in distance fighting.");
+        Console.WriteLine("[M]age - Wielder of magic and spells.");
+        Console.WriteLine("[W]arrior - User of handheld weaponry.");
 
     }
     public static void CharacterName()
