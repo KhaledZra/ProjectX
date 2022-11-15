@@ -6,14 +6,14 @@ public abstract class Entity
     public string Name { get; set; }
     public int Health { get; set; }
     public LevelHandler LevelStats { get; set; }
-
     public int Currency { get; set; } //eventually decimalF
 
-    public Entity(string name)
+    public Entity(string name, int currencyValue)
     {
         Name = name;
         Health = 0;
         LevelStats = new LevelHandler();
+        Currency = currencyValue;
     }
 
     public override string ToString()
