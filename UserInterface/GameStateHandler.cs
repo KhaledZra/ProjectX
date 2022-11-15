@@ -6,6 +6,8 @@ public class GameStateHandler
 {
     public static GameState SwitchMenu(GameState gameState, Game game)
     {
+        Draw draw = new Draw(game._player);
+        
         switch (gameState)
         {
             case GameState.MainMenu: // klar
@@ -33,9 +35,23 @@ public class GameStateHandler
                 gameState = Input.CharacterNameInput(game._player);
                 break;
 
-            case GameState.RoamingMap: // KHALED tagit över
-                Output.TestRoamingMenu();
-                gameState = Input.TestRoamingMenuInput();
+            case GameState.RoamingMap: // inte klar, behöver exit.
+                draw.DrawMap();
+                while (gameState == GameState.RoamingMap)
+                {
+                    Draw.DrawPlayer(game._player);
+                    gameState = Input.MovePlayerInput(game._player, draw.map);
+                }
+                Console.Clear();
+                // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
+                break;
+            
+            case GameState.Mountain: // DLC, kanske tars bort helt sen
+                Console.WriteLine("The mountain is locked for you mortal.");
+                Console.WriteLine("[R]eturn");
+                Console.ReadKey(true);
+                Console.Clear();
+                gameState = GameState.RoamingMap;
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
@@ -88,7 +104,7 @@ public class GameStateHandler
                 break;
 
             case GameState.LostMenu: // inte klar än
-                Output.LoseMenu();
+                Output.LoseMenu(game._player);
                 gameState = GameState.QuitGame;
                 break;
 

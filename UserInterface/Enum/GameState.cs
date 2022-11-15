@@ -8,6 +8,7 @@ public enum GameState
     LoadCharacter, // Ladda character från DB
     SetCharacterVocation,
     SetCharacterName,
+    Mountain,
     ShopMenu,
     BuyFromShop,
     SellToShop,

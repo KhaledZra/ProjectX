@@ -9,11 +9,11 @@ public class Structure
     public int YHeight { get; set; }
     public int StarterX { get; set; }
     public int StarterY { get; set; }
-    public StructureType StructureType { get; set; }
+    public GameState StructureType { get; set; }
     public bool IsFacingRight { get; set; }
 
 
-    public Structure(int[,] twoDMap, StructureType structureType, int starterX, int starterY, int xWidth, int yHeight,
+    public Structure(int[,] twoDMap, GameState structureType, int starterX, int starterY, int xWidth, int yHeight,
         bool isfacingright)
     {
         IsFacingRight = isfacingright;
@@ -32,7 +32,7 @@ public class Structure
         {
             for (int x = StarterX; x < StarterX + xwidth; x++)
             {
-                if (this.StructureType == StructureType.Mountain)
+                if (StructureType == GameState.Mountain)
                 {
                     twoDMap[x, y] = 3;
                 }
@@ -57,14 +57,14 @@ public class Structure
         }
 
         int DoorY = StarterY + yheight;
-        int DoorWidth = DoorX + 2;
-        int DoorHeight = DoorY - 2;
+        int DoorWidth = DoorX + 4;
+        int DoorHeight = DoorY - 1;
 
         for (int x = DoorX; x < DoorWidth; x++)
         {
             for (int y = DoorHeight; y < DoorY; y++)
             {
-                twoDMap[x, y] = 4;
+                twoDMap[x, y] = (int)StructureType;
             }
         }
 
@@ -81,26 +81,11 @@ public class Structure
     public void SetupStructureSign(int[,] twoDMap)
     {
         int labelStarterY = StarterY + (YHeight/2) - 1;
-        int labelXStart = StarterX;
-        int labelXEnd = StarterX + XWidth;
-
-        // for (int x = labelXStart; x < labelXEnd; x++)
-        // {
-        //     twoDMap[x, labelStarterY] = 5;
-        // }
+        //int labelXEnd = StarterX + XWidth;
+        
         var currentLocation = Console.GetCursorPosition();
-        Console.SetCursorPosition(StarterX * 3 + XWidth-2, labelStarterY);
+        Console.SetCursorPosition(StarterX + XWidth/3, labelStarterY);
         Console.Write(StructureType.ToString());
         Console.SetCursorPosition(currentLocation.Left, currentLocation.Top);
     }
-}
-
-public enum StructureType
-{
-    Unassigned,
-    Shop,
-    Tutorial,
-    Mountain,
-    Fighting,
-    Exit
 }

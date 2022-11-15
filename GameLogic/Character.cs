@@ -9,6 +9,8 @@ public class Character : Entity
     public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
     {
+        CoordX = 45; // hardkodat spawn, change later
+        CoordY = 15;  // hardkodat spawn, change later
         InventoryItems = new List<Item>();
     }
 

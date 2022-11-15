@@ -165,6 +165,70 @@ public abstract class Input
         return GameState.FightMenu;
     }
     
+        public static GameState MovePlayerInput(Character player, Map map)
+    {
+        ConsoleKey input = Console.ReadKey(true).Key;
+
+        if (input == ConsoleKey.UpArrow)
+        {
+            player.MoveUp();
+            if (map._twoDMap[player.CoordX, player.CoordY] != 1)
+            {
+                if (map._twoDMap[player.CoordX, player.CoordY] > 5)
+                {
+                    GameState gameState = (GameState)map._twoDMap[player.CoordX, player.CoordY];
+                    player.MoveDown();
+                    return gameState;
+                }
+                player.MoveDown();
+            }
+        }
+        else if (input == ConsoleKey.DownArrow)
+        {
+            player.MoveDown();
+            if (map._twoDMap[player.CoordX, player.CoordY] != 1 && map._twoDMap[player.CoordX, player.CoordY] != 4)
+            {
+                if (map._twoDMap[player.CoordX, player.CoordY] > 5)
+                {
+                    GameState gameState = (GameState)map._twoDMap[player.CoordX, player.CoordY];
+                    player.MoveUp();
+                    return gameState;
+                }
+                player.MoveUp();
+            }
+        }
+        else if (input == ConsoleKey.RightArrow)
+        {
+            player.MoveRight();
+            if (map._twoDMap[player.CoordX, player.CoordY] != 1 && map._twoDMap[player.CoordX, player.CoordY] != 4)
+            {
+                if (map._twoDMap[player.CoordX, player.CoordY] > 5)
+                {
+                    GameState gameState = (GameState)map._twoDMap[player.CoordX, player.CoordY];
+                    player.MoveLeft();
+                    return gameState;
+                }
+                player.MoveLeft();
+            }
+        }
+        else if (input == ConsoleKey.LeftArrow)
+        {
+            player.MoveLeft();
+            if (map._twoDMap[player.CoordX, player.CoordY] != 1 && map._twoDMap[player.CoordX, player.CoordY] != 4)
+            {
+                if (map._twoDMap[player.CoordX, player.CoordY] > 5)
+                {
+                    GameState gameState = (GameState)map._twoDMap[player.CoordX, player.CoordY];
+                    player.MoveRight();
+                    return gameState;
+                }
+                player.MoveRight();
+            }
+        }
+
+        return GameState.RoamingMap;
+    }
+    
     // public static void FightingInput() // kanske om man behöver göra något mid fight?
     // {
     //     // // Fight to death or leave

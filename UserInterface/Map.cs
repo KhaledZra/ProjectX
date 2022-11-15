@@ -7,13 +7,13 @@ public class Map
 
     public Map(int xWidth, int xHeight)
     {
+        // Map setup
         _twoDMap = new int[xWidth, xHeight];
         SetupMap();
         Grid.CreateGrid(_twoDMap);
-        gameStructures.Add(new Structure(_twoDMap, StructureType.Shop, 6, 6, 5, 6, true));
-        gameStructures.Add(new Structure(_twoDMap, StructureType.Mountain, 20, 0, 11, 12, false));
-        gameStructures.Add(new Structure(_twoDMap, StructureType.Tutorial, 6, 20, 5, 6, true));
-        gameStructures.Add(new Structure(_twoDMap, StructureType.Fighting, 20, 20, 5, 6, false));
+        
+        // Structure setup
+        SetupStructures();
     }
 
     private void SetupMap()
@@ -27,13 +27,32 @@ public class Map
         }
     }
 
+    private void SetupStructures()
+    {
+        gameStructures.Add(new Structure(_twoDMap, GameState.ShopMenu,
+            _twoDMap.GetLength(0)/7, 6, _twoDMap.GetLength(0)/4, 6,
+            true));
+        
+        gameStructures.Add(new Structure(_twoDMap, GameState.Mountain,
+            _twoDMap.GetLength(0)/2, 0, _twoDMap.GetLength(0)/2, 12,
+            false));
+        
+        gameStructures.Add(new Structure(_twoDMap, GameState.TutorialMenu,
+            _twoDMap.GetLength(0)/7, 20, _twoDMap.GetLength(0)/4, 6, 
+            true));
+        
+        gameStructures.Add(new Structure(_twoDMap, GameState.FightMenu,
+            _twoDMap.GetLength(0)/2, 20, _twoDMap.GetLength(0)/4, 6, 
+            false));
+    }
+
     public void ShowMap()
     {
         for (int y = 0; y < _twoDMap.GetLength(1); y++)
         {
             for (int x = 0; x < _twoDMap.GetLength(0); x++)
             {
-                ColorizeMap(y, x);
+                VisualizeMap(y, x);
             }
 
             Console.Write("\n");
@@ -45,54 +64,43 @@ public class Map
         }
     }
 
-    public void ColorizeMap(int y, int x)
+    public void VisualizeMap(int y, int x)
     {
         if (_twoDMap[x, y] == 0) // is not roamable
         {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("O0O");
-            Console.ResetColor();
+            Draw.DrawGridWall();
         }
-        else if (_twoDMap[x, y] == 1) //gräs1 - is roamable
+        else if (_twoDMap[x, y] == 1) // is roamable
         {
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("wWw");
-            Console.ResetColor();
+            Draw.DrawGrass();
         }
         else if (_twoDMap[x, y] == 2) // is not roamable
         {
-            Console.BackgroundColor = ConsoleColor.DarkRed;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("---");
-            Console.ResetColor();
+            Draw.DrawHouseTile();
         }
-        else if (_twoDMap[x, y] == 3) //is not roamable
+        else if (_twoDMap[x, y] == 3) // is not roamable
         {
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("   ");
-            Console.ResetColor();
+            Draw.DrawMountainTile();
         }
-        else if (_twoDMap[x, y] == 4) //is not roamable
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("   ");
-            Console.ResetColor();
-        }
-        // else if (_twoDMap[x, y] == 5) //is not roamable // label
-        // {
-        //     Console.BackgroundColor = ConsoleColor.White;
-        //     Console.ForegroundColor = ConsoleColor.White;
-        //     Console.Write("Shop");
-        //     Console.ResetColor();
-        // }
         else
-
         {
-            Console.Write("www");
+            Draw.DrawHouseDoor();
         }
+        // else if (_twoDMap[x, y] == 9) // is interactable, Tutorial
+        // {
+        //     Draw.DrawHouseDoor();
+        // }
+        // else if (_twoDMap[x, y] == 11) // is interactable, fighting
+        // {
+        //     Draw.DrawHouseDoor();
+        // }
+        // else if (_twoDMap[x, y] == 6) // is interactable, shop
+        // {
+        //     Draw.DrawHouseDoor();
+        // }
+        // else if (_twoDMap[x, y] == 14) // is interactable, quit?
+        // {
+        //     Draw.DrawHouseDoor();
+        // }
     }
 }
