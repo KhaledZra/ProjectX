@@ -3,16 +3,9 @@ public class Enemy : Entity
 {
     private List<Enemy> enemies = new();
    
-    public Enemy(string name, int curruncy) : base(name, curruncy)
+    public Enemy(string name, int currency) : base(name, currency)
     {
         
-    }
-
-    public static Enemy TestEnemy()
-    {
-        return new Enemy("Goblin_Test") 
-            { Health = 100 , LevelStats = new LevelHandler()
-                {Experience = 100} };
     }
 
     public static List<Enemy> GenerateEnemies()

@@ -67,7 +67,7 @@ public class Output
 
     public static void FightingMenu(Game game)
     {
-        Console.WriteLine(game.HandleFighting(Enemy.TestEnemy())); // ska ändras sen
+        //Console.WriteLine(game.HandleFighting(Enemy.TestEnemy())); // ska ändras sen
         Console.WriteLine("------------");
     }
 

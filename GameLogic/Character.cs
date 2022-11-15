@@ -4,9 +4,9 @@ public class Character : Entity
     public int CoordX { get; set; }
     public int CoordY { get; set; }
 
-    public Character(string name) : base(name)
+    public Character(string name, int currency = 0) : base(name, currency)
     {
-        
+    
     }
 
     public void MoveUp()
