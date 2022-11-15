@@ -1,9 +1,9 @@
 ﻿using GameLogic;
+
 namespace UserInterface;
 
 public class Output
 {
-
     public static void MainMenu()
     {
         Console.WriteLine("Welcome to Heretics!");
@@ -25,8 +25,8 @@ public class Output
         Console.WriteLine("[A]rcher - An expert in distance fighting.");
         Console.WriteLine("[M]age - Wielder of magic and spells.");
         Console.WriteLine("[W]arrior - User of handheld weaponry.");
-
     }
+
     public static void CharacterName()
     {
         Console.Write("Set name: ");
@@ -38,9 +38,13 @@ public class Output
         Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
     }
 
-    public static void BuyFromShopMenu()
+    public static void BuyFromShopMenu(List<Item> shopItems)
     {
         Console.WriteLine("--------BUYING---------");
+        foreach (Item item in shopItems)
+        {
+            Console.WriteLine($"{item.Name} - {item.Currency} ");
+        }
         Console.WriteLine("Example: The sword is yours now!");
         Console.WriteLine("[R]eturn");
     }
@@ -57,7 +61,7 @@ public class Output
         Console.WriteLine($"Hi! {player.Name}, Press [D]");
         Console.WriteLine("You are done with your practice! GOOD JOB!!");
     }
-    
+
     public static void FightStartMenu(Character player)
     {
         Console.WriteLine($"{player.Name} your are fighting our enemies, SEND THEM TO HELL");
@@ -94,5 +98,4 @@ public class Output
         Console.WriteLine("3. tutorial");
         Console.WriteLine("4. Leave");
     }
-
 }

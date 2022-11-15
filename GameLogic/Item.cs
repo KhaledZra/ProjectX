@@ -1,8 +1,8 @@
 namespace GameLogic;
 
-class Item : Entity
+public class Item : Entity
 {
-    private List<Item> _usableItems = new List<Item>();
+    public List<Item> _usableItems = new List<Item>();
 
     public Item(string name, int health, int level, int currency) : base(name, currency)
     {
@@ -44,4 +44,6 @@ class Item : Entity
         _usableItems.Add(new Item("Orcus, Scythe of the Reaper", 1000, 50,9999999)); //mythical
         _usableItems.Add(new Item("The Sword of Rupture, Ea", 10000, 50,9999999)); //mythical
     }
+    
+    
 }

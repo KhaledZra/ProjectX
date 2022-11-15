@@ -1,7 +1,7 @@
 namespace GameLogic;
-class Shop
+public class Shop
 {
-    public List<Item> Stock { get; set; }
+    public static List<Item> Stock { get; set; }
     public int Currency { get; set; }
 
     public Shop()

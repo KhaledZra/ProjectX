@@ -5,18 +5,18 @@ public class Game // plumming code
     // this is where shit goes down
     private List<Item> _itemListDB;
     private List<Enemy> _enemyListDB;
-    private Shop _shop;
+    public Shop Shop;
     public Character _player;
-    private Inventory _inventory;
+    public Inventory Inventory;
 
     public Game(string playerName, string chosenClass)
     {
         _itemListDB = new(); // itemListDB temp but loadFromDB?
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
-        _shop = new Shop();
+        Shop = new Shop();
         _player = new Character(playerName);
-        _inventory = new Inventory(_player.Id);
-        
+        Inventory = new Inventory(_player.Id);
+
         // use chosenClass to set class
         Skills.SetMelee(_player);
     }
@@ -25,7 +25,7 @@ public class Game // plumming code
     {
         return true;
     }
-    
+
     public string HandleFighting(Enemy enemy) // returns true if hero won else false
     {
         string battleInfo = $"------------\n" +
@@ -41,6 +41,7 @@ public class Game // plumming code
                 battleInfo += $"{_player.Name} was defeated in battle... Shame!";
                 return battleInfo;
             }
+
             enemy.Health -= _player.DealDamage(); // Player strikes enemy!
 
             if (enemy.Health <= 0) // checks if the Enemy died
@@ -49,9 +50,10 @@ public class Game // plumming code
                               $"Gained: {enemy.LevelStats.Experience}xp!\n" +
                               $"Lost: {lostHearts} hearts, Hearts left: {_player.Health}\n";
                 battleInfo += LevelUpHandler(enemy.LevelStats.Experience);
-                
+
                 return battleInfo;
             }
+
             _player.Health -= enemy.DealDamage(); // Enemy strikes Player!
             lostHearts += enemy.DealDamage(); // used to show result of fight
         }
@@ -60,7 +62,7 @@ public class Game // plumming code
     public string LevelUpHandler(int gainedExperience)
     {
         int levelsGained = _player.LevelStats.GainExperience(gainedExperience);
-                
+
         if (levelsGained == 1)
         {
             return $"{_player.Name} gained {levelsGained} Level\n{_player.LevelStats.ToString()}";
