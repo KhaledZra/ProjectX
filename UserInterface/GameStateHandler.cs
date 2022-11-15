@@ -17,17 +17,17 @@ public class GameStateHandler
                 Output.CharacterHandlerOutPut();
                 gameState = Input.CharacterMenuInput();
                 break;
-            
+
             case GameState.LoadCharacter: // inte klar än
                 Console.WriteLine("Load feature not implemented yet!");
                 gameState = GameState.CharacterHandler;
                 break;
-            
+
             case GameState.SetCharacterVocation: // Klar
                 Output.ChooseCharacterVocation();
                 gameState = Input.CharacterVocationInput(game._player);
                 break;
-            
+
             case GameState.SetCharacterName: // Klar
                 Output.CharacterName();
                 gameState = Input.CharacterNameInput(game._player);
@@ -45,12 +45,12 @@ public class GameStateHandler
                 break;
 
             case GameState.BuyFromShop: // inte klar än
-                Output.BuyFromShopMenu(Shop.Stock.ToList());
+                Output.BuyFromShop(Shop.Stock.ToList());
                 gameState = Input.ShopBuyMenuInput();
                 break;
 
-            case GameState.SellInShop: // inte klar än
-                Output.SellInShop();
+            case GameState.SellToShop: // inte klar än
+                Output.SellToShop(game._player);
                 gameState = Input.ShopSellMenuInput();
                 break;
 
@@ -64,7 +64,7 @@ public class GameStateHandler
                 gameState = Input.FightingMenuInput();
                 // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
                 break;
-            
+
             case GameState.Fighting: // inte klar än
                 Output.FightingMenu(game);
                 if (game._player.Health <= 0)
@@ -77,8 +77,9 @@ public class GameStateHandler
                 // }
                 else
                 {
-                    gameState = GameState.FightMenu;   
+                    gameState = GameState.FightMenu;
                 }
+
                 break;
 
             case GameState.WonMenu: // inte klar än
@@ -87,7 +88,7 @@ public class GameStateHandler
                 break;
 
             case GameState.LostMenu: // inte klar än
-                Output.LooseMenu();
+                Output.LoseMenu();
                 gameState = GameState.QuitGame;
                 break;
 

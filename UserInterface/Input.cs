@@ -103,7 +103,7 @@ public abstract class Input
 
         if (input == ConsoleKey.S)
         {
-            return GameState.SellInShop;
+            return GameState.SellToShop;
         }
 
         return GameState.ShopMenu;
@@ -132,7 +132,7 @@ public abstract class Input
             return GameState.ShopMenu;
         }
 
-        return GameState.SellInShop;
+        return GameState.SellToShop;
     }
 
     public static GameState TutorialMenuInput()

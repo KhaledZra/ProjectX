@@ -4,10 +4,12 @@ public class Character : Entity
 {
     public int CoordX { get; set; }
     public int CoordY { get; set; }
+    public List<Item> InventoryItems { get; set; }
 
     public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
     {
+        InventoryItems = new List<Item>();
     }
 
     public static void CheckEntityVocation(Character activePlayer)
@@ -27,6 +29,7 @@ public class Character : Entity
             Stats.SetWarrior(activePlayer);
         }
     }
+
 
 //metod som kollar vocation,
 // använd klassen skills för att kolla setta stats/skills

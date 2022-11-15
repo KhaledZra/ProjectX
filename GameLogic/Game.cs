@@ -7,7 +7,7 @@ public class Game // plumming code
     private List<Enemy> _enemyListDB;
     public Shop Shop;
     public Character _player;
-    public Inventory Inventory;
+    //public Inventory Inventory;
 
     public Game(string playerName, string chosenClass)
     {
@@ -15,7 +15,7 @@ public class Game // plumming code
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
         Shop = new Shop();
         _player = new Character(playerName);
-        Inventory = new Inventory(_player.Id);
+        //Inventory = new Inventory(_player.Id);
 
         // use chosenClass to set class
         Stats.SetWarrior(_player);

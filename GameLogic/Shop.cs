@@ -7,11 +7,11 @@ public class Shop
     public Shop()
     {
         Stock = new List<Item>();
-        this.Currency = 100; // Shop starts with 100 gold
+        this.Currency = 100000000; // Shop starts with 100 gold
     }
 
     public override string ToString()
     {
-        return $"{Stock} {Currency}";
+        return $"{Stock} - Prize: {Currency}";
     }
 }
