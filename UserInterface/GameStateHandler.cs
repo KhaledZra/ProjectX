@@ -48,7 +48,7 @@ public class GameStateHandler
             
             case GameState.Mountain: // DLC, kanske tars bort helt sen
                 Output.WriteLineMultiColored((ConsoleColor.White, "The mountain is locked for now"), (ConsoleColor.White, "\nCheck back for release"), (ConsoleColor.White, "!"));
-                Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "), (ConsoleColor.White, "map"));
+                Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "), (ConsoleColor.White, "map."));
                 //Console.WriteLine("The mountain is locked for you mortal.");
                 //Console.WriteLine("[R]eturn");
                 Console.ReadKey(true);
