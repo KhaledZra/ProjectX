@@ -2,6 +2,8 @@
 
 public enum Vocation
 {
+    Unassigned, // Default vocation
+    
     Archer, // playable
     Warrior, // playable
     Mage, // playable

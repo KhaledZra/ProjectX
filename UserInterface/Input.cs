@@ -45,23 +45,26 @@ public abstract class Input
         return GameState.CharacterHandler;
     }
     
-    public static GameState CharacterVocationInput()
+    public static GameState CharacterVocationInput(Character player)
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
         if (input == ConsoleKey.A)
         {
+            player.Vocation = Vocation.Archer;
             return GameState.SetCharacterName;
         }
         
         if (input == ConsoleKey.M)
         {
+            player.Vocation = Vocation.Mage;
             return GameState.SetCharacterName;
         }
         
         if (input == ConsoleKey.W)
         {
+            player.Vocation = Vocation.Warrior;
             return GameState.SetCharacterName;
         }
 

@@ -4,11 +4,13 @@ public class Character : Entity
     public int CoordX { get; set; }
     public int CoordY { get; set; }
 
-    public Character(string name, int currency = 0, Vocation vocation = new()) : base(name, vocation, currency)
+    public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation, currency)
     {
     
     }
-
+//metod som kollar vocation,
+// använd klassen skills för att kolla setta stats/skills
+//alla metoder i skills är static så går att kalla på
     public void MoveUp()
     {
         CoordY --;

@@ -8,7 +8,6 @@ public abstract class Entity
     public LevelHandler LevelStats { get; set; }
     public int Currency { get; set; } //eventually decimalF
     public Vocation Vocation { get; set; }
-
     public Entity(string name,Vocation vocation, int currencyValue)
     {
         Name = name;
