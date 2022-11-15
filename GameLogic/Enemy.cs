@@ -3,7 +3,7 @@ public class Enemy : Entity
 {
     private List<Enemy> enemies = new();
    
-    public Enemy(string name, int currency, Vocation vocation = new()) : base(name, vocation, currency)
+    public Enemy(string name, int currency, Vocation vocation = Vocation.Unassigned) : base(name, vocation, currency)
     {
         
     }
