@@ -7,17 +7,17 @@ public class Output
     public static void MainMenu()
     {
         Console.WriteLine("Welcome to World of Heretics!");
-        WriteLineColored((ConsoleColor.White, "Press "), (ConsoleColor.Red, "[P]"), (ConsoleColor.White, " to play.."));
-        WriteLineColored((ConsoleColor.White, "..or "), (ConsoleColor.Red, "[Q]"), (ConsoleColor.White, " to quit game..")); 
+        WriteLineMultiColored((ConsoleColor.White, "Press "), (ConsoleColor.Red, "[P]"), (ConsoleColor.White, " to play.."));
+        WriteLineMultiColored((ConsoleColor.White, "..or "), (ConsoleColor.Red, "[Q]"), (ConsoleColor.White, " to quit game..")); 
         //Console.WriteLine("Press [P] to play..\n..or press [Q] to quit game!");
     }
 
     public static void CharacterHandlerOutPut()
     {
         Console.WriteLine("Character menu:");
-        WriteLineColored((ConsoleColor.Red, "[C]reate "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
-        WriteLineColored((ConsoleColor.Red, "[L]oad "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
-        WriteLineColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to main menu"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[C]reate "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[L]oad "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to main menu"), (ConsoleColor.White, "."));
         //Console.WriteLine("[C]reate character");
         //Console.WriteLine("[L]oad character"); // not possible yet without db
         //Console.WriteLine("[R]eturn to main menu");
@@ -26,9 +26,9 @@ public class Output
     public static void ChooseCharacterVocation()
     {
         Console.WriteLine("Choose a class by pressing the corresponding alphabetical character:");
-        WriteLineColored((ConsoleColor.Red, "[A]rcher "), (ConsoleColor.White, "- An expert in distance fighting"), (ConsoleColor.White, "."));
-        WriteLineColored((ConsoleColor.Red, "[M]age "), (ConsoleColor.White, "- Wielder of magic and spells"), (ConsoleColor.White, "."));
-        WriteLineColored((ConsoleColor.Red, "[W]arrior "), (ConsoleColor.White, "- User of handheld weaponry"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[A]rcher "), (ConsoleColor.White, "- An expert in distance fighting"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[M]age "), (ConsoleColor.White, "- Wielder of magic and spells"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[W]arrior "), (ConsoleColor.White, "- User of handheld weaponry"), (ConsoleColor.White, "."));
         //Console.WriteLine("[A]rcher - An expert in distance fighting.");
         //Console.WriteLine("[M]age - Wielder of magic and spells.");
         //Console.WriteLine("[W]arrior - User of handheld weaponry.");
@@ -42,9 +42,9 @@ public class Output
     public static void ShopMenu()
     {
         Console.WriteLine("Welcome to the WoH shop!");
-        WriteLineColored((ConsoleColor.Red, "[B] "), (ConsoleColor.White, " - Buy "), (ConsoleColor.White, "items."));
-        WriteLineColored((ConsoleColor.Red, "[S] "), (ConsoleColor.White, " - Sell "), (ConsoleColor.White, "items."));
-        WriteLineColored((ConsoleColor.Red, "[L] "), (ConsoleColor.White, "Leave "), (ConsoleColor.White, "shop."));
+        WriteLineMultiColored((ConsoleColor.Red, "[B] "), (ConsoleColor.White, " - Buy "), (ConsoleColor.White, "items."));
+        WriteLineMultiColored((ConsoleColor.Red, "[S] "), (ConsoleColor.White, " - Sell "), (ConsoleColor.White, "items."));
+        WriteLineMultiColored((ConsoleColor.Red, "[L] "), (ConsoleColor.White, "Leave "), (ConsoleColor.White, "shop."));
         //Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
     }
 
@@ -76,8 +76,8 @@ public class Output
     public static void TutorialMenu(Character player)
     {
         Console.WriteLine($"Hi! {player.Name}, press any of the below characters to go forward:");
-        WriteLineColored((ConsoleColor.Red, "[T] "), (ConsoleColor.White, "Start "), (ConsoleColor.White, "tutorial."));
-        WriteLineColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, "Return "), (ConsoleColor.White, "to map."));
+        WriteLineMultiColored((ConsoleColor.Red, "[T] "), (ConsoleColor.White, "Start "), (ConsoleColor.White, "tutorial."));
+        WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, "Return "), (ConsoleColor.White, "to map."));
         
         //Console.WriteLine($"[T] Start tutorial.");
         //Console.WriteLine("[R] Return to map");
@@ -86,13 +86,13 @@ public class Output
 
     public static void TutorialOutput()
     {
-        WriteLineColored((ConsoleColor.White, "Welcome to the "), (ConsoleColor.Red, "World of Heretics "), (ConsoleColor.White, "young adventurer!"));
+        WriteLineMultiColored((ConsoleColor.White, "Welcome to the "), (ConsoleColor.Red, "World of Heretics "), (ConsoleColor.White, "young adventurer!"));
         Console.WriteLine($"Outside the House of Tutorial you just witnessed the map of WoH.");
-        WriteLineColored((ConsoleColor.White, "In this map there´s"), (ConsoleColor.Red, " 4 structures "), (ConsoleColor.White, ", giving 4 different options;\n"));
-        WriteLineColored((ConsoleColor.Red, " - North West - "), (ConsoleColor.White, "Our in game Shop where you can buy "), (ConsoleColor.White, "and sell your looted items."));
-        WriteLineColored((ConsoleColor.Red, " - North East - "), (ConsoleColor.White, "The Mountain of adventures "), (ConsoleColor.White, "(to be released shortly)."));
-        WriteLineColored((ConsoleColor.Red, " - South West - "), (ConsoleColor.White, "Tutorial "), (ConsoleColor.White, "(Which house you just entered and found yourself in this text)"));
-        WriteLineColored((ConsoleColor.Red, " - South East - "), (ConsoleColor.White, "Fighting is where you´re able to encounter monsters, "), (ConsoleColor.White, "level up and loot items."));
+        WriteLineMultiColored((ConsoleColor.White, "In this map there´s"), (ConsoleColor.Red, " 4 structures "), (ConsoleColor.White, ", giving 4 different options;\n"));
+        WriteLineMultiColored((ConsoleColor.Red, " - North West - "), (ConsoleColor.White, "Our in game Shop where you can buy "), (ConsoleColor.White, "and sell your looted items."));
+        WriteLineMultiColored((ConsoleColor.Red, " - North East - "), (ConsoleColor.White, "The Mountain of adventures "), (ConsoleColor.White, "(to be released shortly)."));
+        WriteLineMultiColored((ConsoleColor.Red, " - South West - "), (ConsoleColor.White, "Tutorial "), (ConsoleColor.White, "(Which house you just entered and found yourself in this text)"));
+        WriteLineMultiColored((ConsoleColor.Red, " - South East - "), (ConsoleColor.White, "Fighting is where you´re able to encounter monsters, "), (ConsoleColor.White, "level up and loot items."));
         
         
         
@@ -107,8 +107,8 @@ public class Output
     public static void FightStartMenu(Character player)
     {
         Console.WriteLine($"{player.Name}, you´re fighting our enemies, SEND THEM TO HELL!");
-        WriteLineColored((ConsoleColor.Red, "[F]"), (ConsoleColor.White, "ight"), (ConsoleColor.White, "!"));
-        WriteLineColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "un away and live to fight another day"), (ConsoleColor.White, "!"));
+        WriteLineMultiColored((ConsoleColor.Red, "[F]"), (ConsoleColor.White, "ight"), (ConsoleColor.White, "!"));
+        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "un away and live to fight another day"), (ConsoleColor.White, "!"));
         //Console.WriteLine("[F]ight!");
         //Console.WriteLine("[R]un away and live to fight another day!");
     }
@@ -137,17 +137,17 @@ public class Output
     public static void TestRoamingMenu() //temporary fix for roaming map interactions
     {
         Console.WriteLine("---------ROAMING---------");
-        WriteLineColored((ConsoleColor.Red, "[1.] "), (ConsoleColor.White, "Fight Club"), (ConsoleColor.White, "!"));
-        WriteLineColored((ConsoleColor.Red, "[2.] "), (ConsoleColor.White, "Shop"), (ConsoleColor.White, "!"));
-        WriteLineColored((ConsoleColor.Red, "[3.] "), (ConsoleColor.White, "Tutorial"), (ConsoleColor.White, "!"));
-        WriteLineColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
+        WriteLineMultiColored((ConsoleColor.Red, "[1.] "), (ConsoleColor.White, "Fight Club"), (ConsoleColor.White, "!"));
+        WriteLineMultiColored((ConsoleColor.Red, "[2.] "), (ConsoleColor.White, "Shop"), (ConsoleColor.White, "!"));
+        WriteLineMultiColored((ConsoleColor.Red, "[3.] "), (ConsoleColor.White, "Tutorial"), (ConsoleColor.White, "!"));
+        WriteLineMultiColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
         //Console.WriteLine("[1.] Fight Club");
         //Console.WriteLine("[2.] Shop");
         //Console.WriteLine("[3.] tutorial");
         //Console.WriteLine("[4.] Leave");
     }
 
-    public static void WriteLineColored(params (ConsoleColor color, string value)[] values)
+    public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values)
     {
         Console.Write("\r");
         foreach (var value in values)
