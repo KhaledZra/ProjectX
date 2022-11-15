@@ -4,7 +4,7 @@ class Item : Entity
 {
     private List<Item> _usableItems = new List<Item>();
 
-    public Item(string name, int health, int level) : base(name)
+    public Item(string name, int health, int level, int price) : base(name, price)
     {
         Health = health;
         LevelStats.Level = level;
@@ -18,9 +18,10 @@ class Item : Entity
         _usableItems.Add(new Item("Batarang", 50, 5));
         _usableItems.Add(new Item("Long Bow", 20, 5));
         _usableItems.Add(new Item("Crossbow", 30, 10));
-        _usableItems.Add(new Item("Fūma Shuriken, major throwing star", 25, 30)); //large shurikens to cut bodies in half
+        _usableItems.Add(new Item("Fūma Shuriken, major throwing star", 25,
+            30)); //large shurikens to cut bodies in half
         _usableItems.Add(new Item("Widow's Wail", 100, 49));
-        
+
         //end game ranged weapons
         _usableItems.Add(new Item("The Spirit Spear Chastiefol", 10000, 50)); //mythical
         _usableItems.Add(new Item("Death Note", 10000, 50)); //mythical
@@ -41,7 +42,5 @@ class Item : Entity
         _usableItems.Add(new Item("Mihawk's Yoru", 1000, 50)); //legendary
         _usableItems.Add(new Item("Orcus, Scythe of the Reaper", 1000, 50)); //mythical
         _usableItems.Add(new Item("The Sword of Rupture, Ea", 10000, 50)); //mythical
-        
-        
     }
 }

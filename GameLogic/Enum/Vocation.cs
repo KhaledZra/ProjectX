@@ -1,17 +1,12 @@
-﻿namespace GameLogic.Enum;
-
-public class Vocation
-{
-    public VocationType VocationType { get; set; }
-}
+﻿namespace GameLogic;
 
 public enum VocationType
 {
     Archer, // playable
-    Berserker, // MONSTER
-    Boss, // MONSTER
+    Berserker, // non-playable
+    Boss, // non-playable
     God, // GM-state, eventually endGameBossMode - The triad of Ohm/Khal/Oxh = "Ohm, Khal, Oxh, The neverending trinity"
-    Necromancer, // playable
-    //Warrior, // playable
-    Wizard // playable
+    Mage, // playable
+    Necromancer, // non-playable
+    //Warrior // playable
 }
