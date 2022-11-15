@@ -7,7 +7,7 @@ public class Game // plumming code
     private List<Enemy> _enemyListDB;
     public Shop Shop;
     public Character _player;
-    public static Inventory Inventory;
+    public Inventory Inventory;
 
     public Game(string playerName, string chosenClass)
     {

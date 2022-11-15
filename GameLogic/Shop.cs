@@ -6,7 +6,7 @@ public class Shop
 
     public Shop()
     {
-        this.Stock = new List<Item>();
+        Stock = new List<Item>();
         this.Currency = 100; // Shop starts with 100 gold
     }
 

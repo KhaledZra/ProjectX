@@ -45,7 +45,7 @@ public class GameStateHandler
                 break;
 
             case GameState.BuyFromShop: // inte klar än
-                Output.BuyFromShopMenu();
+                Output.BuyFromShopMenu(Shop.Stock.ToList());
                 gameState = Input.ShopBuyMenuInput();
                 break;
 
