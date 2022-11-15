@@ -3,7 +3,7 @@ public class Enemy : Entity
 {
     private List<Enemy> enemies = new();
    
-    public Enemy(string name) : base(name)
+    public Enemy(string name, int curruncy) : base(name, curruncy)
     {
         
     }
@@ -17,19 +17,13 @@ public class Enemy : Entity
 
     public static List<Enemy> GenerateEnemies()
     {
-        Enemy myEnemies = new("Kel’Thuzad");
-        Enemy myEnemies2 = new("Lich King");
-        Enemy myEnemies3 = new("ARCHIMONDE");
-        Enemy myEnemies4 = new("KIL’JAEDEN");
-        Enemy myEnemies5 = new("DEATHWING");
-
         List<Enemy> enemyList = new();
-
-        enemyList.Add(myEnemies);
-        enemyList.Add(myEnemies2);
-        enemyList.Add(myEnemies3);
-        enemyList.Add(myEnemies4);
-        enemyList.Add(myEnemies5);
+        
+        enemyList.Add(new("Kel’Thuzad", 10));
+        enemyList.Add(new("Lich King", 10));
+        enemyList.Add(new("ARCHIMONDE", 10));
+        enemyList.Add(new("KIL’JAEDEN", 10));
+        enemyList.Add(new("DEATHWING", 10));
 
         return enemyList;
     }
