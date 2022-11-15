@@ -1,6 +1,8 @@
 namespace GameLogic;
 public class Enemy : Entity
 {
+    private List<Enemy> enemies = new();
+   
     public Enemy(string name) : base(name)
     {
         
@@ -31,5 +33,14 @@ public class Enemy : Entity
 
         return enemyList;
     }
+
+    public List<Enemy> GetRandomEnemy()
+    {
+        List<Enemy> randomEnemy = new();
+
+        return randomEnemy;
+    }
+
+
 
 }
