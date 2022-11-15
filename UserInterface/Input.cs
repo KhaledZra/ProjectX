@@ -44,7 +44,7 @@ public abstract class Input
 
         return GameState.CharacterHandler;
     }
-    
+
     public static GameState CharacterVocationInput(Character player)
     {
         ConsoleKey input = Console.ReadKey(true).Key;
@@ -55,13 +55,13 @@ public abstract class Input
             player.Vocation = Vocation.Archer;
             return GameState.SetCharacterName;
         }
-        
+
         if (input == ConsoleKey.M)
         {
             player.Vocation = Vocation.Mage;
             return GameState.SetCharacterName;
         }
-        
+
         if (input == ConsoleKey.W)
         {
             player.Vocation = Vocation.Warrior;
@@ -108,7 +108,7 @@ public abstract class Input
 
         return GameState.ShopMenu;
     }
-    
+
     public static GameState ShopBuyMenuInput()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
@@ -121,7 +121,7 @@ public abstract class Input
 
         return GameState.BuyFromShop;
     }
-    
+
     public static GameState ShopSellMenuInput()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
@@ -140,11 +140,18 @@ public abstract class Input
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
-        if (input == ConsoleKey.D)
+        if (input == ConsoleKey.T)
+        {
+            Output.TutorialOutput();
+            Console.ReadKey();
+            return GameState.TutorialMenu;
+        }
+
+        if (input == ConsoleKey.R)
         {
             return GameState.RoamingMap;
         }
-        
+
         return GameState.TutorialMenu;
     }
 
@@ -157,6 +164,7 @@ public abstract class Input
         {
             return GameState.Fighting;
         }
+
         if (input == ConsoleKey.R)
         {
             return GameState.RoamingMap;
@@ -164,8 +172,8 @@ public abstract class Input
 
         return GameState.FightMenu;
     }
-    
-        public static GameState MovePlayerInput(Character player, Map map)
+
+    public static GameState MovePlayerInput(Character player, Map map)
     {
         ConsoleKey input = Console.ReadKey(true).Key;
 
@@ -180,6 +188,7 @@ public abstract class Input
                     player.MoveDown();
                     return gameState;
                 }
+
                 player.MoveDown();
             }
         }
@@ -194,6 +203,7 @@ public abstract class Input
                     player.MoveUp();
                     return gameState;
                 }
+
                 player.MoveUp();
             }
         }
@@ -208,6 +218,7 @@ public abstract class Input
                     player.MoveLeft();
                     return gameState;
                 }
+
                 player.MoveLeft();
             }
         }
@@ -222,13 +233,14 @@ public abstract class Input
                     player.MoveRight();
                     return gameState;
                 }
+
                 player.MoveRight();
             }
         }
 
         return GameState.RoamingMap;
     }
-    
+
     // public static void FightingInput() // kanske om man behöver göra något mid fight?
     // {
     //     // // Fight to death or leave
@@ -237,7 +249,7 @@ public abstract class Input
     //     //     Console.Clear();
     //     // }
     // }
-    
+
     public static GameState TestRoamingMenuInput()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
@@ -247,17 +259,17 @@ public abstract class Input
         {
             return GameState.FightMenu;
         }
-        
+
         if (input == ConsoleKey.D2)
         {
             return GameState.ShopMenu;
         }
-        
+
         if (input == ConsoleKey.D3)
         {
             return GameState.TutorialMenu;
         }
-        
+
         if (input == ConsoleKey.D4)
         {
             return GameState.QuitGame;
