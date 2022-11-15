@@ -1,8 +1,6 @@
 namespace GameLogic;
 public class Enemy : Entity
 {
-    private List<Enemy> enemies = new();
-   
     public Enemy(string name) : base(name)
     {
         
