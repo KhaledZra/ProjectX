@@ -1,10 +1,12 @@
+using System.Linq.Expressions;
+
 namespace GameLogic;
 
 public class Item : Entity
 {
     public List<Item> _usableItems = new List<Item>();
 
-    public Item(string name, int health, int level, int currency) : base(name, currency)
+    public Item(string name, int health, int level, int currency, Vocation vocation = new()) : base(name, vocation, currency)
     {
         Health = health;
         LevelStats.Level = level;
