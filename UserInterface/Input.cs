@@ -55,7 +55,7 @@ public abstract class Input
             return GameState.SetCharacterName;
         }
         
-        if (input == ConsoleKey.N)
+        if (input == ConsoleKey.M)
         {
             return GameState.SetCharacterName;
         }
