@@ -49,6 +49,8 @@ public class Game // plumming code
                               $"Lost: {lostHearts} hearts, Hearts left: {_player.Health}\n";
                 battleInfo += LevelUpHandler(enemy.LevelStats.Experience);
 
+                _player.FightEncounters++;
+
                 return battleInfo;
             }
 

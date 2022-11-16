@@ -5,6 +5,7 @@ public class Character : Entity
     public int CoordX { get; set; }
     public int CoordY { get; set; }
     public List<Item> InventoryItems { get; set; }
+    public int FightEncounters { get; set; }
 
     public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
@@ -33,9 +34,9 @@ public class Character : Entity
     }
 
 
-//metod som kollar vocation,
-// använd klassen skills för att kolla setta stats/skills
-//alla metoder i skills är static så går att kalla på
+    //metod som kollar vocation,
+    // använd klassen skills för att kolla setta stats/skills
+    //alla metoder i skills är static så går att kalla på
     public void MoveUp()
     {
         CoordY--;

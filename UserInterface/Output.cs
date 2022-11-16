@@ -103,7 +103,7 @@ public class Output
 
     public static void FightingOptions(Character player)
     {
-        Console.WriteLine($"{player.Name}, you´ve encountered (x) enemies, what´s your decision?");
+        Console.WriteLine($"{player.Name}, you´ve encountered {player.FightEncounters} enemies, what´s your decision?");
         WriteLineMultiColored((ConsoleColor.Red, "[F]"), (ConsoleColor.White, "ight"), (ConsoleColor.White, "!"));
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "un away and live to fight another day"), (ConsoleColor.White, "!"));
         //Console.WriteLine("[F]ight!");
