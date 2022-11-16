@@ -5,12 +5,12 @@ namespace UserInterface;
 
 public class Output
 {
-    
+
     public static void MainMenu()
     {
         WriteLineMultiColored((ConsoleColor.Red, "- "), (ConsoleColor.White, "Welcome to the World of Heretics"), (ConsoleColor.Red, " -"));
         WriteLineMultiColored((ConsoleColor.White, "Press "), (ConsoleColor.Green, "[P]"), (ConsoleColor.White, " to play.."));
-        WriteLineMultiColored((ConsoleColor.White, "..or "), (ConsoleColor.Red, "[Q]"), (ConsoleColor.White, " to quit game..")); 
+        WriteLineMultiColored((ConsoleColor.White, "..or "), (ConsoleColor.Red, "[Q]"), (ConsoleColor.White, " to quit game.."));
         //Console.WriteLine("Press [P] to play..\n..or press [Q] to quit game!");
     }
 
@@ -108,7 +108,7 @@ public class Output
 
     public static void FightingResult(Game game)
     {
-        //Console.WriteLine(game.HandleFighting(Enemy.TestEnemy())); // ska ändras sen
+        Console.WriteLine(game.HandleFighting(Enemy.GenerateEnemy(Enemy.GenerateEnemies().Count))); // ska ändras sen
         Console.WriteLine("------------");
     }
 
