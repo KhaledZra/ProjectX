@@ -9,7 +9,7 @@ public class Output
     public static void MainMenu()
     {
         WriteLineMultiColored((ConsoleColor.Red, "- "), (ConsoleColor.White, "Welcome to the World of Heretics"), (ConsoleColor.Red, " -"));
-        WriteLineMultiColored((ConsoleColor.White, "Press "), (ConsoleColor.Red, "[P]"), (ConsoleColor.White, " to play.."));
+        WriteLineMultiColored((ConsoleColor.White, "Press "), (ConsoleColor.Green, "[P]"), (ConsoleColor.White, " to play.."));
         WriteLineMultiColored((ConsoleColor.White, "..or "), (ConsoleColor.Red, "[Q]"), (ConsoleColor.White, " to quit game..")); 
         //Console.WriteLine("Press [P] to play..\n..or press [Q] to quit game!");
     }
@@ -17,9 +17,9 @@ public class Output
     public static void CharacterHandlerOutPut()
     {
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "CHARACTER"), (ConsoleColor.Red, "---------"));
-        WriteLineMultiColored((ConsoleColor.Red, "[C]reate "), (ConsoleColor.White, "reate character"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[L]d "), (ConsoleColor.White, "oa character"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, "eturn to main menu"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[C]"), (ConsoleColor.White, "reate character"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[L]"), (ConsoleColor.White, "oad character"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn to main menu"), (ConsoleColor.White, "."));
         //Console.WriteLine("[C]reate character");
         //Console.WriteLine("[L]oad character"); // not possible yet without db
         //Console.WriteLine("[R]eturn to main menu");
@@ -28,8 +28,8 @@ public class Output
     public static void ChooseCharacterVocation()
     {
         Console.WriteLine("Choose a class by pressing the corresponding alphabetical character:");
-        WriteLineMultiColored((ConsoleColor.Red, "[A] "), (ConsoleColor.White, "rcher - An expert in distance fighting"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[M]age "), (ConsoleColor.White, "age - Wielder of magic and spells"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Green, "[A] "), (ConsoleColor.White, "rcher - An expert in distance fighting"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Cyan, "[M]age "), (ConsoleColor.White, "age - Wielder of magic and spells"), (ConsoleColor.White, "."));
         WriteLineMultiColored((ConsoleColor.Red, "[W] "), (ConsoleColor.White, "arrior - User of handheld weaponry"), (ConsoleColor.White, "."));
         //Console.WriteLine("[A]rcher - An expert in distance fighting.");
         //Console.WriteLine("[M]age - Wielder of magic and spells.");
@@ -45,7 +45,7 @@ public class Output
     {
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "SHOP"), (ConsoleColor.Red, "---------"));
         WriteLineMultiColored((ConsoleColor.Red, "[B] "), (ConsoleColor.White, " - Buy "), (ConsoleColor.White, "items."));
-        WriteLineMultiColored((ConsoleColor.Red, "[S] "), (ConsoleColor.White, " - Sell "), (ConsoleColor.White, "items."));
+        WriteLineMultiColored((ConsoleColor.Green, "[S] "), (ConsoleColor.White, " - Sell "), (ConsoleColor.White, "items."));
         WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, " - Return "), (ConsoleColor.White, "to map."));
         //Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
     }
