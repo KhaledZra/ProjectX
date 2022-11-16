@@ -15,24 +15,24 @@ public class GameStateHandler
                 gameState = Input.MainMenuInput();
                 break;
 
-            case GameState.CharacterHandler: // klar
+            case GameState.CharacterOptions: // klar
                 Output.CharacterHandlerOutPut();
-                gameState = Input.CharacterMenuInput();
+                gameState = Input.CreateNewCharacter();
                 break;
 
             case GameState.LoadCharacter: // inte klar än
                 Console.WriteLine("Load feature not implemented yet!");
-                gameState = GameState.CharacterHandler;
+                gameState = GameState.CharacterOptions;
                 break;
 
-            case GameState.SetCharacterVocation: // Klar
+            case GameState.PickVocation: // Klar
                 Output.ChooseCharacterVocation();
-                gameState = Input.CharacterVocationInput(game._player);
+                gameState = Input.SetCharacterVocation(game._player);
                 break;
 
-            case GameState.SetCharacterName: // Klar
+            case GameState.PickName: // Klar
                 Output.CharacterName();
-                gameState = Input.CharacterNameInput(game._player);
+                gameState = Input.SetCharacterName(game._player);
                 break;
 
             case GameState.RoamingMap: // inte klar, behöver exit.
@@ -47,9 +47,9 @@ public class GameStateHandler
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
-            case GameState.Mountain: // DLC, kanske tars bort helt sen
-                Output.WriteLineMultiColored((ConsoleColor.White, "The mountain is locked for now"),
-                    (ConsoleColor.White, "\nCheck back for release"), (ConsoleColor.White, "!"));
+            case GameState.InsideMountain: // DLC, kanske tars bort helt sen
+                Output.WriteLineMultiColored((ConsoleColor.Red, "BEWARE! The mountain is locked for now."),
+                    (ConsoleColor.White, "\nCheck back for future dlc"), (ConsoleColor.White, "!"));
                 Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "),
                     (ConsoleColor.White, "map."));
                 //Console.WriteLine("The mountain is locked for you mortal.");
@@ -60,38 +60,37 @@ public class GameStateHandler
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
-            case GameState.ShopMenu: // inte klar än
-                Output.ShopMenu();
-                gameState = Input.ShopMenuInput();
+            case GameState.InsideShop: // inte klar än
+                Output.ShopMainMenu();
+                gameState = Input.GetFromShopMenu();
                 break;
 
-            case GameState.BuyFromShop: // inte klar än
-                Output.BuyFromShop();//Shop.Stock.ToList()
-                Console.ReadKey();
-                gameState = Input.ShopBuyMenuInput();
+            case GameState.BrowsingStock: // inte klar än
+                Output.StockInShop();//Shop.Stock.ToList()
+                gameState = Input.ItemInStock();
                 break;
 
-            case GameState.SellToShop: // inte klar än
+            case GameState.SellingToShop: // inte klar än
                 Output.SellToShop(game._player);
-                gameState = Input.ShopSellMenuInput();
+                gameState = Input.SellInventory();
                 break;
 
-            case GameState.TutorialMenu: // inte klar än
+            case GameState.InsideTutorial: // inte klar än
                 Output.TutorialMenu(game._player);
-                gameState = Input.TutorialMenuInput();
+                gameState = Input.TutorialMenu();
                 break;
 
             case GameState.FightMenu: // inte klar än, behöver hantera när man vinner
-                Output.FightStartMenu(game._player);
-                gameState = Input.FightingMenuInput();
+                Output.FightingOptions(game._player);
+                gameState = Input.FightingMenu();
                 // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
                 break;
 
             case GameState.Fighting: // inte klar än
-                Output.FightingMenu(game);
+                Output.FightingResult(game);
                 if (game._player.Health <= 0)
                 {
-                    gameState = GameState.LostMenu;
+                    gameState = GameState.LostFight;
                 }
                 // else if (//won condition)
                 // {
@@ -104,13 +103,13 @@ public class GameStateHandler
 
                 break;
 
-            case GameState.WonMenu: // inte klar än
-                Output.WonMenu();
+            case GameState.WonFight: // inte klar än
+                Output.FightWonOptions();
                 gameState = GameState.QuitGame;
                 break;
 
-            case GameState.LostMenu: // inte klar än
-                Output.LoseMenu(game._player);
+            case GameState.LostFight: // inte klar än
+                Output.FightLostOptions(game._player);
                 gameState = GameState.QuitGame;
                 break;
 

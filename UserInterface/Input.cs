@@ -11,7 +11,7 @@ public abstract class Input
 
         if (input == ConsoleKey.P)
         {
-            return GameState.CharacterHandler;
+            return GameState.CharacterOptions;
         }
 
         if (input == ConsoleKey.Q)
@@ -22,14 +22,14 @@ public abstract class Input
         return GameState.MainMenu;
     }
 
-    public static GameState CharacterMenuInput()
+    public static GameState CreateNewCharacter()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
         if (input == ConsoleKey.C)
         {
-            return GameState.SetCharacterVocation;
+            return GameState.PickVocation;
         }
 
         if (input == ConsoleKey.L)
@@ -42,10 +42,10 @@ public abstract class Input
             return GameState.MainMenu;
         }
 
-        return GameState.CharacterHandler;
+        return GameState.CharacterOptions;
     }
 
-    public static GameState CharacterVocationInput(Character player)
+    public static GameState SetCharacterVocation(Character player)
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
@@ -53,26 +53,26 @@ public abstract class Input
         if (input == ConsoleKey.A)
         {
             player.Vocation = Vocation.Archer;
-            return GameState.SetCharacterName;
+            return GameState.PickName;
         }
 
         if (input == ConsoleKey.M)
         {
             player.Vocation = Vocation.Mage;
-            return GameState.SetCharacterName;
+            return GameState.PickName;
         }
 
         if (input == ConsoleKey.W)
         {
             player.Vocation = Vocation.Warrior;
-            return GameState.SetCharacterName;
+            return GameState.PickName;
         }
 
         // set Vocation in game object
-        return GameState.SetCharacterVocation;
+        return GameState.PickVocation;
     }
 
-    public static GameState CharacterNameInput(Character player)
+    public static GameState SetCharacterName(Character player)
     {
         player.Name = Console.ReadLine();
         Console.Clear();
@@ -83,59 +83,59 @@ public abstract class Input
         }
 
         // set name in game object
-        return GameState.SetCharacterName;
+        return GameState.PickName;
     }
 
-    public static GameState ShopMenuInput()
+    public static GameState GetFromShopMenu()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
-        if (input == ConsoleKey.L)
+        if (input == ConsoleKey.B) // Browse stock
+        {
+            return GameState.BrowsingStock;
+        }
+
+        if (input == ConsoleKey.S) // Sell to shop
+        {
+            return GameState.SellingToShop;
+        }
+
+        if (input == ConsoleKey.R) // Return to map
         {
             return GameState.RoamingMap;
         }
 
-        if (input == ConsoleKey.B)
-        {
-            return GameState.BuyFromShop;
-        }
-
-        if (input == ConsoleKey.S)
-        {
-            return GameState.SellToShop;
-        }
-
-        return GameState.ShopMenu;
+        return GameState.InsideShop;
     }
 
-    public static GameState ShopBuyMenuInput()
+    public static GameState ItemInStock()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
         if (input == ConsoleKey.R)
         {
-            return GameState.ShopMenu;
+            return GameState.InsideShop;
         }
 
-        return GameState.BuyFromShop;
+        return GameState.BrowsingStock;
     }
 
-    public static GameState ShopSellMenuInput()
+    public static GameState SellInventory()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
         if (input == ConsoleKey.R)
         {
-            return GameState.ShopMenu;
+            return GameState.InsideShop;
         }
 
-        return GameState.SellToShop;
+        return GameState.SellingToShop;
     }
 
-    public static GameState TutorialMenuInput()
+    public static GameState TutorialMenu()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
@@ -144,7 +144,7 @@ public abstract class Input
         {
             Output.TutorialOutput();
             Console.ReadKey();
-            return GameState.TutorialMenu;
+            return GameState.InsideTutorial;
         }
 
         if (input == ConsoleKey.R)
@@ -152,10 +152,10 @@ public abstract class Input
             return GameState.RoamingMap;
         }
 
-        return GameState.TutorialMenu;
+        return GameState.InsideTutorial;
     }
 
-    public static GameState FightingMenuInput()
+    public static GameState FightingMenu()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
@@ -262,12 +262,12 @@ public abstract class Input
 
         if (input == ConsoleKey.D2)
         {
-            return GameState.ShopMenu;
+            return GameState.InsideShop;
         }
 
         if (input == ConsoleKey.D3)
         {
-            return GameState.TutorialMenu;
+            return GameState.InsideTutorial;
         }
 
         if (input == ConsoleKey.D4)

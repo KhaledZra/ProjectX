@@ -8,7 +8,7 @@ public class Output
     
     public static void MainMenu()
     {
-        Console.WriteLine("Welcome to World of Heretics!");
+        WriteLineMultiColored((ConsoleColor.Red, "- "), (ConsoleColor.White, "Welcome to the World of Heretics"), (ConsoleColor.Red, " -"));
         WriteLineMultiColored((ConsoleColor.White, "Press "), (ConsoleColor.Red, "[P]"), (ConsoleColor.White, " to play.."));
         WriteLineMultiColored((ConsoleColor.White, "..or "), (ConsoleColor.Red, "[Q]"), (ConsoleColor.White, " to quit game..")); 
         //Console.WriteLine("Press [P] to play..\n..or press [Q] to quit game!");
@@ -16,7 +16,7 @@ public class Output
 
     public static void CharacterHandlerOutPut()
     {
-        Console.WriteLine("Character menu:");
+        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "CHARACTER"), (ConsoleColor.Red, "---------"));
         WriteLineMultiColored((ConsoleColor.Red, "[C]reate "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
         WriteLineMultiColored((ConsoleColor.Red, "[L]oad "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
         WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to main menu"), (ConsoleColor.White, "."));
@@ -36,25 +36,25 @@ public class Output
         //Console.WriteLine("[W]arrior - User of handheld weaponry.");
     }
 
-    public static void CharacterName()
+    public static void CharacterName() //behöver kunna använda klassen till karaktären om så är möjligt
     {
-        Console.Write("Pick a name for your character: ");
+        Console.Write("Pick a suitable name for your {player.Vocation}: ");
     }
 
-    public static void ShopMenu()
+    public static void ShopMainMenu()
     {
-        Console.WriteLine("Welcome to the WoH shop!");
+        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "SHOP"), (ConsoleColor.Red, "---------"));
         WriteLineMultiColored((ConsoleColor.Red, "[B] "), (ConsoleColor.White, " - Buy "), (ConsoleColor.White, "items."));
         WriteLineMultiColored((ConsoleColor.Red, "[S] "), (ConsoleColor.White, " - Sell "), (ConsoleColor.White, "items."));
-        WriteLineMultiColored((ConsoleColor.Red, "[L] "), (ConsoleColor.White, " - Leave "), (ConsoleColor.White, "shop."));
+        WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, " - Return "), (ConsoleColor.White, "to map."));
         //Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
     }
 
-    public static void BuyFromShop()//List<Item> stockList
+    public static void StockInShop()//List<Item> stockList
     {
-        Console.WriteLine("--------BUYING---------");
+        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUYING"), (ConsoleColor.Red, "---------"));
         Console.WriteLine($"Example: You've bought \"item.Name\" from Shop");
-        Console.WriteLine("[R]eturn");
+        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
     }
 
     public static void SellToShop(Character activePlayer)
@@ -64,10 +64,9 @@ public class Output
             //bör listas med siffra för att avgöra vilket item som ska säljas i genom output/input
             Console.WriteLine($"{item.Name} - Sell for: {item.Currency} ");
         }
-
-        Console.WriteLine("---------SELLING---------");
+        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "SELLING"), (ConsoleColor.Red, "---------"));
         Console.WriteLine($"Example: Your item {activePlayer.InventoryItems[1]}");
-        Console.WriteLine("[R]eturn");
+        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
     }
 
     public static void TutorialMenu(Character player)
@@ -97,29 +96,31 @@ public class Output
         //Console.WriteLine($" - South East - Fighting is where you´re able to encounter monsters, level up and loot items.");
     }
 
-    public static void FightStartMenu(Character player)
+    public static void FightingOptions(Character player)
     {
-        Console.WriteLine($"{player.Name}, you´re fighting our enemies, SEND THEM TO HELL!");
+        Console.WriteLine($"{player.Name}, you´ve encountered (x) enemies, what´s your decision?");
         WriteLineMultiColored((ConsoleColor.Red, "[F]"), (ConsoleColor.White, "ight"), (ConsoleColor.White, "!"));
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "un away and live to fight another day"), (ConsoleColor.White, "!"));
         //Console.WriteLine("[F]ight!");
         //Console.WriteLine("[R]un away and live to fight another day!");
     }
 
-    public static void FightingMenu(Game game)
+    public static void FightingResult(Game game)
     {
         //Console.WriteLine(game.HandleFighting(Enemy.TestEnemy())); // ska ändras sen
         Console.WriteLine("------------");
     }
 
-    public static void WonMenu()
+    public static void FightWonOptions()
     {
         Console.WriteLine("You´ve defeated your enemy and won the battle!");
     }
 
-    public static void LoseMenu(Character player)
+    public static void FightLostOptions(Character player)
     {
         Console.WriteLine($"RIP {player.Name}, you´ve died and will have to restart your journey!");
+        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "estart "), (ConsoleColor.White, "game."));
+        WriteLineMultiColored((ConsoleColor.Red, "[Q]"), (ConsoleColor.White, "uit "), (ConsoleColor.White, "game."));
     }
 
     public static void Quit()
@@ -129,6 +130,7 @@ public class Output
 
     public static void TestRoamingMenu() //temporary fix for roaming map interactions
     {
+        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "ROAMING "), (ConsoleColor.Red, "---------"));
         Console.WriteLine("---------ROAMING---------");
         WriteLineMultiColored((ConsoleColor.Red, "[1.] "), (ConsoleColor.White, "Fight Club"), (ConsoleColor.White, "!"));
         WriteLineMultiColored((ConsoleColor.Red, "[2.] "), (ConsoleColor.White, "Shop"), (ConsoleColor.White, "!"));
@@ -140,7 +142,7 @@ public class Output
         //Console.WriteLine("[4.] Leave");
     }
 
-    public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values)
+    public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
     {
         Console.Write("\r");
         foreach (var value in values)
