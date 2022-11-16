@@ -17,9 +17,9 @@ public class Output
     public static void CharacterHandlerOutPut()
     {
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "CHARACTER"), (ConsoleColor.Red, "---------"));
-        WriteLineMultiColored((ConsoleColor.Red, "[C]reate "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[L]oad "), (ConsoleColor.White, "character"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to main menu"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[C]reate "), (ConsoleColor.White, "reate character"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[L]d "), (ConsoleColor.White, "oa character"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, "eturn to main menu"), (ConsoleColor.White, "."));
         //Console.WriteLine("[C]reate character");
         //Console.WriteLine("[L]oad character"); // not possible yet without db
         //Console.WriteLine("[R]eturn to main menu");
@@ -27,11 +27,10 @@ public class Output
 
     public static void ChooseCharacterVocation()
     {
-        WriteLineMultiColored();
         Console.WriteLine("Choose a class by pressing the corresponding alphabetical character:");
-        WriteLineMultiColored((ConsoleColor.Red, "[A]rcher "), (ConsoleColor.White, "- An expert in distance fighting"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[M]age "), (ConsoleColor.White, "- Wielder of magic and spells"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[W]arrior "), (ConsoleColor.White, "- User of handheld weaponry"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[A] "), (ConsoleColor.White, "rcher - An expert in distance fighting"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[M]age "), (ConsoleColor.White, "age - Wielder of magic and spells"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[W] "), (ConsoleColor.White, "arrior - User of handheld weaponry"), (ConsoleColor.White, "."));
         //Console.WriteLine("[A]rcher - An expert in distance fighting.");
         //Console.WriteLine("[M]age - Wielder of magic and spells.");
         //Console.WriteLine("[W]arrior - User of handheld weaponry.");
