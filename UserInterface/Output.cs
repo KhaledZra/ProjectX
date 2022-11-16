@@ -27,6 +27,7 @@ public class Output
 
     public static void ChooseCharacterVocation()
     {
+        WriteLineMultiColored();
         Console.WriteLine("Choose a class by pressing the corresponding alphabetical character:");
         WriteLineMultiColored((ConsoleColor.Red, "[A]rcher "), (ConsoleColor.White, "- An expert in distance fighting"), (ConsoleColor.White, "."));
         WriteLineMultiColored((ConsoleColor.Red, "[M]age "), (ConsoleColor.White, "- Wielder of magic and spells"), (ConsoleColor.White, "."));
@@ -65,7 +66,8 @@ public class Output
             Console.WriteLine($"{item.Name} - Sell for: {item.Currency} ");
         }
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "SELLING"), (ConsoleColor.Red, "---------"));
-        Console.WriteLine($"Example: Your item {activePlayer.InventoryItems[1]}");
+        //Console.WriteLine($"Example: Your item {activePlayer.InventoryItems[1]}");
+        Console.WriteLine($"Example: Your item [Blade of souls] was sold for [10 Gold]!");
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
     }
 
