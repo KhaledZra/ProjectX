@@ -29,7 +29,7 @@ public abstract class Input
 
         if (input == ConsoleKey.C)
         {
-            return GameState.PickVocation;
+            return GameState.CreateCharacter;
         }
 
         if (input == ConsoleKey.L)
@@ -53,23 +53,23 @@ public abstract class Input
         if (input == ConsoleKey.A)
         {
             player.Vocation = Vocation.Archer;
-            return GameState.PickName;
+            return GameState.VocSetPickName;
         }
 
         if (input == ConsoleKey.M)
         {
             player.Vocation = Vocation.Mage;
-            return GameState.PickName;
+            return GameState.VocSetPickName;
         }
 
         if (input == ConsoleKey.W)
         {
             player.Vocation = Vocation.Warrior;
-            return GameState.PickName;
+            return GameState.VocSetPickName;
         }
 
         // set Vocation in game object
-        return GameState.PickVocation;
+        return GameState.CreateCharacter;
     }
 
     public static GameState SetCharacterName(Character player)
@@ -83,7 +83,7 @@ public abstract class Input
         }
 
         // set name in game object
-        return GameState.PickName;
+        return GameState.VocSetPickName;
     }
 
     public static GameState GetFromShopMenu()
@@ -93,12 +93,12 @@ public abstract class Input
 
         if (input == ConsoleKey.B) // Browse stock
         {
-            return GameState.BrowsingStock;
+            return GameState.Browsing;
         }
 
         if (input == ConsoleKey.S) // Sell to shop
         {
-            return GameState.SellingToShop;
+            return GameState.Selling;
         }
 
         if (input == ConsoleKey.R) // Return to map
@@ -106,7 +106,7 @@ public abstract class Input
             return GameState.RoamingMap;
         }
 
-        return GameState.InsideShop;
+        return GameState.Shop;
     }
 
     public static GameState ItemInStock()
@@ -116,10 +116,10 @@ public abstract class Input
 
         if (input == ConsoleKey.R)
         {
-            return GameState.InsideShop;
+            return GameState.Shop;
         }
 
-        return GameState.BrowsingStock;
+        return GameState.Browsing;
     }
 
     public static GameState SellInventory()
@@ -129,10 +129,10 @@ public abstract class Input
 
         if (input == ConsoleKey.R)
         {
-            return GameState.InsideShop;
+            return GameState.Shop;
         }
 
-        return GameState.SellingToShop;
+        return GameState.Selling;
     }
 
     public static GameState TutorialMenu()
@@ -144,7 +144,7 @@ public abstract class Input
         {
             Output.TutorialOutput();
             Console.ReadKey();
-            return GameState.InsideTutorial;
+            return GameState.Tutorial;
         }
 
         if (input == ConsoleKey.R)
@@ -152,7 +152,7 @@ public abstract class Input
             return GameState.RoamingMap;
         }
 
-        return GameState.InsideTutorial;
+        return GameState.Tutorial;
     }
 
     public static GameState FightingMenu()
@@ -170,7 +170,7 @@ public abstract class Input
             return GameState.RoamingMap;
         }
 
-        return GameState.FightMenu;
+        return GameState.Arena;
     }
 
     public static GameState MovePlayerInput(Character player, Map map)
@@ -257,17 +257,17 @@ public abstract class Input
 
         if (input == ConsoleKey.D1)
         {
-            return GameState.FightMenu;
+            return GameState.Arena;
         }
 
         if (input == ConsoleKey.D2)
         {
-            return GameState.InsideShop;
+            return GameState.Shop;
         }
 
         if (input == ConsoleKey.D3)
         {
-            return GameState.InsideTutorial;
+            return GameState.Tutorial;
         }
 
         if (input == ConsoleKey.D4)

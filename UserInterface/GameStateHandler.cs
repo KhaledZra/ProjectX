@@ -25,12 +25,12 @@ public class GameStateHandler
                 gameState = GameState.CharacterOptions;
                 break;
 
-            case GameState.PickVocation: // Klar
+            case GameState.CreateCharacter: // Klar
                 Output.ChooseCharacterVocation();
                 gameState = Input.SetCharacterVocation(game._player);
                 break;
 
-            case GameState.PickName: // Klar
+            case GameState.VocSetPickName: // Klar
                 Output.CharacterName(game._player.Vocation);
                 gameState = Input.SetCharacterName(game._player);
                 break;
@@ -47,7 +47,7 @@ public class GameStateHandler
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
-            case GameState.InsideMountain: // DLC, kanske tars bort helt sen
+            case GameState.Mountain: // DLC, kanske tars bort helt sen
                 Output.WriteLineMultiColored((ConsoleColor.Red, "BEWARE! The mountain is locked for now."),
                     (ConsoleColor.White, "\nCheck back for future dlc"), (ConsoleColor.White, "!"));
                 Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "),
@@ -60,27 +60,27 @@ public class GameStateHandler
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
-            case GameState.InsideShop: // inte klar än
+            case GameState.Shop: // inte klar än
                 Output.ShopMainMenu();
                 gameState = Input.GetFromShopMenu();
                 break;
 
-            case GameState.BrowsingStock: // inte klar än
+            case GameState.Browsing: // inte klar än
                 Output.StockInShop();//Shop.Stock.ToList()
                 gameState = Input.ItemInStock();
                 break;
 
-            case GameState.SellingToShop: // inte klar än
+            case GameState.Selling: // inte klar än
                 Output.SellToShop(game._player);
                 gameState = Input.SellInventory();
                 break;
 
-            case GameState.InsideTutorial: // inte klar än
+            case GameState.Tutorial: // inte klar än
                 Output.TutorialMenu(game._player);
                 gameState = Input.TutorialMenu();
                 break;
 
-            case GameState.FightMenu: // inte klar än, behöver hantera när man vinner
+            case GameState.Arena: // inte klar än, behöver hantera när man vinner
                 Output.FightingOptions(game._player);
                 gameState = Input.FightingMenu();
                 // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
@@ -98,7 +98,7 @@ public class GameStateHandler
                 // }
                 else
                 {
-                    gameState = GameState.FightMenu;
+                    gameState = GameState.Arena;
                 }
 
                 break;

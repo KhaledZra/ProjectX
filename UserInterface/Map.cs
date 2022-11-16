@@ -29,19 +29,19 @@ public class Map
 
     private void SetupStructures()
     {
-        gameStructures.Add(new Structure(_twoDMap, GameState.InsideShop,
+        gameStructures.Add(new Structure(_twoDMap, GameState.Shop,
             _twoDMap.GetLength(0)/7, 6, _twoDMap.GetLength(0)/4, 6,
             true));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.InsideMountain,
+        gameStructures.Add(new Structure(_twoDMap, GameState.Mountain,
             _twoDMap.GetLength(0)/2, 0, _twoDMap.GetLength(0)/2, 12,
             false));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.InsideTutorial,
+        gameStructures.Add(new Structure(_twoDMap, GameState.Tutorial,
             _twoDMap.GetLength(0)/7, 20, _twoDMap.GetLength(0)/4, 6, 
             true));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.FightMenu,
+        gameStructures.Add(new Structure(_twoDMap, GameState.Arena,
             _twoDMap.GetLength(0)/2, 20, _twoDMap.GetLength(0)/4, 6, 
             false));
     }
