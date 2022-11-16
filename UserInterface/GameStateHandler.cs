@@ -7,7 +7,7 @@ public class GameStateHandler
     public static GameState SwitchMenu(GameState gameState, Game game)
     {
         Draw draw = new Draw(game._player);
-        
+
         switch (gameState)
         {
             case GameState.MainMenu: // klar
@@ -42,13 +42,16 @@ public class GameStateHandler
                     Draw.DrawPlayer(game._player);
                     gameState = Input.MovePlayerInput(game._player, draw.map);
                 }
+
                 Console.Clear();
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
-            
+
             case GameState.Mountain: // DLC, kanske tars bort helt sen
-                Output.WriteLineMultiColored((ConsoleColor.White, "The mountain is locked for now"), (ConsoleColor.White, "\nCheck back for release"), (ConsoleColor.White, "!"));
-                Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "), (ConsoleColor.White, "map."));
+                Output.WriteLineMultiColored((ConsoleColor.White, "The mountain is locked for now"),
+                    (ConsoleColor.White, "\nCheck back for release"), (ConsoleColor.White, "!"));
+                Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "),
+                    (ConsoleColor.White, "map."));
                 //Console.WriteLine("The mountain is locked for you mortal.");
                 //Console.WriteLine("[R]eturn");
                 Console.ReadKey(true);
@@ -63,7 +66,8 @@ public class GameStateHandler
                 break;
 
             case GameState.BuyFromShop: // inte klar än
-                Output.BuyFromShop(Shop.Stock.ToList());
+                Output.BuyFromShop();//Shop.Stock.ToList()
+                Console.ReadKey();
                 gameState = Input.ShopBuyMenuInput();
                 break;
 

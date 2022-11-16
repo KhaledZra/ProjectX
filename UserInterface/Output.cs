@@ -1,9 +1,11 @@
 ﻿using GameLogic;
 
+
 namespace UserInterface;
 
 public class Output
 {
+    
     public static void MainMenu()
     {
         Console.WriteLine("Welcome to World of Heretics!");
@@ -44,18 +46,13 @@ public class Output
         Console.WriteLine("Welcome to the WoH shop!");
         WriteLineMultiColored((ConsoleColor.Red, "[B] "), (ConsoleColor.White, " - Buy "), (ConsoleColor.White, "items."));
         WriteLineMultiColored((ConsoleColor.Red, "[S] "), (ConsoleColor.White, " - Sell "), (ConsoleColor.White, "items."));
-        WriteLineMultiColored((ConsoleColor.Red, "[L] "), (ConsoleColor.White, "Leave "), (ConsoleColor.White, "shop."));
+        WriteLineMultiColored((ConsoleColor.Red, "[L] "), (ConsoleColor.White, " - Leave "), (ConsoleColor.White, "shop."));
         //Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
     }
 
-    public static void BuyFromShop(List<Item> shopItems)
+    public static void BuyFromShop()//List<Item> stockList
     {
         Console.WriteLine("--------BUYING---------");
-        foreach (var item in shopItems)
-        {
-            Console.WriteLine($"{item.Name} - {item.Currency} ");
-        }
-
         Console.WriteLine($"Example: You've bought \"item.Name\" from Shop");
         Console.WriteLine("[R]eturn");
     }
@@ -78,7 +75,6 @@ public class Output
         Console.WriteLine($"Hi! {player.Name}, press any of the below characters to go forward:");
         WriteLineMultiColored((ConsoleColor.Red, "[T] "), (ConsoleColor.White, "Start "), (ConsoleColor.White, "tutorial."));
         WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, "Return "), (ConsoleColor.White, "to map."));
-        
         //Console.WriteLine($"[T] Start tutorial.");
         //Console.WriteLine("[R] Return to map");
         //Console.WriteLine("You are done with your practice young padawan! GOOD JOB!!");
@@ -93,9 +89,6 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, " - North East - "), (ConsoleColor.White, "The Mountain of adventures "), (ConsoleColor.White, "(to be released shortly)."));
         WriteLineMultiColored((ConsoleColor.Red, " - South West - "), (ConsoleColor.White, "Tutorial "), (ConsoleColor.White, "(Which house you just entered and found yourself in this text)"));
         WriteLineMultiColored((ConsoleColor.Red, " - South East - "), (ConsoleColor.White, "Fighting is where you´re able to encounter monsters, "), (ConsoleColor.White, "level up and loot items."));
-        
-        
-        
         //Console.WriteLine($"Welcome to the World of Heretics young adventurer!");
         //Console.WriteLine($"In this map there´s 4 areas with 4 different options;");
         //Console.WriteLine($" - North West - Our in game Shop where you can buy and sell your looted items.");
