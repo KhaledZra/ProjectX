@@ -2,16 +2,16 @@ namespace GameLogic;
 public class Enemy : Entity
 {
     private List<Enemy> enemies = new();
-   
+
     public Enemy(string name, int currency, Vocation vocation = Vocation.Unassigned) : base(name, vocation, currency)
     {
-        
+
     }
 
     public static List<Enemy> GenerateEnemies()
     {
         List<Enemy> enemyList = new();
-        
+
         enemyList.Add(new("Kel’Thuzad", 10));
         enemyList.Add(new("Lich King", 10));
         enemyList.Add(new("ARCHIMONDE", 10));
@@ -21,13 +21,13 @@ public class Enemy : Entity
         return enemyList;
     }
 
-    public List<Enemy> GetRandomEnemy()
+    public static Enemy GenerateEnemy(int size)
     {
-        List<Enemy> randomEnemy = new();
+        Random rnd = new Random();
+        int r = rnd.Next(size);
 
-        return randomEnemy;
+        return GenerateEnemies()[r];
     }
-
 
 
 }
