@@ -28,9 +28,9 @@ public class Output
     public static void ChooseCharacterVocation()
     {
         Console.WriteLine("Choose a class by pressing the corresponding alphabetical character:");
-        WriteLineMultiColored((ConsoleColor.Green, "[A] "), (ConsoleColor.White, "rcher - An expert in distance fighting"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Cyan, "[M]age "), (ConsoleColor.White, "age - Wielder of magic and spells"), (ConsoleColor.White, "."));
-        WriteLineMultiColored((ConsoleColor.Red, "[W] "), (ConsoleColor.White, "arrior - User of handheld weaponry"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Green, "[A]"), (ConsoleColor.White, "rcher - An expert in distance fighting"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Cyan, "[M]"), (ConsoleColor.White, "age - Wielder of magic and spells"), (ConsoleColor.White, "."));
+        WriteLineMultiColored((ConsoleColor.Red, "[W]"), (ConsoleColor.White, "arrior - User of handheld weaponry"), (ConsoleColor.White, "."));
         //Console.WriteLine("[A]rcher - An expert in distance fighting.");
         //Console.WriteLine("[M]age - Wielder of magic and spells.");
         //Console.WriteLine("[W]arrior - User of handheld weaponry.");
