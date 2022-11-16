@@ -112,7 +112,9 @@ public class Output
 
     public static void FightingResult(Game game)
     {
-        Console.WriteLine(game.HandleFighting(Enemy.GenerateEnemy(Enemy.GenerateEnemies().Count))); // ska ändras sen
+        int playerLevel = game._player.LevelStats.Level;
+        int enemyListCount = Enemy.GenerateEnemies(playerLevel).Count;
+        Console.WriteLine(game.HandleFighting(Enemy.GenerateEnemy(enemyListCount, playerLevel))); // ska ändras sen
         Console.WriteLine("------------");
     }
 

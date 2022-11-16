@@ -50,7 +50,7 @@ public abstract class Input
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
-        if (input == ConsoleKey.A)
+        if (input == ConsoleKey.Enter)
         {
             player.Vocation = Vocation.Archer;
             Stats.SetArcher(player);
