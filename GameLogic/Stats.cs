@@ -1,6 +1,6 @@
 namespace GameLogic;
 
-abstract class Stats
+public abstract class Stats
 {
     private static int _archerHp = 125;
     private static int _mageHp = 125;
