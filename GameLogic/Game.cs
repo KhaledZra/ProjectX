@@ -9,17 +9,14 @@ public class Game // plumming code
     public Character _player;
     //public Inventory Inventory;
 
-    public Game(string playerName, string chosenClass)
+    public Game()
     {
         _itemListDB = new(); // itemListDB temp but loadFromDB?
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
         Shop = new Shop();
         Shop._stockInShop = Item.SetItemList();
-        _player = new Character(playerName);
+        _player = new Character("Unassigend");
         //Inventory = new Inventory(_player.Id);
-
-        // use chosenClass to set class
-        Stats.SetWarrior(_player);
     }
 
     public bool HandleRoaming(int[,] map) // take input and create boundary rules
