@@ -32,7 +32,7 @@ public class Structure
         {
             for (int x = StarterX; x < StarterX + xwidth; x++)
             {
-                if (StructureType == GameState.Mountain)
+                if (StructureType == GameState.InsideMountain)
                 {
                     twoDMap[x, y] = 3;
                 }
