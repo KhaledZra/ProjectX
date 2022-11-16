@@ -4,7 +4,7 @@ namespace GameLogic;
 
 public class Shop
 {
-    private List<Item> _stockInShop { get; set; } = new();
+    public List<Item> _stockInShop { get; set; } = new();
     public static int Currency { get; set; }
 
     public Shop()

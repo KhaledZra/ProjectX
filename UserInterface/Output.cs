@@ -50,9 +50,13 @@ public class Output
         //Console.WriteLine("[B]uy\n[S]ell\n[L]eave");
     }
 
-    public static void StockInShop()//List<Item> stockList
+    public static void StockInShop(List<Item> shopStock)//List<Item> stockList
     {
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUYING"), (ConsoleColor.Red, "---------"));
+        foreach (var item in shopStock)
+        {
+            Console.WriteLine($"{item.Name} - Buy for: {item.Currency} ");
+        }
         Console.WriteLine($"Example: You've bought \"item.Name\" from Shop");
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
     }

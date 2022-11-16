@@ -14,6 +14,7 @@ public class Game // plumming code
         _itemListDB = new(); // itemListDB temp but loadFromDB?
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
         Shop = new Shop();
+        Shop._stockInShop = Item.SetItemList();
         _player = new Character(playerName);
         //Inventory = new Inventory(_player.Id);
 

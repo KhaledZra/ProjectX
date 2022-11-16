@@ -66,7 +66,7 @@ public class GameStateHandler
                 break;
 
             case GameState.Browsing: // inte klar än
-                Output.StockInShop();//Shop.Stock.ToList()
+                Output.StockInShop(game.Shop._stockInShop);//Shop.Stock.ToList()
                 gameState = Input.ItemInStock();
                 break;
 
