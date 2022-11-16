@@ -36,9 +36,9 @@ public class Output
         //Console.WriteLine("[W]arrior - User of handheld weaponry.");
     }
 
-    public static void CharacterName() //behöver kunna använda klassen till karaktären om så är möjligt
+    public static void CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
     {
-        Console.Write("Pick a suitable name for your {player.Vocation}: ");
+        Console.Write($"Pick a suitable name for your {chosenVocation}: ");
     }
 
     public static void ShopMainMenu()

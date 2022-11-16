@@ -31,7 +31,7 @@ public class GameStateHandler
                 break;
 
             case GameState.PickName: // Klar
-                Output.CharacterName();
+                Output.CharacterName(game._player.Vocation);
                 gameState = Input.SetCharacterName(game._player);
                 break;
 
