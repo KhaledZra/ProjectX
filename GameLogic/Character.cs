@@ -13,6 +13,8 @@ public class Character : Entity
         CoordX = 45; // hardkodat spawn, change later
         CoordY = 15;  // hardkodat spawn, change later
         InventoryItems = new List<Item>();
+        LevelStats = new LevelHandler();
+        LevelStats.Level = 1;
     }
 
     public static void CheckEntityVocation(Character activePlayer)

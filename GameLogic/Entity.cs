@@ -8,6 +8,9 @@ public abstract class Entity
     public LevelHandler LevelStats { get; set; }
     public int Currency { get; set; } //eventually decimalF
     public Vocation Vocation { get; set; }
+    
+    public int Damage { get; set; }
+    
     public Entity(string name,Vocation vocation, int currencyValue)
     {
         Name = name;
@@ -22,10 +25,16 @@ public abstract class Entity
         return $"{Id}, {Name}, {Health}, {LevelStats.ToString()}";
     }
 
+    public int CalculateDamage()
+    {
+        Damage = 1;
+        return Damage;
+    }
+
     public int DealDamage()
     {
         int baseDamage = 1;
 
-        return baseDamage + LevelStats.Level;
+        return baseDamage + CalculateDamage();
     }
 }

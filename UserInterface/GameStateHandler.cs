@@ -6,7 +6,7 @@ public class GameStateHandler
 {
     public static GameState SwitchMenu(GameState gameState, Game game)
     {
-        Draw draw = new Draw(game._player);
+        Draw draw = new Draw(game._player); // används för att rita map/spelare
 
         switch (gameState)
         {

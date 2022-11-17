@@ -15,7 +15,7 @@ public class Game // plumming code
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
         Shop = new Shop();
         Shop._stockInShop = Item.SetItemList();
-        _player = new Character("Unassigend");
+        _player = new Character("Unassigned");
         //Inventory = new Inventory(_player.Id);
     }
 
@@ -47,7 +47,7 @@ public class Game // plumming code
                 battleInfo += $"{enemy.Name} was defeated in battle! {_player.Name} will be rewarded!\n" +
                               $"Gained: {enemy.LevelStats.Experience}xp!\n" +
                               $"Lost: {lostHearts} hearts, Hearts left: {_player.Health}\n";
-                battleInfo += LevelUpHandler(enemy.LevelStats.Experience);
+                battleInfo += HandleRewards(enemy);
 
                 _player.FightEncounters++;
 
@@ -57,6 +57,18 @@ public class Game // plumming code
             _player.Health -= enemy.DealDamage(); // Enemy strikes Player!
             lostHearts += enemy.DealDamage(); // used to show result of fight
         }
+    }
+
+    public string HandleRewards(Enemy killedEnemy)
+    {
+        string returnMessage = "";
+        returnMessage += LevelUpHandler(killedEnemy.LevelStats.Experience); // xp
+        
+        _player.Currency += killedEnemy.Currency; // gold
+        returnMessage += $"\nGained {killedEnemy.Currency} Gold!";
+        returnMessage += $"\nCurrently owned Gold: {_player.Currency}";
+
+        return returnMessage;
     }
 
     public string LevelUpHandler(int gainedExperience)

@@ -8,7 +8,7 @@ namespace UserInterface;
 
 using GameLogic;
 
-public class Draw
+public class Draw // GUI class
 {
     public Map map;
     private static (int, int) _oldPlayerCoords;
@@ -36,7 +36,7 @@ public class Draw
     public static void DrawPlayer(Character player)
     {
         CleanUpOldPlayerDraw();
-        WriteAt("@", player.CoordX, player.CoordY);
+        WriteAt("P", player.CoordX, player.CoordY);
         _oldPlayerCoords.Item1 = player.CoordX;
         _oldPlayerCoords.Item2 = player.CoordY;
     }

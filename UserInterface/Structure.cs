@@ -1,6 +1,6 @@
 ﻿namespace UserInterface;
 
-public class Structure
+public class Structure // Handles structures in the map
 {
     public int[,] _twoDHouse;
     

@@ -52,7 +52,7 @@ public class Map
         {
             for (int x = 0; x < _twoDMap.GetLength(0); x++)
             {
-                VisualizeMap(y, x);
+                VisualizeMap(x, y);
             }
 
             Console.Write("\n");
@@ -64,7 +64,7 @@ public class Map
         }
     }
 
-    public void VisualizeMap(int y, int x)
+    public void VisualizeMap(int x, int y)
     {
         if (_twoDMap[x, y] == 0) // is not roamable
         {
