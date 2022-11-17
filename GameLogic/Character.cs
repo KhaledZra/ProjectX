@@ -6,7 +6,6 @@ public class Character : Entity
     public int CoordY { get; set; }
     public List<Item> InventoryItems { get; set; }
     public int FightEncounters { get; set; }
-    
     public int MaxHp { get; set; } // used to keep track of when player is healing
 
     public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
@@ -17,11 +16,20 @@ public class Character : Entity
         InventoryItems = new List<Item>();
         LevelStats = new LevelHandler();
         LevelStats.Level = 1;
-        
-        MaxHp = Health;
     }
 
-    public static void CheckEntityVocation(Character activePlayer)
+    // Handles Characters health
+    public void HealCharacter() => Health = MaxHp;
+    public void IncreaseMaxHpOnLevelUp() => MaxHp += 10;
+    
+    // Movement methods
+    public void MoveUp() => CoordY--;
+    public void MoveDown() => CoordY++;
+    public void MoveLeft() => CoordX--;
+    public void MoveRight() => CoordX++;
+
+    // Handles Character and sets stats accordingly
+    public static void SetCharacterVocationStats(Character activePlayer)
     {
         if (activePlayer.Vocation == Vocation.Archer)
         {
@@ -36,57 +44,4 @@ public class Character : Entity
             Stats.SetWarrior(activePlayer);
         }
     }
-
-
-    //metod som kollar vocation,
-    // använd klassen skills för att kolla setta stats/skills
-    //alla metoder i skills är static så går att kalla på
-    public void MoveUp()
-    {
-        CoordY--;
-    }
-
-    public void MoveDown()
-    {
-        CoordY++;
-    }
-
-    public void MoveLeft()
-    {
-        CoordX--;
-    }
-
-    public void MoveRight()
-    {
-        CoordX++;
-    }
-
-    // public static void ChooseCharcter()
-    // {
-
-    //     ConsoleKey x = Console.ReadKey().Key;
-
-    //     if(x == ConsoleKey.D1)
-    //     {
-    //     List<Character> myCharacter = GetAllCharacters();
-
-    //     foreach (Character currentCharacter in myCharacter)
-    //     {
-
-    //     }
-
-    //     }
-
-    // }
-
-    // public static List<Character> GetAllCharacters()
-    // {
-    //     return new List<Character>()
-    //     {
-    //     new("Omar", 1, 0, 1),    
-    //     new("Khaled", 2, 0, 1),    
-    //     new("Robert", 3, 0, 1)
-    //     };
-
-    // }
 }

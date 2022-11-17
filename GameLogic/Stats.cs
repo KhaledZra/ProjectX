@@ -7,18 +7,21 @@ public abstract class Stats
     private static int _warriorHp = 150;
 
 
-    public static void SetWarrior(Entity entity)
+    public static void SetWarrior(Character entity)
     {
-        entity.Health = _warriorHp; //200
+        entity.Health = _warriorHp; //150
+        entity.MaxHp = _warriorHp; //150
     }
 
-    public static void SetMage(Entity entity)
+    public static void SetMage(Character entity)
     {
-        entity.Health = _mageHp; //150
+        entity.Health = _mageHp; //125
+        entity.MaxHp = _mageHp; //125
     }
 
-    public static void SetArcher(Entity entity)
+    public static void SetArcher(Character entity)
     {
-        entity.Health = _archerHp; //100
+        entity.Health = _archerHp; //125
+        entity.MaxHp = _archerHp; //125
     }
 }

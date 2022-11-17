@@ -40,9 +40,10 @@ public class Game // plumming code
             if (enemy.Health <= 0) // checks if the Enemy died
             {
                 battleInfo += $"{enemy.Name} was defeated in battle! {Player.Name} will be rewarded!\n" +
-                              $"Gained: {enemy.LevelStats.Experience}xp!\n" +
-                              $"Lost: {lostHearts} hearts, Hearts left: {Player.Health}\n";
+                              $"Gained: {enemy.LevelStats.Experience}xp!\n";
                 battleInfo += HandleRewards(enemy);
+
+                battleInfo += $"Lost: {lostHearts} hearts, Hearts left: {Player.Health}";
 
                 Player.FightEncounters++;
 
@@ -57,12 +58,13 @@ public class Game // plumming code
     public string HandleRewards(Enemy killedEnemy)
     {
         string returnMessage = "";
-        returnMessage += LevelUpHandler(killedEnemy.LevelStats.Experience); // xp
         
         Player.Currency += killedEnemy.Currency; // gold
-        returnMessage += $"\nGained {killedEnemy.Currency} Gold!";
-        returnMessage += $"\nCurrently owned Gold: {Player.Currency}";
-
+        returnMessage += $"Gained {killedEnemy.Currency} Gold!\n";
+        returnMessage += $"Current owned Gold: {Player.Currency}\n";
+        
+        returnMessage += LevelUpHandler(killedEnemy.LevelStats.Experience); // xp
+        
         return returnMessage;
     }
 
@@ -72,14 +74,21 @@ public class Game // plumming code
 
         if (levelsGained == 1)
         {
-            return $"{Player.Name} gained {levelsGained} Level\n{Player.LevelStats.ToString()}";
+            Player.IncreaseMaxHpOnLevelUp();
+            Player.HealCharacter();
+            return "You feel a wierd surge of power gained! +10 health cap, and hearts fully healed!\n" +
+                   $"{Player.Name} gained {levelsGained} Levels\n{Player.LevelStats.ToString()}\n";
         }
         
         if (levelsGained >= 2)
         {
-            return $"{Player.Name} gained {levelsGained} Levels\n{Player.LevelStats.ToString()}";
+            Player.IncreaseMaxHpOnLevelUp();
+            Player.HealCharacter();
+            
+            return "You feel a wierd surge of power gained! +10 health cap, and hearts fully healed!\n" +
+                   $"{Player.Name} gained {levelsGained} Levels\n{Player.LevelStats.ToString()}\n";
         }
         
-        return $"{Player.Name} gained no Levels\n{Player.LevelStats.ToString()}";
+        return $"{Player.Name} gained no Levels\n{Player.LevelStats.ToString()}\n";
     }
 }

@@ -28,7 +28,7 @@ public class GameStateHandler
             case GameState.CreateCharacter: // Klar
                 Output.ChooseCharacterVocation();
                 gameState = Input.SetCharacterVocation(game.Player);
-                Character.CheckEntityVocation(game.Player);
+                Character.SetCharacterVocationStats(game.Player);
                 break;
 
             case GameState.VocSetPickName: // Klar
