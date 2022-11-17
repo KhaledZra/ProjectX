@@ -19,28 +19,32 @@ public class EnemyHandler
 
         return tempEnemy;
     }
+
+    private static int RandomizeInt(int maxValue)
+    {
+        Random rnd = new Random();
+        return rnd.Next(maxValue);
+    }
     
     public static Enemy GetRandomEnemy(int playerLevel)
     {
         List<Enemy> tempEnemies = new();
 
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Goblin", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Skeleton", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Orc", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Abo hazan", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Abo Jihad", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Shaytan", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(" the " + "Jihn", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Goblin", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Skeleton", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Orc", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Abo hazan", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Abo Jihad", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Shaytan", playerLevel));
+        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Jihn", playerLevel));
 
-        Random rnd = new Random();
-        int r = rnd.Next(tempEnemies.Count);
-
-        return tempEnemies[r];
+        return tempEnemies[RandomizeInt(tempEnemies.Count)];
     }
     
-    public static List<String> GenerateEnemyName()
+    public static string GetEnemyName()
     {
         List<string> enemyNames = new List<string>();
+        
         enemyNames.Add("Abo Hazan");
         enemyNames.Add("Az-Adar");
         enemyNames.Add("Azog");
@@ -57,6 +61,6 @@ public class EnemyHandler
         enemyNames.Add("Zuka");
         enemyNames.Add("Ogg");
         
-        
+        return enemyNames[RandomizeInt(enemyNames.Count)];
     }
 }
