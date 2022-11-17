@@ -6,7 +6,7 @@ public class Game // plumming code
     private List<Item> _itemListDB;
     private List<Enemy> _enemyListDB;
     public Shop Shop;
-    public Character _player;
+    public Character Player { get; set; }
     //public Inventory Inventory;
 
     public Game()
@@ -15,46 +15,41 @@ public class Game // plumming code
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
         Shop = new Shop();
         Shop._stockInShop = Item.SetItemList();
-        _player = new Character("Unassigned");
+        Player = new Character("Unassigned");
         //Inventory = new Inventory(_player.Id);
-    }
-
-    public bool HandleRoaming(int[,] map) // take input and create boundary rules
-    {
-        return true;
     }
 
     public string HandleFighting(Enemy enemy) // returns true if hero won else false
     {
         string battleInfo = $"------------\n" +
-                            $"{_player.Name} VS {enemy.Name}" +
+                            $"{Player.Name} VS {enemy.Name}" +
                             $"\n------------\n";
         int lostHearts = 0;
         //Console.WriteLine($"{_player.Name} vs {tempEnemy.Name}");
 
         while (true)
         {
-            if (_player.Health <= 0) // checks if the Player died
+            if (Player.Health <= 0) // checks if the Player died
             {
-                battleInfo += $"{_player.Name} was defeated in battle... Shame!";
+                battleInfo += $"{Player.Name} was defeated in battle... Shame!";
                 return battleInfo;
             }
 
-            enemy.Health -= _player.DealDamage(); // Player strikes enemy!
+            enemy.Health -= Player.DealDamage(); // Player strikes enemy!
 
             if (enemy.Health <= 0) // checks if the Enemy died
             {
-                battleInfo += $"{enemy.Name} was defeated in battle! {_player.Name} will be rewarded!\n" +
+                battleInfo += $"{enemy.Name} was defeated in battle! {Player.Name} will be rewarded!\n" +
                               $"Gained: {enemy.LevelStats.Experience}xp!\n" +
-                              $"Lost: {lostHearts} hearts, Hearts left: {_player.Health}\n";
+                              $"Lost: {lostHearts} hearts, Hearts left: {Player.Health}\n";
                 battleInfo += HandleRewards(enemy);
 
-                _player.FightEncounters++;
+                Player.FightEncounters++;
 
                 return battleInfo;
             }
 
-            _player.Health -= enemy.DealDamage(); // Enemy strikes Player!
+            Player.Health -= enemy.DealDamage(); // Enemy strikes Player!
             lostHearts += enemy.DealDamage(); // used to show result of fight
         }
     }
@@ -64,28 +59,27 @@ public class Game // plumming code
         string returnMessage = "";
         returnMessage += LevelUpHandler(killedEnemy.LevelStats.Experience); // xp
         
-        _player.Currency += killedEnemy.Currency; // gold
+        Player.Currency += killedEnemy.Currency; // gold
         returnMessage += $"\nGained {killedEnemy.Currency} Gold!";
-        returnMessage += $"\nCurrently owned Gold: {_player.Currency}";
+        returnMessage += $"\nCurrently owned Gold: {Player.Currency}";
 
         return returnMessage;
     }
 
     public string LevelUpHandler(int gainedExperience)
     {
-        int levelsGained = _player.LevelStats.GainExperience(gainedExperience);
+        int levelsGained = Player.LevelStats.GainExperience(gainedExperience);
 
         if (levelsGained == 1)
         {
-            return $"{_player.Name} gained {levelsGained} Level\n{_player.LevelStats.ToString()}";
+            return $"{Player.Name} gained {levelsGained} Level\n{Player.LevelStats.ToString()}";
         }
-        else if (levelsGained >= 2)
+        
+        if (levelsGained >= 2)
         {
-            return $"{_player.Name} gained {levelsGained} Levels\n{_player.LevelStats.ToString()}";
+            return $"{Player.Name} gained {levelsGained} Levels\n{Player.LevelStats.ToString()}";
         }
-        else
-        {
-            return $"{_player.Name} gained no Levels\n{_player.LevelStats.ToString()}";
-        }
+        
+        return $"{Player.Name} gained no Levels\n{Player.LevelStats.ToString()}";
     }
 }

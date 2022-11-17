@@ -53,25 +53,21 @@ public abstract class Input
         if (input == ConsoleKey.A)
         {
             player.Vocation = Vocation.Archer;
-            Stats.SetArcher(player);
             return GameState.VocSetPickName;
         }
 
         if (input == ConsoleKey.M)
         {
             player.Vocation = Vocation.Mage;
-            Stats.SetMage(player);
             return GameState.VocSetPickName;
         }
 
         if (input == ConsoleKey.W)
         {
             player.Vocation = Vocation.Warrior;
-            Stats.SetWarrior(player);
             return GameState.VocSetPickName;
         }
-
-        // set Vocation in game object
+        
         return GameState.CreateCharacter;
     }
 

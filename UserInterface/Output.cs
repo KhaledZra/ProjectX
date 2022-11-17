@@ -118,7 +118,7 @@ public class Output
 
     public static void FightingResult(Game game)
     {
-        Console.WriteLine(game.HandleFighting(EnemyHandler.GetRandomEnemy(game._player.LevelStats.Level)));
+        Console.WriteLine(game.HandleFighting(EnemyHandler.GetRandomEnemy(game.Player.LevelStats.Level)));
         Console.WriteLine("------------");
     }
 

@@ -6,6 +6,8 @@ public class Character : Entity
     public int CoordY { get; set; }
     public List<Item> InventoryItems { get; set; }
     public int FightEncounters { get; set; }
+    
+    public int MaxHp { get; set; } // used to keep track of when player is healing
 
     public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
@@ -15,6 +17,8 @@ public class Character : Entity
         InventoryItems = new List<Item>();
         LevelStats = new LevelHandler();
         LevelStats.Level = 1;
+        
+        MaxHp = Health;
     }
 
     public static void CheckEntityVocation(Character activePlayer)
@@ -23,13 +27,11 @@ public class Character : Entity
         {
             Stats.SetArcher(activePlayer);
         }
-
-        if (activePlayer.Vocation == Vocation.Mage)
+        else if (activePlayer.Vocation == Vocation.Mage)
         {
             Stats.SetMage(activePlayer);
         }
-
-        if (activePlayer.Vocation == Vocation.Warrior)
+        else if (activePlayer.Vocation == Vocation.Warrior)
         {
             Stats.SetWarrior(activePlayer);
         }
