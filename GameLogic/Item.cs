@@ -15,6 +15,14 @@ public class Item : Entity
         Currency = currency;
     }
 
+    /*
+    public static string FormatItemDisplay()
+    {
+        return $"{Name} - Cost: {Currency}";
+    }
+    */
+    
+
     public static List<Item> SetItemList()
     {
         List<Item> tempItems = new List<Item>();
