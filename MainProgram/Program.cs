@@ -8,7 +8,6 @@ class Program
 
     public static void Main(string[] args)
     {
-
         GameState gameState = GameState.MainMenu;
         Game game = new Game();
 
@@ -19,8 +18,5 @@ class Program
         {
             gameState = GameStateHandler.SwitchMenu(gameState, game);
         }
-
-
-
     }
 }
