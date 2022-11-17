@@ -52,9 +52,28 @@ public class Output
 
     public static void StockInShop(List<Item> shopStock)//List<Item> stockList
     {
+        
+        public void ShowAllBooks()
+        {
+            Console.Clear();
+
+            List<string> lines = File.ReadAllLines("Book.List").ToList(); 
+
+            foreach (var line in lines)
+            {
+            
+                Console.WriteLine(line);
+            
+            }
+       
+        }
+        
+        
+        
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUYING"), (ConsoleColor.Red, "---------"));
         foreach (var item in shopStock)
         {
+            
             Console.WriteLine($"{item.Name} - Buy for: {item.Currency} ");
         }
         Console.WriteLine($"Example: You've bought \"item.Name\" from Shop");
