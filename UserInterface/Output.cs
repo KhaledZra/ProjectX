@@ -76,16 +76,6 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
     }
 
-    public static void TutorialMenu(Character player)
-    {
-        Console.WriteLine($"Hi! {player.Name}, press any of the below characters to go forward:");
-        WriteLineMultiColored((ConsoleColor.Red, "[T] "), (ConsoleColor.White, "Start "), (ConsoleColor.White, "tutorial."));
-        WriteLineMultiColored((ConsoleColor.Red, "[R] "), (ConsoleColor.White, "Return "), (ConsoleColor.White, "to map."));
-        //Console.WriteLine($"[T] Start tutorial.");
-        //Console.WriteLine("[R] Return to map");
-        //Console.WriteLine("You are done with your practice young padawan! GOOD JOB!!");
-    }
-
     public static void TutorialOutput()
     {
         WriteLineMultiColored((ConsoleColor.White, "Welcome to the "), (ConsoleColor.Red, "World of Heretics "), (ConsoleColor.White, "young adventurer!"));
@@ -94,18 +84,14 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, " - North West - "), (ConsoleColor.White, "Our in game Shop where you can buy "), (ConsoleColor.White, "and sell your looted items."));
         WriteLineMultiColored((ConsoleColor.Red, " - North East - "), (ConsoleColor.White, "The Mountain of adventures "), (ConsoleColor.White, "(to be released shortly)."));
         WriteLineMultiColored((ConsoleColor.Red, " - South West - "), (ConsoleColor.White, "Tutorial "), (ConsoleColor.White, "(Which house you just entered and found yourself in this text)"));
-        WriteLineMultiColored((ConsoleColor.Red, " - South East - "), (ConsoleColor.White, "Fighting is where you´re able to encounter monsters, "), (ConsoleColor.White, "level up and loot items."));
-        //Console.WriteLine($"Welcome to the World of Heretics young adventurer!");
-        //Console.WriteLine($"In this map there´s 4 areas with 4 different options;");
-        //Console.WriteLine($" - North West - Our in game Shop where you can buy and sell your looted items.");
-        //Console.WriteLine($" - North East - The Mountain of adventures (to be released shortly).");
-        //Console.WriteLine($" - South West - Tutorial (Which house you just entered and found yourself in this text)");
-        //Console.WriteLine($" - South East - Fighting is where you´re able to encounter monsters, level up and loot items.");
+        WriteLineMultiColored((ConsoleColor.Red, " - South East - "), (ConsoleColor.White, "Fighting is where you´re able to encounter monsters, "), (ConsoleColor.White, "level up and loot items.\n"));
+        WriteLineMultiColored((ConsoleColor.White, "Press "), (ConsoleColor.Red, "[R] "), (ConsoleColor.White, "in order to return to map."));
+        
     }
 
     public static void FightingOptions(Character player)
     {
-        Console.WriteLine($"{player.Name}, you´ve encountered {player.FightEncounters} enemies, what´s your decision?");
+        Console.WriteLine($"{player.Name}, you´ve encountered {player.FightEncounters} enemies so far in the Arena, what would you like to do?");
         WriteLineMultiColored((ConsoleColor.Red, "[F]"), (ConsoleColor.White, "ight"), (ConsoleColor.White, "!"));
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "un away and live to fight another day"), (ConsoleColor.White, "!"));
         //Console.WriteLine("[F]ight!");

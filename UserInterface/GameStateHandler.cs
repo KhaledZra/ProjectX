@@ -76,7 +76,7 @@ public class GameStateHandler
                 break;
 
             case GameState.Tutorial: // inte klar än
-                Output.TutorialMenu(game._player);
+                Output.TutorialOutput();
                 gameState = Input.TutorialMenu();
                 break;
 
