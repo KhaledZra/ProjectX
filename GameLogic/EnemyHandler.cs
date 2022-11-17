@@ -37,4 +37,26 @@ public class EnemyHandler
 
         return tempEnemies[r];
     }
+    
+    public static List<String> GenerateEnemyName()
+    {
+        List<string> enemyNames = new List<string>();
+        enemyNames.Add("Abo Hazan");
+        enemyNames.Add("Az-Adar");
+        enemyNames.Add("Azog");
+        enemyNames.Add("Gorbag");
+        enemyNames.Add("Gothmog");
+        enemyNames.Add("Grishnákh");
+        enemyNames.Add("Kâka");
+        enemyNames.Add("Shag");
+        enemyNames.Add("Shagrat");
+        enemyNames.Add("Skak");
+        enemyNames.Add("Snaga");
+        enemyNames.Add("Uglúk");
+        enemyNames.Add("Shaká");
+        enemyNames.Add("Zuka");
+        enemyNames.Add("Ogg");
+        
+        
+    }
 }
