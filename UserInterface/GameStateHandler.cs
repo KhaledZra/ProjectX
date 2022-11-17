@@ -42,21 +42,13 @@ public class GameStateHandler
                     Draw.DrawPlayer(game._player);
                     gameState = Input.MovePlayerInput(game._player, draw.map);
                 }
-
                 Console.Clear();
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
             case GameState.Mountain: // DLC, kanske tars bort helt sen
-                Output.WriteLineMultiColored((ConsoleColor.Red, "BEWARE! The mountain is locked for now."),
-                    (ConsoleColor.White, "\nCheck back for future dlc"), (ConsoleColor.White, "!"));
-                Output.WriteLineMultiColored((ConsoleColor.Red, "[R]eturn "), (ConsoleColor.White, "to "),
-                    (ConsoleColor.White, "map."));
-                //Console.WriteLine("The mountain is locked for you mortal.");
-                //Console.WriteLine("[R]eturn");
-                Console.ReadKey(true);
-                Console.Clear();
-                gameState = GameState.RoamingMap;
+                Output.MountainOutput();
+                gameState = Input.MountainMenu();
                 // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
                 break;
 
@@ -75,7 +67,7 @@ public class GameStateHandler
                 gameState = Input.SellInventory();
                 break;
 
-            case GameState.Tutorial: // inte klar än
+            case GameState.Tutorial: // klar
                 Output.TutorialMenu(game._player);
                 gameState = Input.TutorialMenu();
                 break;

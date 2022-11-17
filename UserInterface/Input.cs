@@ -143,19 +143,25 @@ public abstract class Input
         ConsoleKey input = Console.ReadKey(true).Key;
         Console.Clear();
 
-        if (input == ConsoleKey.T)
-        {
-            Output.TutorialOutput();
-            Console.ReadKey();
-            return GameState.Tutorial;
-        }
-
         if (input == ConsoleKey.R)
         {
             return GameState.RoamingMap;
         }
 
         return GameState.Tutorial;
+    }
+    
+    public static GameState MountainMenu()
+    {
+        ConsoleKey input = Console.ReadKey(true).Key;
+        Console.Clear();
+
+        if (input == ConsoleKey.R)
+        {
+            return GameState.RoamingMap;
+        }
+
+        return GameState.Mountain;
     }
 
     public static GameState FightingMenu()

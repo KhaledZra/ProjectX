@@ -44,6 +44,10 @@ public class Map
         gameStructures.Add(new Structure(_twoDMap, GameState.Arena,
             _twoDMap.GetLength(0)/2, 20, _twoDMap.GetLength(0)/4, 6, 
             false));
+        
+        gameStructures.Add(new Structure(_twoDMap, GameState.QuitGame,
+            1, 1, 13,
+                3, false));
     }
 
     public void ShowMap()
