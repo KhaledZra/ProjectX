@@ -2,15 +2,15 @@
 
 public class Map
 {
-    public int[,] _twoDMap;
+    public int[,] TwoDMap { get; set; }
     public List<Structure> gameStructures = new List<Structure>();
 
     public Map(int xWidth, int xHeight)
     {
         // Map setup
-        _twoDMap = new int[xWidth, xHeight];
+        TwoDMap = new int[xWidth, xHeight];
         SetupMap();
-        Grid.CreateGrid(_twoDMap);
+        Grid.CreateGrid(TwoDMap);
         
         // Structure setup
         SetupStructures();
@@ -18,43 +18,43 @@ public class Map
 
     private void SetupMap()
     {
-        for (int y = 0; y < _twoDMap.GetLength(1); y++)
+        for (int y = 0; y < TwoDMap.GetLength(1); y++)
         {
-            for (int x = 0; x < _twoDMap.GetLength(0); x++)
+            for (int x = 0; x < TwoDMap.GetLength(0); x++)
             {
-                _twoDMap[x, y] = 1;
+                TwoDMap[x, y] = 1;
             }
         }
     }
 
     private void SetupStructures()
     {
-        gameStructures.Add(new Structure(_twoDMap, GameState.Shop,
-            _twoDMap.GetLength(0)/7, 6, _twoDMap.GetLength(0)/4, 6,
+        gameStructures.Add(new Structure(TwoDMap, GameState.Shop,
+            TwoDMap.GetLength(0)/7, 6, TwoDMap.GetLength(0)/4, 6,
             true));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.Mountain,
-            _twoDMap.GetLength(0)/2, 0, _twoDMap.GetLength(0)/2, 12,
+        gameStructures.Add(new Structure(TwoDMap, GameState.Mountain,
+            TwoDMap.GetLength(0)/2, 0, TwoDMap.GetLength(0)/2, 12,
             false));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.Tutorial,
-            _twoDMap.GetLength(0)/7, 20, _twoDMap.GetLength(0)/4, 6, 
+        gameStructures.Add(new Structure(TwoDMap, GameState.Tutorial,
+            TwoDMap.GetLength(0)/7, 20, TwoDMap.GetLength(0)/4, 6, 
             true));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.Arena,
-            _twoDMap.GetLength(0)/2, 20, _twoDMap.GetLength(0)/4, 6, 
+        gameStructures.Add(new Structure(TwoDMap, GameState.Arena,
+            TwoDMap.GetLength(0)/2, 20, TwoDMap.GetLength(0)/4, 6, 
             false));
         
-        gameStructures.Add(new Structure(_twoDMap, GameState.QuitGame,
+        gameStructures.Add(new Structure(TwoDMap, GameState.QuitGame,
             1, 1, 13,
                 3, false));
     }
 
     public void ShowMap()
     {
-        for (int y = 0; y < _twoDMap.GetLength(1); y++)
+        for (int y = 0; y < TwoDMap.GetLength(1); y++)
         {
-            for (int x = 0; x < _twoDMap.GetLength(0); x++)
+            for (int x = 0; x < TwoDMap.GetLength(0); x++)
             {
                 VisualizeMap(x, y);
             }
@@ -64,25 +64,25 @@ public class Map
 
         foreach (var structure in gameStructures)
         {
-            structure.SetupStructureSign(_twoDMap);
+            structure.SetupStructureSign(TwoDMap);
         }
     }
 
     public void VisualizeMap(int x, int y)
     {
-        if (_twoDMap[x, y] == 0) // is not roamable
+        if (TwoDMap[x, y] == 0) // is not roamable
         {
             Draw.DrawGridWall();
         }
-        else if (_twoDMap[x, y] == 1) // is roamable
+        else if (TwoDMap[x, y] == 1) // is roamable
         {
             Draw.DrawGrass();
         }
-        else if (_twoDMap[x, y] == 2) // is not roamable
+        else if (TwoDMap[x, y] == 2) // is not roamable
         {
             Draw.DrawHouseTile();
         }
-        else if (_twoDMap[x, y] == 3) // is not roamable
+        else if (TwoDMap[x, y] == 3) // is not roamable
         {
             Draw.DrawMountainTile();
         }

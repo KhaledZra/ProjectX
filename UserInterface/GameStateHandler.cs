@@ -38,6 +38,7 @@ public class GameStateHandler
 
             case GameState.RoamingMap: // inte klar, behöver exit.
                 draw.DrawMap();
+                draw.DrawPlayerInfo(game.Player);
                 while (gameState == GameState.RoamingMap)
                 {
                     Draw.DrawPlayer(game.Player);
