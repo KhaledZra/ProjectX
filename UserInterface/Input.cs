@@ -186,7 +186,7 @@ public abstract class Input
     {
         ConsoleKey input = Console.ReadKey(true).Key;
 
-        if (input == ConsoleKey.UpArrow)
+        if (input == ConsoleKey.UpArrow || input == ConsoleKey.W)
         {
             player.MoveUp();
             if (map._twoDMap[player.CoordX, player.CoordY] != 1)
@@ -201,7 +201,7 @@ public abstract class Input
                 player.MoveDown();
             }
         }
-        else if (input == ConsoleKey.DownArrow)
+        else if (input == ConsoleKey.DownArrow || input == ConsoleKey.S)
         {
             player.MoveDown();
             if (map._twoDMap[player.CoordX, player.CoordY] != 1 && map._twoDMap[player.CoordX, player.CoordY] != 4)
@@ -216,7 +216,7 @@ public abstract class Input
                 player.MoveUp();
             }
         }
-        else if (input == ConsoleKey.RightArrow)
+        else if (input == ConsoleKey.RightArrow || input == ConsoleKey.D)
         {
             player.MoveRight();
             if (map._twoDMap[player.CoordX, player.CoordY] != 1 && map._twoDMap[player.CoordX, player.CoordY] != 4)
@@ -231,7 +231,7 @@ public abstract class Input
                 player.MoveLeft();
             }
         }
-        else if (input == ConsoleKey.LeftArrow)
+        else if (input == ConsoleKey.LeftArrow || input == ConsoleKey.A)
         {
             player.MoveLeft();
             if (map._twoDMap[player.CoordX, player.CoordY] != 1 && map._twoDMap[player.CoordX, player.CoordY] != 4)
