@@ -18,7 +18,7 @@ public class GameStateHandler
             case GameState.RoamingMap: return RoamingState(draw, game.Player, gameState);
             case GameState.Mountain: return MountainState(); // DLC, kanske tars bort helt sen?
             case GameState.Shop: return ShopState(); // inte klar än
-            case GameState.Browsing: return ShopBrowsingState(game.Shop); // inte klar än
+            case GameState.Browsing: return ShopBuyingState(game.Shop, game.Player); // inte klar än
             case GameState.Selling: return ShopSellingState(game.Player); // inte klar än
             case GameState.Tutorial: return TutorialState();
             case GameState.Arena: return ArenaState(game.Player);
@@ -94,12 +94,17 @@ public class GameStateHandler
         return Input.GetFromShopMenu();
     }
     
-    private static GameState ShopBrowsingState(Shop shop)
+    private static GameState ShopBuyingState(Shop shop, Character activePlayer)
     {
-        Output.StockInShop(shop._stockInShop);
+        Output.StockInShop(shop._stockInShop, activePlayer);
         return Input.ItemInStock();
     }
-    
+
+    private static GameState BuyFromShopState(Shop shop, Character activePlayer)
+    {
+        Output.BuyFromShop(shop._stockInShop, activePlayer);
+        return Input.BrowseAndPickItem();
+    }
     private static GameState ShopSellingState(Character player)
     {
         Output.SellToShop(player);

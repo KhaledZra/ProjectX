@@ -121,6 +121,40 @@ public abstract class Input
         return GameState.Browsing;
     }
 
+    public static GameState BrowseAndPickItem(Shop shop, List<Item> shopStock, Character activePlayer) //browsing shouldnt be in the shop start menu?
+    {
+
+        var input = Console.ReadLine();
+        Console.Clear();
+        if (input == 'b'.ToString().ToLower())
+        {
+            int chosenItem = Int32.Parse(Console.ReadLine());
+            if (chosenItem > -1)
+            {
+                if (chosenItem < shopStock.Count)
+                {
+                    if (activePlayer.Currency >= shopStock[chosenItem].Currency)
+                    {
+                        activePlayer.Currency -= shopStock[chosenItem].Currency;
+                        activePlayer.InventoryItems.Add(shopStock[chosenItem]);
+                    }
+                    else
+                        Output.WriteLineMultiColored((ConsoleColor.Red, "Insufficient funds, "), (ConsoleColor.White, "please check back when you got more "),
+                            (ConsoleColor.Green, "gold"));
+                }
+            }
+            return GameState.Browsing;
+        }
+        if (input == 'r'.ToString().ToLower())//return to map
+        {
+            return GameState.RoamingMap;
+        }
+
+        return GameState.Shop;
+        
+    }
+    
+    
     public static GameState SellInventory()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
