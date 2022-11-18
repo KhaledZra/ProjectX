@@ -60,7 +60,9 @@ public class GameStateHandler
     private static GameState PickVocationState(Character player)
     {
         Output.ChooseCharacterVocation();
-        return Input.SetCharacterVocation(player);
+        GameState temp = Input.SetCharacterVocation(player);
+        Character.SetCharacterVocationStats(player);
+        return temp;
     }
 
     private static GameState RoamingState(Draw draw, Character player, GameState gameState)
@@ -97,14 +99,14 @@ public class GameStateHandler
     private static GameState ShopBuyingState(Shop shop, Character activePlayer)
     {
         Output.StockInShop(shop._stockInShop, activePlayer);
-        return Input.ItemInStock();
+        return Input.BrowseAndPickItem(shop, activePlayer);
     }
 
-    private static GameState BuyFromShopState(Shop shop, Character activePlayer)
-    {
-        Output.BuyFromShop(shop._stockInShop, activePlayer);
-        return Input.BrowseAndPickItem();
-    }
+    // private static GameState BuyFromShopState(Shop shop, Character activePlayer)
+    // {
+    //     Output.BuyFromShop(shop._stockInShop, activePlayer);
+    //     return Input.BrowseAndPickItem(shop, activePlayer);
+    // }
     private static GameState ShopSellingState(Character player)
     {
         Output.SellToShop(player);

@@ -108,50 +108,56 @@ public abstract class Input
         return GameState.Shop;
     }
 
-    public static GameState ItemInStock()
-    {
-        ConsoleKey input = Console.ReadKey(true).Key;
-        Console.Clear();
+    // public static GameState ItemInStock()
+    // {
+    //     ConsoleKey input = Console.ReadKey(true).Key;
+    //     Console.Clear();
+    //
+    //     if (input == ConsoleKey.R)
+    //     {
+    //         return GameState.Shop;
+    //     }
+    //
+    //     return GameState.Browsing;
+    // }
 
-        if (input == ConsoleKey.R)
+    public static GameState BrowseAndPickItem(Shop shop, Character activePlayer) //browsing shouldnt be in the shop start menu?
+    {
+        string input = Console.ReadLine();
+        Console.Clear();
+        
+        if (input.ToLower() == "r")
         {
             return GameState.Shop;
         }
 
-        return GameState.Browsing;
-    }
-
-    public static GameState BrowseAndPickItem(Shop shop, List<Item> shopStock, Character activePlayer) //browsing shouldnt be in the shop start menu?
-    {
-
-        var input = Console.ReadLine();
-        Console.Clear();
-        if (input == 'b'.ToString().ToLower())
+        if (int.TryParse(input, out int result))
         {
-            int chosenItem = Int32.Parse(Console.ReadLine());
-            if (chosenItem > -1)
+            if (result > -1)
             {
-                if (chosenItem < shopStock.Count)
+                if (result < shop._stockInShop.Count)
                 {
-                    if (activePlayer.Currency >= shopStock[chosenItem].Currency)
+                    if (activePlayer.Currency >= shop._stockInShop[result].Currency)
                     {
-                        activePlayer.Currency -= shopStock[chosenItem].Currency;
-                        activePlayer.InventoryItems.Add(shopStock[chosenItem]);
+                        activePlayer.Currency -= shop._stockInShop[result].Currency;
+                        activePlayer.InventoryItems.Add(shop._stockInShop[result]);
+                        Console.WriteLine($"Purchased 1 {shop._stockInShop[result].Name}, for {shop._stockInShop[result].Currency}c");
                     }
                     else
                         Output.WriteLineMultiColored((ConsoleColor.Red, "Insufficient funds, "), (ConsoleColor.White, "please check back when you got more "),
                             (ConsoleColor.Green, "gold"));
                 }
             }
-            return GameState.Browsing;
+            else
+            {
+                Console.WriteLine("Negative number!");
+            }
         }
-        if (input == 'r'.ToString().ToLower())//return to map
+        else
         {
-            return GameState.RoamingMap;
+            Console.WriteLine("Not a number");
         }
-
-        return GameState.Shop;
-        
+        return GameState.Browsing;
     }
     
     

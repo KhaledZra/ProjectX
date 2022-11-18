@@ -1,6 +1,5 @@
 ﻿using GameLogic;
 
-
 namespace UserInterface;
 
 public class Output
@@ -38,8 +37,7 @@ public class Output
             (ConsoleColor.White, "."));
     }
 
-    public static void
-        CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
+    public static void CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
     {
         Console.Write($"Pick a suitable name for your {chosenVocation}: ");
     }
@@ -70,40 +68,28 @@ public class Output
 
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "PLAYER"),
             (ConsoleColor.Red, "---------"));
-        WriteLineMultiColored((ConsoleColor.White, "Current currency: "), (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.green, "c"));
-        WriteLineMultiColored((ConsoleColor.Red, "[B]"), (ConsoleColor.White, "buy "), (ConsoleColor.White, "item."));
-        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "),
-            (ConsoleColor.White, "to shop menu."));
-
-        ConsoleKey input = Console.ReadKey(true).Key;
-        Console.Clear();
-        /*if (input == ConsoleKey.R)
-        {
-            return GameState.Shop;
-        }*/
-        if (input == ConsoleKey.B)
-        {
-        }
-        else
+        WriteLineMultiColored((ConsoleColor.White, "Current currency: "), (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
+        Console.WriteLine("Enter [R] to return or enter the value of the item you wish to purchase!");
+        Console.Write("Choice: ");
     }
 
-    public static void BuyFromShop(List<Item> shopStock, Character activePlayer)
-    {
-        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUY ITEM FROM SHOP"),
-            (ConsoleColor.Red, "---------"));
-        for (int itemIndex = 0; itemIndex < shopStock.Count; itemIndex++)
-        {
-            // Console.WriteLine($"[{itemIndex}]"); // {shopStock[itemIndex]}.Name}} - Buy for: {shopStock[itemIndex]}.Currency}}
-            WriteLineMultiColored((ConsoleColor.Red, $"[{itemIndex}] "),
-                (ConsoleColor.White, $"{shopStock[itemIndex].Name} - Cost: "),
-                (ConsoleColor.Green, $"{shopStock[itemIndex].Currency.ToString()} gold"));
-        }
-
-        WriteLineMultiColored((ConsoleColor.White, "Type"), (ConsoleColor.White, "\"r\" only"),
-            (ConsoleColor.White, "and press ENTER to return."));
-        WriteLineMultiColored((ConsoleColor.White, "Else, type the "), (ConsoleColor.Red, "index number"),
-            (ConsoleColor.White, " of the item you like to buy below:"));
-    }
+    // public static void BuyFromShop(List<Item> shopStock, Character activePlayer)
+    // {
+    //     WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUY ITEM FROM SHOP"),
+    //         (ConsoleColor.Red, "---------"));
+    //     for (int itemIndex = 0; itemIndex < shopStock.Count; itemIndex++)
+    //     {
+    //         // Console.WriteLine($"[{itemIndex}]"); // {shopStock[itemIndex]}.Name}} - Buy for: {shopStock[itemIndex]}.Currency}}
+    //         WriteLineMultiColored((ConsoleColor.Red, $"[{itemIndex}] "),
+    //             (ConsoleColor.White, $"{shopStock[itemIndex].Name} - Cost: "),
+    //             (ConsoleColor.Green, $"{shopStock[itemIndex].Currency.ToString()} gold"));
+    //     }
+    //
+    //     WriteLineMultiColored((ConsoleColor.White, "Type"), (ConsoleColor.White, "\"r\" only"),
+    //         (ConsoleColor.White, "and press ENTER to return."));
+    //     WriteLineMultiColored((ConsoleColor.White, "Else, type the "), (ConsoleColor.Red, "index number"),
+    //         (ConsoleColor.White, " of the item you like to buy below:"));
+    // }
 
     public static void SellToShop(Character activePlayer)
     {
@@ -195,7 +181,7 @@ public class Output
         Console.WriteLine("Farewell young adventurer, your game is saved and we hope to see you soon!");
     }
 
-    public static void TestRoamingMenu() //temporary fix for roaming map interactions
+    public static void TestRoamingMenu() // temporary fix for roaming map interactions
     {
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "ROAMING "),
             (ConsoleColor.Red, "---------"));
@@ -207,8 +193,7 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
     }
 
-    public static void
-        WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
+    public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
     {
         Console.Write("\r");
         foreach (var value in values)
