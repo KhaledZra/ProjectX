@@ -8,7 +8,7 @@ public class Character : Entity
     public int FightEncounters { get; set; }
     public int MaxHp { get; set; } // used to keep track of when player is healing
 
-    public Character(string name, int currency = 0, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
+    public Character(string name, int currency = 5, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
     {
         CoordX = 45; // hardkodat spawn, change later
