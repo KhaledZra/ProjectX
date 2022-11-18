@@ -7,112 +7,133 @@ public class GameStateHandler
     public static GameState SwitchMenu(GameState gameState, Game game)
     {
         Draw draw = new Draw(game.Player); // används för att rita map/spelare
-
+        
         switch (gameState)
         {
-            case GameState.MainMenu: // klar
-                Output.MainMenu();
-                gameState = Input.MainMenuInput();
-                break;
-
-            case GameState.CharacterOptions: // klar
-                Output.CharacterHandlerOutPut();
-                gameState = Input.CreateNewCharacter();
-                break;
-
-            case GameState.LoadCharacter: // inte klar än
-                Console.WriteLine("Load feature not implemented yet!");
-                gameState = GameState.CharacterOptions;
-                break;
-
-            case GameState.CreateCharacter: // Klar
-                Output.ChooseCharacterVocation();
-                gameState = Input.SetCharacterVocation(game.Player);
-                Character.SetCharacterVocationStats(game.Player);
-                break;
-
-            case GameState.VocSetPickName: // Klar
-                Output.CharacterName(game.Player.Vocation);
-                gameState = Input.SetCharacterName(game.Player);
-                break;
-
-            case GameState.RoamingMap: // inte klar, behöver exit.
-                draw.DrawMap();
-                draw.DrawPlayerInfo(game.Player);
-                while (gameState == GameState.RoamingMap)
-                {
-                    Draw.DrawPlayer(game.Player);
-                    gameState = Input.MovePlayerInput(game.Player, draw.map);
-                }
-                Console.Clear();
-                // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
-                break;
-
-            case GameState.Mountain: // DLC, kanske tars bort helt sen
-                Output.MountainOutput();
-                gameState = Input.MountainMenu();
-                // Returns GameState.TutorialMenu, GameState.ShopMenu, GameState.FightingMenu or GameState.Quit
-                break;
-
-            case GameState.Shop: // inte klar än
-                Output.ShopMainMenu();
-                gameState = Input.GetFromShopMenu();
-                break;
-
-            case GameState.Browsing: // inte klar än
-                Output.StockInShop(game.Shop._stockInShop);//Shop.Stock.ToList()
-                gameState = Input.ItemInStock();
-                break;
-
-            case GameState.Selling: // inte klar än
-                Output.SellToShop(game.Player);
-                gameState = Input.SellInventory();
-                break;
-
-            case GameState.Tutorial: // klar
-                Output.TutorialMenu(game.Player);
-                gameState = Input.TutorialMenu();
-                break;
-
-            case GameState.Arena: // inte klar än, behöver hantera när man vinner
-                Output.FightingOptions(game.Player);
-                gameState = Input.FightingMenu();
-                // Returns GameState.RoamingMap, GameState.WonMenu or LostMenu
-                break;
-
-            case GameState.Fighting: // inte klar än
-                Output.FightingResult(game);
-                if (game.Player.Health <= 0)
-                {
-                    gameState = GameState.LostFight;
-                }
-                // else if (//won condition)
-                // {
-                //     
-                // }
-                else
-                {
-                    gameState = GameState.Arena;
-                }
-
-                break;
-
-            case GameState.WonFight: // inte klar än
-                Output.FightWonOptions();
-                gameState = GameState.QuitGame;
-                break;
-
-            case GameState.LostFight: // inte klar än
-                Output.FightLostOptions(game.Player);
-                gameState = GameState.QuitGame;
-                break;
-
-            case GameState.QuitGame: // inte klar än, behöver spara osv
-                Output.Quit();
-                gameState = GameState.ExitProgram;
-                break;
+            case GameState.MainMenu: return MainMenuState();
+            case GameState.CharacterOptions: return CharacterOptionState();
+            case GameState.LoadCharacter: return LoadCharacterState();
+            case GameState.CreateCharacter: return CreateCharacterState();
+            case GameState.VocSetPickName: return VocSetPickNameState(game.Player);
+            case GameState.RoamingMap: return RoamingState(draw, game.Player, gameState);
+            case GameState.Mountain: return MountainState(); // DLC, kanske tars bort helt sen?
+            case GameState.Shop: return ShopState(); // inte klar än
+            case GameState.Browsing: return ShopBrowsingState(game.Shop); // inte klar än
+            case GameState.Selling: return ShopSellingState(game.Player); // inte klar än
+            case GameState.Tutorial: return TutorialState();
+            case GameState.Arena: return ArenaState(game.Player);
+            case GameState.Fighting: return FightingState(game); // inte klar än, Behöver hantera win condition (om de ska vara possible)
+            case GameState.WonFight: return WonState(); // inte klar än
+            case GameState.LostFight: return LoseState(game.Player); // inte klar än, behöver hanteras bättre
+            case GameState.QuitGame: return QuitState(); // inte klar än, behöver spara osv
+            default:
+                Console.WriteLine("Something went wrong!");
+                return GameState.QuitGame;
         }
+    }
+    
+    private static GameState MainMenuState()
+    {
+        Output.MainMenu();
+        return Input.MainMenuInput();
+    }
+    
+    private static GameState CharacterOptionState()
+    {
+        Output.CharacterHandlerOutPut();
+        return Input.CreateNewCharacter();
+    }
+    
+    private static GameState LoadCharacterState()
+    {
+        Console.WriteLine("Load feature not implemented yet!");
+        return GameState.CharacterOptions;
+    }
+    
+    private static GameState CreateCharacterState()
+    {
+        Output.CharacterHandlerOutPut();
+        return Input.CreateNewCharacter();
+    }
+    
+    private static GameState VocSetPickNameState(Character player)
+    {
+        Output.CharacterName(player.Vocation);
+        return Input.SetCharacterName(player);
+    }
 
+    private static GameState RoamingState(Draw draw, Character player, GameState gameState)
+    {
+        draw.DrawMap();
+        draw.DrawPlayerInfo(player);
+        while (gameState == GameState.RoamingMap)
+        {
+            Draw.DrawPlayer(player);
+            gameState = Input.MovePlayerInput(player, draw.map);
+        }
+        Console.Clear();
         return gameState;
+    }
+    
+    private static GameState TutorialState()
+    {
+        Output.TutorialMenu();
+        return Input.TutorialMenu();
+    }
+    
+    private static GameState MountainState()
+    {
+        Output.MountainOutput();
+        return Input.MountainMenu();
+    }
+    
+    private static GameState ShopState()
+    {
+        Output.ShopMainMenu();
+        return Input.GetFromShopMenu();
+    }
+    
+    private static GameState ShopBrowsingState(Shop shop)
+    {
+        Output.StockInShop(shop._stockInShop);
+        return Input.ItemInStock();
+    }
+    
+    private static GameState ShopSellingState(Character player)
+    {
+        Output.SellToShop(player);
+        return Input.SellInventory();
+    }
+    
+    private static GameState ArenaState(Character player)
+    {
+        Output.FightingOptions(player);
+        return Input.FightingMenu();
+    }
+    
+    private static GameState FightingState(Game game)
+    {
+        Output.FightingResult(game);
+        if (game.Player.Health <= 0) return GameState.LostFight;
+        // return GameState.Won; Ska man vinna eller inte?
+        return GameState.Arena;
+    }
+    
+    private static GameState WonState()
+    {
+        Output.FightWonOptions();
+        return GameState.QuitGame;
+    }
+    
+    private static GameState LoseState(Character player)
+    {
+        Output.FightLostOptions(player);
+        return GameState.QuitGame;
+    }
+    
+    private static GameState QuitState()
+    {
+        Output.Quit();
+        return GameState.ExitProgram;
     }
 }
