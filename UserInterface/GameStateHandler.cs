@@ -109,8 +109,13 @@ public class GameStateHandler
     // }
     private static GameState ShopSellingState(Character player)
     {
+        if (player.InventoryItems.Count == 0)
+        {
+            Console.WriteLine("You have nothing to sell, Do not waste my time mortal!");
+            return GameState.Shop;
+        }
         Output.SellToShop(player);
-        return Input.SellInventory();
+        return Input.SellInventory(player);
     }
     
     private static GameState ArenaState(Character player)

@@ -161,16 +161,36 @@ public abstract class Input
     }
     
     
-    public static GameState SellInventory()
+    public static GameState SellInventory(Character player)
     {
-        ConsoleKey input = Console.ReadKey(true).Key;
+        string input = Console.ReadLine();
         Console.Clear();
 
-        if (input == ConsoleKey.R)
+        if (input.ToLower() == "r")
         {
             return GameState.Shop;
         }
 
+        if (int.TryParse(input, out int result))
+        {
+            if (result > -1)
+            {
+                if (result < player.InventoryItems.Count)
+                {
+                    player.Currency += player.InventoryItems[result].Currency;
+                    Console.WriteLine($"Sold 1 {player.InventoryItems[result].Name}, for {player.InventoryItems[result].Currency}c");
+                    player.InventoryItems.RemoveAt(result);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Negative number!");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Not a number");
+        }
         return GameState.Selling;
     }
 

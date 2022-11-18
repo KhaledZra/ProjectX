@@ -102,11 +102,13 @@ public class Output
                 (ConsoleColor.Green, $"{activePlayer.InventoryItems[itemIndex].Currency.ToString()} gold"));
         }
 
+        WriteLineMultiColored((ConsoleColor.White, "Current currency: "), (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
+
         //Console.WriteLine($"Example: Your item {activePlayer.InventoryItems[1]}");
-        WriteLineMultiColored((ConsoleColor.White, "Type"), (ConsoleColor.White, "\"r\" only"),
-            (ConsoleColor.White, "and press ENTER to return."));
-        WriteLineMultiColored((ConsoleColor.White, "Else, type the "), (ConsoleColor.Red, "index number"),
-            (ConsoleColor.White, " of the item you like to sell below:"));
+        WriteLineMultiColored((ConsoleColor.White, "Type "), (ConsoleColor.White, "\"[R]\" to return"));
+        WriteLineMultiColored((ConsoleColor.White, "Otherwise, type the "), (ConsoleColor.Red, "index number"),
+            (ConsoleColor.White, " of the item you like to sell below"));
+        Console.Write("Choice: ");
     }
 
     public static void TutorialMenu()
