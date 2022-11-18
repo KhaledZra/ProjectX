@@ -3,10 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\UserInterface\UserInterface.csproj" />
     <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DataManager" Version="1.0.0" />
+    <ProjectReference Include="..\DataManager\DataManager.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
