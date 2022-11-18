@@ -52,13 +52,17 @@ public class Output
 
     public static void StockInShop(List<Item> shopStock)//List<Item> stockList
     {
-        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUYING"), (ConsoleColor.Red, "---------"));
-        foreach (var item in shopStock)
+        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "Items in stock"), (ConsoleColor.Red, "---------"));
+        for (int itemIndex = 0; itemIndex < shopStock.Count; itemIndex++)
         {
-            Console.WriteLine($"{item.Name} - Buy for: {item.Currency} ");
+           // Console.WriteLine($"[{itemIndex}]"); // {shopStock[itemIndex]}.Name}} - Buy for: {shopStock[itemIndex]}.Currency}}
+            WriteLineMultiColored((ConsoleColor.Red, $"[{itemIndex}] "), (ConsoleColor.White, $"{shopStock[itemIndex].Name} - Cost: "), (ConsoleColor.Green, $"{shopStock[itemIndex].Currency.ToString()} gold"));
         }
-        Console.WriteLine($"Example: You've bought \"item.Name\" from Shop");
+
+        Console.WriteLine((""));
+        WriteLineMultiColored((ConsoleColor.Red, "[B]"), (ConsoleColor.White, "buy "), (ConsoleColor.White, "item."));
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
+
     }
 
     public static void SellToShop(Character activePlayer)
@@ -74,7 +78,7 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "), (ConsoleColor.White, "to shop menu."));
     }
 
-    public static void TutorialMenu(Character player)
+    public static void TutorialMenu()
     {
         WriteLineMultiColored((ConsoleColor.White, "Welcome to the "), (ConsoleColor.Red, "World of Heretics "), (ConsoleColor.White, "young adventurer!"));
         Console.WriteLine($"Outside the House of Tutorial you just witnessed the map of WoH.");
