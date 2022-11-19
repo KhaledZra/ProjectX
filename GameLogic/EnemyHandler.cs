@@ -28,10 +28,10 @@ public class EnemyHandler
         return rnd.Next(maxValue);
     }
 
-    public static Enemy GetRandomEnemy(int playerLevel, Connect sqlConnection)
+    public static Enemy GetRandomEnemy(int playerLevel)
     {
-        return ReturnScaledEnemy(sqlConnection.SelectSqlRandomName("enemy_name","name") + " the " + "Goblin",
-            playerLevel);
+        return ReturnScaledEnemy(Connect.SelectSqlRandomName("enemy_name","name") + " the " + 
+                                 Connect.SelectSqlRandomName("enemy_race","name"), playerLevel);
     }
     /*public string SelectSqlRandomName(string tableName, string columnName)
     {

@@ -38,8 +38,7 @@ public class Output
             (ConsoleColor.White, "."));
     }
 
-    public static void
-        CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
+    public static void CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
     {
         Console.Write($"Pick a suitable name for your {chosenVocation}: ");
     }
@@ -171,9 +170,9 @@ public class Output
             (ConsoleColor.White, "!"));
     }
 
-    public static void FightingResult(Game game, EnemyHandler enemyName)
+    public static void FightingResult(Game game)
     {
-        Console.WriteLine(game.HandleFighting(EnemyHandler.GetRandomEnemy(game.Player.LevelStats.Level, EnemyHandler.GetRandomEnemy("",""))));
+        Console.WriteLine(game.HandleFighting(EnemyHandler.GetRandomEnemy(game.Player.LevelStats.Level)));
         Console.WriteLine("------------");
     }
 
@@ -207,8 +206,7 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
     }
 
-    public static void
-        WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
+    public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
     {
         Console.Write("\r");
         foreach (var value in values)
