@@ -37,7 +37,8 @@ public class Output
             (ConsoleColor.White, "."));
     }
 
-    public static void CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
+    public static void
+        CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
     {
         Console.Write($"Pick a suitable name for your {chosenVocation}: ");
     }
@@ -62,18 +63,19 @@ public class Output
         {
             // Console.WriteLine($"[{itemIndex}]"); // {shopStock[itemIndex]}.Name}} - Buy for: {shopStock[itemIndex]}.Currency}}
             WriteLineMultiColored((ConsoleColor.Red, $"[{itemIndex}] "),
-                (ConsoleColor.White, $"{shopStock[itemIndex].Name} - Cost: "),
-                (ConsoleColor.Green, $"{shopStock[itemIndex].Currency.ToString()} gold"));
+                (ConsoleColor.Cyan, $"{shopStock[itemIndex].Name}"), (ConsoleColor.White, $""),
+                (ConsoleColor.Green, $" - Cost: {shopStock[itemIndex].Currency.ToString()} gold\n"), (ConsoleColor.White, $"Level required: \n"), (ConsoleColor.White, $"Damage Output: +"), (ConsoleColor.Red, $"{shopStock[itemIndex].Health}"));
         }
 
-        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "PLAYER"),
+        WriteLineMultiColored((ConsoleColor.Red, "\n---------"), (ConsoleColor.White, "PLAYER"),
             (ConsoleColor.Red, "---------"));
-        WriteLineMultiColored((ConsoleColor.White, "Current currency: "), (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
+        WriteLineMultiColored((ConsoleColor.White, "Current currency: "),
+            (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
         Console.WriteLine("Enter [R] to return or enter the value of the item you wish to purchase!");
-        Console.WriteLine("The local Priestess will fully heal you for only 10 gold, enter [H].");
+        Console.WriteLine("Enter [H] and press [Enter] to let the our Priestess fully heal you for only 10 gold.");
         Console.Write("Choice: ");
     }
-
+    //Behåll tills vi vet om vi ska separera shopStock till buyfromshopStock
     // public static void BuyFromShop(List<Item> shopStock, Character activePlayer)
     // {
     //     WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUY ITEM FROM SHOP"),
@@ -103,7 +105,8 @@ public class Output
                 (ConsoleColor.Green, $"{activePlayer.InventoryItems[itemIndex].Currency.ToString()} gold"));
         }
 
-        WriteLineMultiColored((ConsoleColor.White, "Current currency: "), (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
+        WriteLineMultiColored((ConsoleColor.White, "Current currency: "),
+            (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
 
         //Console.WriteLine($"Example: Your item {activePlayer.InventoryItems[1]}");
         WriteLineMultiColored((ConsoleColor.White, "Type "), (ConsoleColor.White, "\"[R]\" to return"));
@@ -135,7 +138,7 @@ public class Output
         WriteLineMultiColored((ConsoleColor.White, "Inside our "),
             (ConsoleColor.Red, "Shop, "),
             (ConsoleColor.White, " you´ll only be allowed input by pressing characters, characters+enter"));
-        
+
         WriteLineMultiColored((ConsoleColor.Red, "\n[R]"), (ConsoleColor.White, "eturn "),
             (ConsoleColor.White, "to map."));
     }
@@ -203,7 +206,8 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
     }
 
-    public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
+    public static void
+        WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
     {
         Console.Write("\r");
         foreach (var value in values)
