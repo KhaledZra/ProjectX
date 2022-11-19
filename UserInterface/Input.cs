@@ -151,13 +151,13 @@ public abstract class Input
         {
             if (result > -1)
             {
-                if (result < shop._stockInShop.Count)
+                if (result < shop.StockInShop.Count)
                 {
-                    if (activePlayer.Currency >= shop._stockInShop[result].Currency)
+                    if (activePlayer.Currency >= shop.StockInShop[result].Currency)
                     {
-                        activePlayer.Currency -= shop._stockInShop[result].Currency;
-                        activePlayer.InventoryItems.Add(shop._stockInShop[result]);
-                        Console.WriteLine($"Purchased 1 {shop._stockInShop[result].Name}, for {shop._stockInShop[result].Currency}c");
+                        activePlayer.Currency -= shop.StockInShop[result].Currency;
+                        activePlayer.InventoryItems.Add(shop.StockInShop[result]);
+                        Console.WriteLine($"Purchased 1 {shop.StockInShop[result].Name}, for {shop.StockInShop[result].Currency}c");
                     }
                     else
                         Output.WriteLineMultiColored((ConsoleColor.Red, "Insufficient funds, "), (ConsoleColor.White, "please check back when you got more "),

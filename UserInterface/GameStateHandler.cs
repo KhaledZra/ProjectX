@@ -98,7 +98,7 @@ public class GameStateHandler
     
     private static GameState ShopBuyingState(Shop shop, Character activePlayer)
     {
-        Output.StockInShop(shop._stockInShop, activePlayer);
+        Output.StockInShop(shop.StockInShop, activePlayer);
         return Input.BrowseAndPickItem(shop, activePlayer);
     }
 
