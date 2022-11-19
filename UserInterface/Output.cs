@@ -117,7 +117,7 @@ public class Output
         WriteLineMultiColored((ConsoleColor.White, "Welcome to the "), (ConsoleColor.Red, "World of Heretics "),
             (ConsoleColor.White, "young adventurer!"));
         Console.WriteLine($"Outside the House of Tutorial you just witnessed the map of WoH.");
-        WriteLineMultiColored((ConsoleColor.White, "In this map there´s"), (ConsoleColor.Red, " 4 structures "),
+        WriteLineMultiColored((ConsoleColor.White, "In this map there´s"), (ConsoleColor.Red, " 4 structures"),
             (ConsoleColor.White, ", giving 4 different options;\n"));
         WriteLineMultiColored((ConsoleColor.Red, " - North West - "),
             (ConsoleColor.White, "Our in game Shop where you can buy "),
@@ -129,7 +129,14 @@ public class Output
         WriteLineMultiColored((ConsoleColor.Red, " - South East - "),
             (ConsoleColor.White, "Fighting is where you´re able to encounter monsters, "),
             (ConsoleColor.White, "level up and loot items."));
-        WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn "),
+        WriteLineMultiColored((ConsoleColor.White, "\nInside our "),
+            (ConsoleColor.Red, "Arena, "),
+            (ConsoleColor.White, " you´ll only be allowed input by pressing characters"));
+        WriteLineMultiColored((ConsoleColor.White, "Inside our "),
+            (ConsoleColor.Red, "Shop, "),
+            (ConsoleColor.White, " you´ll only be allowed input by pressing characters, characters+enter"));
+        
+        WriteLineMultiColored((ConsoleColor.Red, "\n[R]"), (ConsoleColor.White, "eturn "),
             (ConsoleColor.White, "to map."));
     }
 
