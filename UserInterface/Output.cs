@@ -70,6 +70,7 @@ public class Output
             (ConsoleColor.Red, "---------"));
         WriteLineMultiColored((ConsoleColor.White, "Current currency: "), (ConsoleColor.Green, $"{activePlayer.Currency}"), (ConsoleColor.Green, "c"));
         Console.WriteLine("Enter [R] to return or enter the value of the item you wish to purchase!");
+        Console.WriteLine("The local Priestess will fully heal you for only 10 gold, enter [H].");
         Console.Write("Choice: ");
     }
 

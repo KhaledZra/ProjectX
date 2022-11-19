@@ -131,6 +131,22 @@ public abstract class Input
             return GameState.Shop;
         }
 
+        if (input.ToLower() == "h")
+        {
+            if (activePlayer.Currency >= 10)
+            {
+                activePlayer.Currency -= 10;
+                activePlayer.HealCharacter();
+                Console.WriteLine("Purchased full heal, for 10c");
+            }
+            else
+            {
+                Output.WriteLineMultiColored((ConsoleColor.Red, "Insufficient funds, "), (ConsoleColor.White, "please check back when you got more "),
+                    (ConsoleColor.Green, "gold"));
+            }
+            return GameState.Browsing;
+        }
+
         if (int.TryParse(input, out int result))
         {
             if (result > -1)
