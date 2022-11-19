@@ -13,7 +13,7 @@ public class GameStateHandler
             case GameState.MainMenu: return MainMenuState();
             case GameState.CharacterOptions: return CharacterOptionState();
             case GameState.LoadCharacter: return LoadCharacterState();
-            case GameState.CreateCharacter: return PickVocationState(game.Player);
+            case GameState.CreateCharacter: return PickVocationState(game);
             case GameState.VocSetPickName: return VocSetPickNameState(game.Player);
             case GameState.RoamingMap: return RoamingState(draw, game.Player, gameState);
             case GameState.Mountain: return MountainState(); // DLC, kanske tars bort helt sen?
@@ -50,19 +50,20 @@ public class GameStateHandler
         return GameState.CharacterOptions;
     }
     
+    private static GameState PickVocationState(Game game)
+    {
+        Output.ChooseCharacterVocation();
+        GameState temp = Input.SetCharacterVocation(game.Player);
+        Character.SetCharacterVocationStats(game.Player);
+        game.Shop = new Shop(game.Player.Vocation);
+        return temp;
+    }
+    
     private static GameState VocSetPickNameState(Character player)
     {
         Output.CharacterName(player.Vocation);
         return Input.SetCharacterName(player);
 
-    }
-    
-    private static GameState PickVocationState(Character player)
-    {
-        Output.ChooseCharacterVocation();
-        GameState temp = Input.SetCharacterVocation(player);
-        Character.SetCharacterVocationStats(player);
-        return temp;
     }
 
     private static GameState RoamingState(Draw draw, Character player, GameState gameState)

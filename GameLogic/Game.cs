@@ -13,10 +13,9 @@ public class Game // plumming code
     {
         _itemListDB = new(); // itemListDB temp but loadFromDB?
         _enemyListDB = new(); // enemyListDB temp but loadFromDB?
-        Shop = new Shop();
-        Shop.StockInShop = Item.SetItemList();
         Player = new Character("Unassigned");
         //Inventory = new Inventory(_player.Id);
+        Shop = new Shop(Player.Vocation);
     }
 
     public string HandleFighting(Enemy enemy) // returns true if hero won else false

@@ -18,6 +18,23 @@ public class Character : Entity
         LevelStats.Level = 1;
     }
 
+    private int TotalDamageFromItems()
+    {
+        int totalDamage = 0;
+
+        foreach (var item in InventoryItems)
+        {
+            totalDamage += item.LevelStats.Level;
+        }
+
+        return totalDamage;
+    }
+
+    public override int DealDamage(int addOnDamage = 0)
+    {
+        return base.DealDamage(TotalDamageFromItems());
+    }
+
     // Handles Characters health
     public void HealCharacter() => Health = MaxHp;
     public void IncreaseMaxHpOnLevelUp() => MaxHp += 10;
