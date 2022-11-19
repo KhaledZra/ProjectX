@@ -1,13 +1,15 @@
 namespace GameLogic;
 
+using DataManager;
+
 public class EnemyHandler
 {
     private static Enemy ReturnScaledEnemy(string enemyName, int playerLevel)
     {
         Enemy tempEnemy = new Enemy(enemyName);
-        
+
         float scaler = (float)playerLevel / 2.0f;
-        
+
         float fHealth = tempEnemy.Health * scaler;
         float fCurrency = tempEnemy.Currency * scaler;
         float fExperience = 100 * scaler;
@@ -25,23 +27,22 @@ public class EnemyHandler
         Random rnd = new Random();
         return rnd.Next(maxValue);
     }
-    
-    public static Enemy GetRandomEnemy(int playerLevel)
+
+    public static Enemy GetRandomEnemy(int playerLevel, Connect sqlConnection)
     {
-        List<Enemy> tempEnemies = new();
-
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Goblin", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Skeleton", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Orc", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Abo hazan", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Abo Jihad", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Shaytan", playerLevel));
-        tempEnemies.Add(ReturnScaledEnemy(GetEnemyName() + " the " + "Jihn", playerLevel));
-
-        return tempEnemies[RandomizeInt(tempEnemies.Count)];
+        return ReturnScaledEnemy(sqlConnection.SelectSqlRandomName("enemy_name","name") + " the " + "Goblin",
+            playerLevel);
     }
-    
-    public static string GetEnemyName()
+    /*public string SelectSqlRandomName(string tableName, string columnName)
+    {
+        Random rnd = new Random();
+        int r = rnd.Next(1, SelectCountSqlTable(tableName, columnName)+1); // min 1, max result+1
+
+        string sqlCode = $"SELECT {tableName}.{columnName} FROM {tableName} WHERE id = {r}";
+
+        return ConnectToDb().Query<string>(sqlCode).First();
+    }*/
+    /*public static string GetEnemyName()
     {
         List<string> enemyNames = new List<string>();
         
@@ -62,5 +63,5 @@ public class EnemyHandler
         enemyNames.Add("Ogg");
         
         return enemyNames[RandomizeInt(enemyNames.Count)];
-    }
+    }*/
 }

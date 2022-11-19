@@ -1,4 +1,5 @@
-﻿using GameLogic;
+﻿using DataManager;
+using GameLogic;
 
 namespace UserInterface;
 
@@ -170,9 +171,9 @@ public class Output
             (ConsoleColor.White, "!"));
     }
 
-    public static void FightingResult(Game game)
+    public static void FightingResult(Game game, EnemyHandler enemyName)
     {
-        Console.WriteLine(game.HandleFighting(EnemyHandler.GetRandomEnemy(game.Player.LevelStats.Level)));
+        Console.WriteLine(game.HandleFighting(EnemyHandler.GetRandomEnemy(game.Player.LevelStats.Level, EnemyHandler.GetRandomEnemy("",""))));
         Console.WriteLine("------------");
     }
 

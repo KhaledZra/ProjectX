@@ -20,7 +20,7 @@ public class Connect
     // Input => Output (Lambda Return)
     private MySqlConnection ConnectToDb() => new MySqlConnection(MySqlConString.ConnectionString);
 
-    private int SelectCountSqlTable(string tableName, string columnName) => 
+    public int SelectCountSqlTable(string tableName, string columnName) => 
         ConnectToDb().Query<int>($"SELECT COUNT({tableName}.{columnName}) FROM {tableName};").Max();
 
 
@@ -33,5 +33,5 @@ public class Connect
 
         return ConnectToDb().Query<string>(sqlCode).First();
     }
-
+    
 }

@@ -1,4 +1,6 @@
-﻿namespace GameLogic;
+﻿using DataManager;
+
+namespace GameLogic;
 
 public class Game // plumming code
 {
@@ -18,10 +20,10 @@ public class Game // plumming code
         Shop = new Shop(Player.Vocation);
     }
 
-    public string HandleFighting(Enemy enemy) // returns true if hero won else false
+    public string HandleFighting(Game game, Enemy enemy, Connect sqlEnemyName) // returns true if hero won else false
     {
         string battleInfo = $"------------\n" +
-                            $"{Player.Name} VS {enemy.Name}" +
+                            $"{Player.Name} VS {EnemyHandler.GetRandomEnemy(game.Player.LevelStats.Level, sqlEnemyName )}" +
                             $"\n------------\n";
         int lostHearts = 0;
         //Console.WriteLine($"{_player.Name} vs {tempEnemy.Name}");
