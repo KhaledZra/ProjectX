@@ -64,7 +64,7 @@ public class Output
             // Console.WriteLine($"[{itemIndex}]"); // {shopStock[itemIndex]}.Name}} - Buy for: {shopStock[itemIndex]}.Currency}}
             WriteLineMultiColored((ConsoleColor.Red, $"[{itemIndex}] "),
                 (ConsoleColor.Cyan, $"{shopStock[itemIndex].Name}"), (ConsoleColor.White, $""),
-                (ConsoleColor.Green, $" - Cost: {shopStock[itemIndex].Currency.ToString()} gold\n"), (ConsoleColor.White, $"Level required: \n"), (ConsoleColor.White, $"Damage Output: +"), (ConsoleColor.Red, $"{shopStock[itemIndex].Health}"));
+                (ConsoleColor.Green, $" - Cost: {shopStock[itemIndex].Currency.ToString()} gold\n"), (ConsoleColor.White, $"Damage Output: +"), (ConsoleColor.Red, $"{shopStock[itemIndex].LevelStats.Level}"));
         }
 
         WriteLineMultiColored((ConsoleColor.Red, "\n---------"), (ConsoleColor.White, "PLAYER"),
