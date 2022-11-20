@@ -136,9 +136,17 @@ public abstract class Input
         {
             if (activePlayer.Currency >= 10)
             {
-                activePlayer.Currency -= 10;
-                activePlayer.HealCharacter();
-                Console.WriteLine("Purchased full heal, for 10c");
+                if (activePlayer.Health == activePlayer.MaxHp)
+                {
+                    Console.WriteLine("You already are max health!");
+                    return GameState.Browsing;
+                }
+                else
+                {
+                    activePlayer.Currency -= 10;
+                    activePlayer.HealCharacter();
+                    Console.WriteLine("Purchased full heal, for 10c");
+                }
             }
             else
             {
@@ -156,6 +164,14 @@ public abstract class Input
                 {
                     if (activePlayer.Currency >= shop.StockInShop[result].Currency)
                     {
+                        foreach (var item in activePlayer.InventoryItems)
+                        {
+                            if (item == shop.StockInShop[result])
+                            {
+                                Console.WriteLine("You already own this item!");
+                                return GameState.Browsing;
+                            }
+                        }
                         activePlayer.Currency -= shop.StockInShop[result].Currency;
                         activePlayer.InventoryItems.Add(shop.StockInShop[result]);
                         Console.WriteLine($"Purchased 1 {shop.StockInShop[result].Name}, for {shop.StockInShop[result].Currency}c");
