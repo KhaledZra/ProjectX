@@ -18,6 +18,11 @@ public abstract class Entity
         Vocation = vocation;
     }
 
+    public Entity()
+    {
+        
+    }
+
     public override string ToString()
     {
         return $"{Id}, {Name}, {Health}, {LevelStats.ToString()}";

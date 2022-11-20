@@ -78,6 +78,7 @@ public abstract class Input
 
         if (!string.IsNullOrWhiteSpace(player.Name))
         {
+            //player.SaveNewCharacter(); // saves to DB
             return GameState.RoamingMap;
         }
 

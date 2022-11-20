@@ -6,16 +6,27 @@ public class Game // plumming code
 {
     // this is where shit goes down
     private List<Item> _itemListDB;
-    private List<Enemy> _enemyListDB;
     public Shop Shop;
     public Character Player { get; set; }
 
     public Game()
     {
         _itemListDB = new(); // itemListDB temp but loadFromDB?
-        _enemyListDB = new(); // enemyListDB temp but loadFromDB?
         Player = new Character("Unassigned");
         Shop = new Shop(Player.Vocation);
+    }
+
+    public bool LoadCharacter(int id)
+    {
+        var tempPlayer = Load.LoadFromDb<Character>("`character`", id);
+
+        if (tempPlayer.Count == 1)
+        {
+            Player = tempPlayer[0];
+            return true;
+        }
+        
+        return false;
     }
 
     public string HandleFighting(Enemy enemy) // returns true if hero won else false

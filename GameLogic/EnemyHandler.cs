@@ -30,8 +30,8 @@ public class EnemyHandler
 
     public static Enemy GetRandomEnemy(int playerLevel)
     {
-        return ReturnScaledEnemy(Connect.SelectSqlRandomName("enemy_name","name") + " the " + 
-                                 Connect.SelectSqlRandomName("enemy_race","name"), playerLevel);
+        return ReturnScaledEnemy(Load.SelectSqlRandomName("enemy_name","name") + " the " + 
+                                 Load.SelectSqlRandomName("enemy_race","name"), playerLevel);
     }
     /*public string SelectSqlRandomName(string tableName, string columnName)
     {

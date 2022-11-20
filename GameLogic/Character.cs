@@ -1,3 +1,5 @@
+using DataManager;
+
 namespace GameLogic;
 
 public class Character : Entity
@@ -8,6 +10,8 @@ public class Character : Entity
     public int FightEncounters { get; set; }
     public int MaxHp { get; set; } // used to keep track of when player is healing
 
+    public int Experience { get; set; }
+
     public Character(string name, int currency = 5, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
     {
@@ -15,7 +19,30 @@ public class Character : Entity
         CoordY = 15;  // hardkodat spawn, change later
         InventoryItems = new List<Item>();
         LevelStats = new LevelHandler();
-        LevelStats.Level = 1;
+    }
+
+    // Load Constructor, used for dapper to load from table
+    public Character(int id, string name, int experience, int health, int gold, int vocation, int positionX, int positionY)
+    {
+        Id = id;
+        Name = name;
+        LevelStats = new LevelHandler();
+        LevelStats.GainExperience(experience);
+        MaxHp = health;
+        Health = MaxHp;
+        Currency = gold;
+        Vocation = (Vocation)vocation;
+        CoordX = positionX;
+        CoordY = positionY;
+        InventoryItems = new List<Item>();
+    }
+    
+    public void SaveNewCharacter()
+    {
+        Experience = LevelStats.Experience;
+        Save.SaveNewToDb("character", this,
+            "(name, experience, health, gold, vocation, positionX, positionY)",
+            "(@Name, @Experience, @MaxHp, @Currency, @(int)Vocation, @CoordX, @CoordY)");
     }
 
     private int TotalDamageFromItems()

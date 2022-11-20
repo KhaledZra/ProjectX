@@ -12,7 +12,7 @@ public class GameStateHandler
         {
             case GameState.MainMenu: return MainMenuState();
             case GameState.CharacterOptions: return CharacterOptionState();
-            case GameState.LoadCharacter: return LoadCharacterState();
+            case GameState.LoadCharacter: return LoadCharacterState(game);
             case GameState.CreateCharacter: return PickVocationState(game);
             case GameState.VocSetPickName: return VocSetPickNameState(game.Player);
             case GameState.RoamingMap: return RoamingState(draw, game.Player, gameState);
@@ -44,10 +44,23 @@ public class GameStateHandler
         return Input.CreateNewCharacter();
     }
     
-    private static GameState LoadCharacterState()
+    private static GameState LoadCharacterState(Game game)
     {
-        Console.WriteLine("Load feature not implemented yet!");
-        return GameState.CharacterOptions;
+        Console.Write("Enter id to load: ");
+        if (int.TryParse(Console.ReadLine(), out int result))
+        {
+            if (game.LoadCharacter(result))
+            {
+                Console.Clear();
+                return GameState.RoamingMap;
+            }
+            else
+            {
+                return GameState.CharacterOptions;
+            }
+        }
+
+        return GameState.LoadCharacter;
     }
     
     private static GameState PickVocationState(Game game)
