@@ -33,12 +33,12 @@ public class Draw // GUI class
         WriteAt($"| Health: {player.Health}/{player.MaxHp}",map.TwoDMap.GetLength(0), 3);
         WriteAt($"| Level: {player.LevelStats.Level}",map.TwoDMap.GetLength(0), 4);
         WriteAt($"| Gold: {player.Currency}",map.TwoDMap.GetLength(0), 5);
-        WriteAt($"+----------------------------+",map.TwoDMap.GetLength(0), 6);
+        WriteAt($"+-----------------------------+",map.TwoDMap.GetLength(0), 6);
 
-        for (int i = 1; i < 6; i++)
-        {
-            WriteAt("|",map.TwoDMap.GetLength(0) + 28, i);
-        }
+        // for (int i = 1; i < 6; i++)
+        // {
+        //     WriteAt("|",map.TwoDMap.GetLength(0) + 28, i);
+        // }
     }
 
     private static void CleanUpOldPlayerDraw()

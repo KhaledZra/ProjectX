@@ -71,14 +71,14 @@ public abstract class Input
         return GameState.CreateCharacter;
     }
 
-    public static GameState SetCharacterName(Character player)
+    public static GameState SetCharacterName(Game game)
     {
-        player.Name = Console.ReadLine();
+        game.Player.Name = Console.ReadLine();
         Console.Clear();
 
-        if (!string.IsNullOrWhiteSpace(player.Name))
+        if (!string.IsNullOrWhiteSpace(game.Player.Name))
         {
-            //player.SaveNewCharacter(); // saves to DB
+            game.SaveNewCharacter(); // saves to DB
             return GameState.RoamingMap;
         }
 

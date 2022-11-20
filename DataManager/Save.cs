@@ -7,7 +7,7 @@ public class Save
     {
         string sqlCode =
             $"INSERT INTO {tableName} ({sqlColumns}) " +
-            $"VALUES ({sqlValues})";
+            $"VALUES ({sqlValues});";
 
         Connect.ConnectToDb().Execute(sqlCode, data);
     }

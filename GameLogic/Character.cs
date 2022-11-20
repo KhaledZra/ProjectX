@@ -10,11 +10,10 @@ public class Character : Entity
     public int FightEncounters { get; set; }
     public int MaxHp { get; set; } // used to keep track of when player is healing
 
-    public int Experience { get; set; }
-
-    public Character(string name, int currency = 5, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
+    public Character(string name, int id, int currency = 5, Vocation vocation = Vocation.Unassigned) : base(name, vocation,
         currency)
     {
+        Id = id;
         CoordX = 45; // hardkodat spawn, change later
         CoordY = 15;  // hardkodat spawn, change later
         InventoryItems = new List<Item>();
@@ -35,14 +34,6 @@ public class Character : Entity
         CoordX = positionX;
         CoordY = positionY;
         InventoryItems = new List<Item>();
-    }
-    
-    public void SaveNewCharacter()
-    {
-        Experience = LevelStats.Experience;
-        Save.SaveNewToDb("character", this,
-            "(name, experience, health, gold, vocation, positionX, positionY)",
-            "(@Name, @Experience, @MaxHp, @Currency, @(int)Vocation, @CoordX, @CoordY)");
     }
 
     private int TotalDamageFromItems()

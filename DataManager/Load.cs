@@ -3,7 +3,7 @@ using Dapper;
 
 public class Load
 {
-    private static int SelectCountSqlTable(string tableName, string columnName) => 
+    public static int SelectCountSqlTable(string tableName, string columnName) => 
         Connect.ConnectToDb().Query<int>($"SELECT COUNT({tableName}.{columnName}) FROM {tableName};").Max();
 
 

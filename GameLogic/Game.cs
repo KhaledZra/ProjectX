@@ -12,13 +12,13 @@ public class Game // plumming code
     public Game()
     {
         _itemListDB = new(); // itemListDB temp but loadFromDB?
-        Player = new Character("Unassigned");
+        Player = new Character("Unassigned", Load.SelectCountSqlTable("`character`", "id")+1);
         Shop = new Shop(Player.Vocation);
     }
 
     public bool LoadCharacter(int id)
     {
-        var tempPlayer = Load.LoadFromDb<Character>("`character`", id);
+        List<Character> tempPlayer = Load.LoadFromDb<Character>("`character`", id);
 
         if (tempPlayer.Count == 1)
         {
@@ -27,6 +27,24 @@ public class Game // plumming code
         }
         
         return false;
+    }
+    
+    public void SaveNewCharacter()
+    {
+        object data = new
+        {
+            Player.Name,
+            Player.LevelStats.Experience,
+            Player.MaxHp,
+            Player.Currency,
+            vocation = (int)Player.Vocation,
+            PositionX = Player.CoordX,
+            PositionY = Player.CoordY
+        };
+        
+        Save.SaveNewToDb("`character`", data,
+            "name, experience, health, gold, vocation, positionX, positionY",
+            "@Name, @Experience, @MaxHp, @Currency, @vocation, @PositionX, @PositionY");
     }
 
     public string HandleFighting(Enemy enemy) // returns true if hero won else false
