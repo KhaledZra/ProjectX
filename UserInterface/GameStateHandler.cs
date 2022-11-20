@@ -52,6 +52,7 @@ public class GameStateHandler
             if (game.LoadCharacter(result))
             {
                 Console.Clear();
+                game.Shop = new Shop(game.Player.Vocation);
                 return GameState.RoamingMap;
             }
             else
