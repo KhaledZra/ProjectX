@@ -1,3 +1,6 @@
+using DataManager;
+using Dapper;
+
 namespace GameLogic;
 
 public class Shop
@@ -6,10 +9,34 @@ public class Shop
 
     public Shop(Vocation playerVocation)
     {
-        StockInShop = DefaultStock(playerVocation); // Borde skickas från DB
+        StockInShop = LoadFromDbDefaultStock(playerVocation); // Borde skickas från DB
     }
 
-    public List<Item> DefaultStock(Vocation playerVocation) //not supposed to be here, list should be in DB
+    private static List<Item> LoadFromDbDefaultStock(Vocation playerVocation)
+    {
+        if (playerVocation == Vocation.Archer)
+        {
+            return Load.LoadFromDbWhere<Item>("item", "vocation = 1");
+            //sqlCode = $"SELECT (item.name, item.health, item.level, item.currency, item.vocation) FROM item WHERE item.vocation = 1;";
+        }
+
+        if (playerVocation == Vocation.Warrior)
+        {
+            return Load.LoadFromDbWhere<Item>("item", "vocation = 2");
+            //sqlCode = $"SELECT (item.name, item.health, item.level, item.currency, item.vocation) FROM item WHERE item.vocation = 3;";
+        }
+
+        if (playerVocation == Vocation.Mage)
+        {
+            return Load.LoadFromDbWhere<Item>("item", "vocation = 3");
+            //sqlCode = $"SELECT (item.name, item.health, item.level, item.currency, item.vocation) FROM item WHERE item.vocation = 2;";
+        }
+
+        return new List<Item>();
+    }
+
+
+    /*public List<Item> DefaultStock(Vocation playerVocation) //not supposed to be here, list should be in DB
     {
         List<Item> tempList = new List<Item>();
 
@@ -59,5 +86,5 @@ public class Shop
         }
 
         return tempList;
-    }
+    }*/
 }

@@ -23,4 +23,12 @@ public class Load
         
         return Connect.ConnectToDb().Query<T>(sqlCode).ToList();
     }
+    
+    public static List<T> LoadFromDbWhere<T>(string tableName, string whereColumn)
+    {
+        string sqlCode = $"SELECT * FROM {tableName} WHERE {whereColumn};";
+
+        return Connect.ConnectToDb().Query<T>(sqlCode).ToList();
+    }
+
 }

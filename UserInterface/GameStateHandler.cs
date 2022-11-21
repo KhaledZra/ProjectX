@@ -25,7 +25,7 @@ public class GameStateHandler
             case GameState.Fighting: return FightingState(game); // inte klar än, Behöver hantera win condition (om de ska vara possible)
             case GameState.WonFight: return WonState(); // inte klar än
             case GameState.LostFight: return LoseState(game.Player); // inte klar än, behöver hanteras bättre
-            case GameState.QuitGame: return QuitState(); // inte klar än, behöver spara osv
+            case GameState.QuitGame: return QuitState(game, game.Player); // inte klar än, behöver spara osv
             default:
                 Console.WriteLine("Something went wrong!");
                 return GameState.QuitGame;
@@ -158,8 +158,9 @@ public class GameStateHandler
         return GameState.QuitGame;
     }
     
-    private static GameState QuitState()
+    private static GameState QuitState(Game game, Character player)
     {
+        game.UpdateActiveCharacterInDb();
         Output.Quit();
         return GameState.ExitProgram;
     }
