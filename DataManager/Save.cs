@@ -12,21 +12,27 @@ public class Save
 
         Connect.ConnectToDb().Execute(sqlCode, data);
     }
-    //SKRÄP
-    /*public static void UpdateCharacterInDb<T>(string tableName, T data, string sqlColumns, string sqlValues)
-    {
-        /*string sqlCode = $"INSERT INTO {tableName} ({sqlColumns}, {sqlColumns}, {sqlColumns}, {sqlColumns}, {sqlColumns})" +
-                       $"VALUES(@Experience, @MaxHp, @Currency, @PositionX, @PositionY)";#1#
-        string sqlCode = $"UPDATE {tableName} SET ({sqlColumns},{sqlColumns},{sqlColumns},{sqlColumns},{sqlColumns}) VALUES {sqlValues} WHERE id = @Id;";
-
-        Connect.ConnectToDb().Execute(sqlCode, data);
-    }*/
-    public static void UpdateCharacterInDb<T>(string tableName, T data, string sqlColumns, string sqlValues)
+    
+    public static void UpdateCharacterInDb<T>(T data)
     {
         //funkar:
         //string sqlCode = $"INSERT INTO {tableName} ({sqlColumns}) VALUES ({sqlValues});"; 
         //test:
         string sqlCode = $"UPDATE `character` SET `experience` = @Experience, `health` = @MaxHp, `gold` = @Currency, `positionx` = @PositionX, `positiony` = @PositionY  WHERE `character`.`id` = @Id;";
+        
+        Connect.ConnectToDb().Execute(sqlCode, data);
+    }
+
+    public static void SaveCharacterToItemInDb<T>(T data, string sqlValues)
+    {
+        string sqlCode = $"INSERT INTO character_to_item (character_id, item_id) VALUES ({sqlValues});";
+        
+        Connect.ConnectToDb().Execute(sqlCode, data);
+    }
+    
+    public static void DeleteFromCharacterToItemInDb<T>(T data)
+    {
+        string sqlCode = $"DELETE FROM character_to_item WHERE item_id = @ItemId AND character_id = @CharacterId;";
         
         Connect.ConnectToDb().Execute(sqlCode, data);
     }

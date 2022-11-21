@@ -8,6 +8,8 @@ public class GameStateHandler
     {
         Draw draw = new Draw(game.Player); // används för att rita map/spelare
         
+        game.UpdateActiveCharacterInDb();
+        
         switch (gameState)
         {
             case GameState.MainMenu: return MainMenuState();
@@ -20,10 +22,10 @@ public class GameStateHandler
             case GameState.Shop: return ShopState(); // inte klar än
             case GameState.Browsing: return ShopBuyingState(game.Shop, game.Player); // inte klar än
             case GameState.Selling: return ShopSellingState(game.Player); // inte klar än
-            case GameState.Tutorial: return TutorialState();
-            case GameState.Arena: return ArenaState(game.Player);
+            case GameState.Tutorial: return TutorialState(); 
+            case GameState.Arena: return ArenaState(game.Player); 
             case GameState.Fighting: return FightingState(game); // inte klar än, Behöver hantera win condition (om de ska vara possible)
-            case GameState.WonFight: return WonState(); // inte klar än
+            case GameState.WonFight: return WonState(); // går inte o vinna
             case GameState.LostFight: return LoseState(game.Player); // inte klar än, behöver hanteras bättre
             case GameState.QuitGame: return QuitState(game, game.Player); // inte klar än, behöver spara osv
             default:
@@ -115,13 +117,8 @@ public class GameStateHandler
         Output.StockInShop(shop.StockInShop, activePlayer);
         return Input.BrowseAndPickItem(shop, activePlayer);
     }
-
-    // private static GameState BuyFromShopState(Shop shop, Character activePlayer)
-    // {
-    //     Output.BuyFromShop(shop._stockInShop, activePlayer);
-    //     return Input.BrowseAndPickItem(shop, activePlayer);
-    // }
-    private static GameState ShopSellingState(Character player)
+    
+    private static GameState ShopSellingState(Character player) // behöver ny metod som tar bort från DB
     {
         if (player.InventoryItems.Count == 0)
         {
@@ -160,7 +157,6 @@ public class GameStateHandler
     
     private static GameState QuitState(Game game, Character player)
     {
-        game.UpdateActiveCharacterInDb();
         Output.Quit();
         return GameState.ExitProgram;
     }

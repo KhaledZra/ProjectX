@@ -166,7 +166,7 @@ public abstract class Input
                     {
                         foreach (var item in activePlayer.InventoryItems)
                         {
-                            if (item == shop.StockInShop[result])
+                            if (item.Id == shop.StockInShop[result].Id)
                             {
                                 Console.WriteLine("You already own this item!");
                                 return GameState.Browsing;
@@ -174,6 +174,7 @@ public abstract class Input
                         }
                         activePlayer.Currency -= shop.StockInShop[result].Currency;
                         activePlayer.InventoryItems.Add(shop.StockInShop[result]);
+                        Game.SaveCharacterInventory(activePlayer, shop.StockInShop[result]);
                         Console.WriteLine($"Purchased 1 {shop.StockInShop[result].Name}, for {shop.StockInShop[result].Currency}c");
                     }
                     else
@@ -212,6 +213,7 @@ public abstract class Input
                 {
                     player.Currency += player.InventoryItems[result].Currency;
                     Console.WriteLine($"Sold 1 {player.InventoryItems[result].Name}, for {player.InventoryItems[result].Currency}c");
+                    Game.RemoveSoldItem(player.Id, player.InventoryItems[result].Id);
                     player.InventoryItems.RemoveAt(result);
                 }
             }

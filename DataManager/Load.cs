@@ -30,5 +30,21 @@ public class Load
 
         return Connect.ConnectToDb().Query<T>(sqlCode).ToList();
     }
+    
+    public static List<T> LoadCharacterItemsFromDb<T>(int characterId)
+    {
+        string sqlCode = $"SELECT item_id FROM character_to_item WHERE character_id = {characterId};";
+        
+        List<int> itemIds = Connect.ConnectToDb().Query<int>(sqlCode).ToList();
 
+        List<T> foundItems = new List<T>();
+        
+        foreach (var currentItemId in itemIds)
+        {
+            sqlCode = $"SELECT * FROM item WHERE item.id = {currentItemId};";
+            foundItems.Add(Connect.ConnectToDb().Query<T>(sqlCode).First());
+        }
+
+        return foundItems;
+    }
 }

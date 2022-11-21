@@ -28,6 +28,29 @@ public class LevelHandler
         return (int)expResult;
     }
 
+    public int CalculateTotalExperience()
+    {
+        double totalExperience = 0;
+
+        if (Level == 1)
+        {
+            return Experience;
+        }
+        else
+        {
+            totalExperience += _groundExperience;
+            
+            for (int i = 2; i < Level; i++)
+            {
+                totalExperience += _groundExperience * Math.Pow(_levelScaler, (i - 1));
+            }
+
+            totalExperience += Experience;
+            
+            return (int)totalExperience;
+        }
+    }
+
     public int GainExperience(int experienceGained)
     {
         int levelsGained = 0;

@@ -5,13 +5,11 @@ namespace GameLogic;
 public class Game // plumming code
 {
     // this is where shit goes down
-    private List<Item> _itemListDB;
     public Shop Shop;
     public Character Player { get; set; }
 
     public Game()
     {
-        _itemListDB = new(); // itemListDB temp but loadFromDB?
         Player = new Character("Unassigned", Load.SelectCountSqlTable("`character`", "id") + 1);
         Shop = new Shop(Player.Vocation);
     }
@@ -34,7 +32,8 @@ public class Game // plumming code
         object data = new
         {
             Player.Name,
-            Player.LevelStats.Experience,
+            Experience = Player.LevelStats.CalculateTotalExperience(),
+            Player.LevelStats.Level,
             Player.MaxHp,
             Player.Currency,
             vocation = (int)Player.Vocation,
@@ -52,16 +51,39 @@ public class Game // plumming code
         object data = new
         {
             Player.Id,
-            Player.LevelStats.Experience,
+            Experience = Player.LevelStats.CalculateTotalExperience(),
             Player.MaxHp,
             Player.Currency,
             PositionX = Player.CoordX,
             PositionY = Player.CoordY
         };
 
-        Save.UpdateCharacterInDb("`character`", data,
-            "`experience`, `health`, `gold`, `positionX`, `positionY`",
-            "@Experience, @MaxHp, @Currency, @PositionX, @PositionY");
+        Save.UpdateCharacterInDb(data);
+    }
+    
+    public static void SaveCharacterInventory(Character player, Item item)
+    {
+        object data = new
+        {
+            CharacterId = player.Id,
+            ItemId = item.Id
+        };
+
+        string sqlVal = "@CharacterId, @ItemId";
+        
+        Save.SaveCharacterToItemInDb(data, sqlVal);
+    }
+
+    // Tar bort item från databasen som har sålts
+    public static void RemoveSoldItem(int characterId, int itemId)
+    {
+        object data = new
+        {
+            CharacterId = characterId,
+            ItemId = itemId
+        };
+        
+        Save.DeleteFromCharacterToItemInDb(data);
     }
 
 

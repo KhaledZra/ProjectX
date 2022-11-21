@@ -33,7 +33,7 @@ public class Character : Entity
         Vocation = (Vocation)vocation;
         CoordX = positionX;
         CoordY = positionY;
-        InventoryItems = new List<Item>();
+        InventoryItems = Load.LoadCharacterItemsFromDb<Item>(Id);
     }
 
     private int TotalDamageFromItems()

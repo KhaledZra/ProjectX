@@ -1,13 +1,9 @@
-using System.Linq.Expressions;
-
 namespace GameLogic;
 
 public class Item : Entity
 {
-    public Item(string name, int health, int level, int currency, Vocation vocation = new()) : base(name, vocation,
-        currency)
+    public Item(string name, int health, int level, int currency, Vocation vocation = new()) : base(name, vocation, currency)
     {
-
         Name = name;
         Health = health;
         LevelStats.Level = level;

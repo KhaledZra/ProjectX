@@ -2,6 +2,7 @@
 
 using UserInterface;
 using GameLogic;
+using DataManager;
 
 class Program
 {
@@ -10,10 +11,9 @@ class Program
     {
         GameState gameState = GameState.MainMenu;
         Game game = new Game();
-
+        
         Console.Clear();
         Console.CursorVisible = false;
-
         while (gameState != GameState.ExitProgram)
         {
             gameState = GameStateHandler.SwitchMenu(gameState, game);
