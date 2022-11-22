@@ -2,7 +2,6 @@
 
 using UserInterface;
 using GameLogic;
-using DataManager;
 
 class Program
 {

@@ -109,7 +109,7 @@ public abstract class Input
         return GameState.Shop;
     }
 
-    public static GameState BrowseAndPickItem(Shop shop, Character activePlayer) //browsing shouldnt be in the shop start menu?
+    public static GameState BrowseAndPickItem(Shop shop, Character activePlayer) 
     {
         string input = Console.ReadLine();
         Console.Clear();
@@ -180,8 +180,7 @@ public abstract class Input
         }
         return GameState.Browsing;
     }
-
-
+    
     public static GameState SellInventory(Character player)
     {
         string input = Console.ReadLine();
@@ -323,34 +322,6 @@ public abstract class Input
 
                 player.MoveRight();
             }
-        }
-
-        return GameState.RoamingMap;
-    }
-
-    public static GameState TestRoamingMenuInput()
-    {
-        ConsoleKey input = Console.ReadKey(true).Key;
-        Console.Clear();
-
-        if (input == ConsoleKey.D1)
-        {
-            return GameState.Arena;
-        }
-
-        if (input == ConsoleKey.D2)
-        {
-            return GameState.Shop;
-        }
-
-        if (input == ConsoleKey.D3)
-        {
-            return GameState.Tutorial;
-        }
-
-        if (input == ConsoleKey.D4)
-        {
-            return GameState.QuitGame;
         }
 
         return GameState.RoamingMap;

@@ -19,15 +19,15 @@ public class GameStateHandler
             case GameState.VocSetPickName: return VocSetPickNameState(game);
             case GameState.RoamingMap: return RoamingState(draw, game.Player, gameState);
             case GameState.Mountain: return MountainState(); // DLC, kanske tars bort helt sen?
-            case GameState.Shop: return ShopState(); // inte klar än
-            case GameState.Browsing: return ShopBuyingState(game.Shop, game.Player); // inte klar än
-            case GameState.Selling: return ShopSellingState(game.Player); // inte klar än
+            case GameState.Shop: return ShopState(); 
+            case GameState.Browsing: return ShopBuyingState(game.Shop, game.Player); 
+            case GameState.Selling: return ShopSellingState(game.Player); 
             case GameState.Tutorial: return TutorialState(); 
             case GameState.Arena: return ArenaState(game.Player); 
-            case GameState.Fighting: return FightingState(game); // inte klar än, Behöver hantera win condition (om de ska vara possible)
+            case GameState.Fighting: return FightingState(game); // Behöver hantera win condition (om de ska vara possible)
             case GameState.WonFight: return WonState(); // går inte o vinna
-            case GameState.LostFight: return LoseState(game.Player); // inte klar än, behöver hanteras bättre
-            case GameState.QuitGame: return QuitState(game, game.Player); // inte klar än, behöver spara osv
+            case GameState.LostFight: return LoseState(game.Player); // behöver hanteras bättre
+            case GameState.QuitGame: return QuitState(game, game.Player);
             default:
                 Console.WriteLine("Something went wrong!");
                 return GameState.QuitGame;

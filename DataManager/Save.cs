@@ -15,9 +15,6 @@ public class Save
     
     public static void UpdateCharacterInDb<T>(T data)
     {
-        //funkar:
-        //string sqlCode = $"INSERT INTO {tableName} ({sqlColumns}) VALUES ({sqlValues});"; 
-        //test:
         string sqlCode = $"UPDATE `character` SET `experience` = @Experience, `health` = @MaxHp, `gold` = @Currency, `positionx` = @PositionX, `positiony` = @PositionY  WHERE `character`.`id` = @Id;";
         
         Connect.ConnectToDb().Execute(sqlCode, data);

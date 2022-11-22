@@ -1,5 +1,4 @@
-﻿using DataManager;
-using GameLogic;
+﻿using GameLogic;
 
 namespace UserInterface;
 
@@ -38,7 +37,7 @@ public class Output
             (ConsoleColor.White, "."));
     }
 
-    public static void CharacterName(Vocation chosenVocation) //behöver kunna använda klassen till karaktären om så är möjligt
+    public static void CharacterName(Vocation chosenVocation)
     {
         Console.Write($"Pick a suitable name for your {chosenVocation}: ");
     }
@@ -55,7 +54,7 @@ public class Output
             (ConsoleColor.White, "to map."));
     }
 
-    public static void StockInShop(List<Item> shopStock, Character activePlayer) //List<Item> stockList
+    public static void StockInShop(List<Item> shopStock, Character activePlayer) 
     {
         WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "Items in stock"),
             (ConsoleColor.Red, "---------"));
@@ -166,17 +165,17 @@ public class Output
         Console.WriteLine("Farewell young adventurer, your game is saved and we hope to see you soon!");
     }
 
-    public static void TestRoamingMenu() // temporary fix for roaming map interactions
-    {
-        WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "ROAMING "),
-            (ConsoleColor.Red, "---------"));
-        Console.WriteLine("---------ROAMING---------");
-        WriteLineMultiColored((ConsoleColor.Red, "[1.] "), (ConsoleColor.White, "Fight Club"),
-            (ConsoleColor.White, "!"));
-        WriteLineMultiColored((ConsoleColor.Red, "[2.] "), (ConsoleColor.White, "Shop"), (ConsoleColor.White, "!"));
-        WriteLineMultiColored((ConsoleColor.Red, "[3.] "), (ConsoleColor.White, "Tutorial"), (ConsoleColor.White, "!"));
-        WriteLineMultiColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
-    }
+    // public static void TestRoamingMenu() // temporary fix for roaming map interactions
+    // {
+    //     WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "ROAMING "),
+    //         (ConsoleColor.Red, "---------"));
+    //     Console.WriteLine("---------ROAMING---------");
+    //     WriteLineMultiColored((ConsoleColor.Red, "[1.] "), (ConsoleColor.White, "Fight Club"),
+    //         (ConsoleColor.White, "!"));
+    //     WriteLineMultiColored((ConsoleColor.Red, "[2.] "), (ConsoleColor.White, "Shop"), (ConsoleColor.White, "!"));
+    //     WriteLineMultiColored((ConsoleColor.Red, "[3.] "), (ConsoleColor.White, "Tutorial"), (ConsoleColor.White, "!"));
+    //     WriteLineMultiColored((ConsoleColor.Red, "[4.] "), (ConsoleColor.White, "Leave"), (ConsoleColor.White, "!"));
+    // }
 
     public static void WriteLineMultiColored(params (ConsoleColor color, string value)[] values) //formatering för snyggare writes.
     {
