@@ -3,9 +3,9 @@
 public class Structure // Handles structures in the map
 {
     public int[,] _twoDHouse;
-    
+
     public int XWidth { get; set; }
-    
+
     public int YHeight { get; set; }
     public int StarterX { get; set; }
     public int StarterY { get; set; }
@@ -67,24 +67,14 @@ public class Structure // Handles structures in the map
                 twoDMap[x, y] = (int)StructureType;
             }
         }
-
-        /*
-        private void SetupStructureSign(int xwidth, int yheight, int[,] twoDMap, StructureType structureSign)
-        {
-            
-            
-        }
-        */
-
-        //add gray beneath doorsstructure
     }
     public void SetupStructureSign(int[,] twoDMap)
     {
-        int labelStarterY = StarterY + (YHeight/2) - 1;
+        int labelStarterY = StarterY + (YHeight / 2) - 1;
         //int labelXEnd = StarterX + XWidth;
-        
+
         var currentLocation = Console.GetCursorPosition();
-        Console.SetCursorPosition(StarterX + XWidth/3, labelStarterY);
+        Console.SetCursorPosition(StarterX + XWidth / 3, labelStarterY);
         Console.Write(StructureType.ToString());
         Console.SetCursorPosition(currentLocation.Left, currentLocation.Top);
     }

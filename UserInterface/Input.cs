@@ -67,7 +67,7 @@ public abstract class Input
             player.Vocation = Vocation.Warrior;
             return GameState.VocSetPickName;
         }
-        
+
         return GameState.CreateCharacter;
     }
 
@@ -109,24 +109,11 @@ public abstract class Input
         return GameState.Shop;
     }
 
-    // public static GameState ItemInStock()
-    // {
-    //     ConsoleKey input = Console.ReadKey(true).Key;
-    //     Console.Clear();
-    //
-    //     if (input == ConsoleKey.R)
-    //     {
-    //         return GameState.Shop;
-    //     }
-    //
-    //     return GameState.Browsing;
-    // }
-
     public static GameState BrowseAndPickItem(Shop shop, Character activePlayer) //browsing shouldnt be in the shop start menu?
     {
         string input = Console.ReadLine();
         Console.Clear();
-        
+
         if (input.ToLower() == "r")
         {
             return GameState.Shop;
@@ -193,8 +180,8 @@ public abstract class Input
         }
         return GameState.Browsing;
     }
-    
-    
+
+
     public static GameState SellInventory(Character player)
     {
         string input = Console.ReadLine();
@@ -241,7 +228,7 @@ public abstract class Input
 
         return GameState.Tutorial;
     }
-    
+
     public static GameState MountainMenu()
     {
         ConsoleKey input = Console.ReadKey(true).Key;
@@ -340,15 +327,6 @@ public abstract class Input
 
         return GameState.RoamingMap;
     }
-
-    // public static void FightingInput() // kanske om man behöver göra något mid fight?
-    // {
-    //     // // Fight to death or leave
-    //     // while (Console.ReadKey(true).Key != ConsoleKey.R)
-    //     // {
-    //     //     Console.Clear();
-    //     // }
-    // }
 
     public static GameState TestRoamingMenuInput()
     {

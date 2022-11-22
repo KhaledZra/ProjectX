@@ -11,7 +11,7 @@ public class Map
         TwoDMap = new int[xWidth, xHeight];
         SetupMap();
         Grid.CreateGrid(TwoDMap);
-        
+
         // Structure setup
         SetupStructures();
     }
@@ -30,21 +30,21 @@ public class Map
     private void SetupStructures()
     {
         gameStructures.Add(new Structure(TwoDMap, GameState.Shop,
-            TwoDMap.GetLength(0)/7, 6, TwoDMap.GetLength(0)/4, 6,
+            TwoDMap.GetLength(0) / 7, 6, TwoDMap.GetLength(0) / 4, 6,
             true));
-        
+
         gameStructures.Add(new Structure(TwoDMap, GameState.Mountain,
-            TwoDMap.GetLength(0)/2, 0, TwoDMap.GetLength(0)/2, 12,
+            TwoDMap.GetLength(0) / 2, 0, TwoDMap.GetLength(0) / 2, 12,
             false));
-        
+
         gameStructures.Add(new Structure(TwoDMap, GameState.Tutorial,
-            TwoDMap.GetLength(0)/7, 20, TwoDMap.GetLength(0)/4, 6, 
+            TwoDMap.GetLength(0) / 7, 20, TwoDMap.GetLength(0) / 4, 6,
             true));
-        
+
         gameStructures.Add(new Structure(TwoDMap, GameState.Arena,
-            TwoDMap.GetLength(0)/2, 20, TwoDMap.GetLength(0)/4, 6, 
+            TwoDMap.GetLength(0) / 2, 20, TwoDMap.GetLength(0) / 4, 6,
             false));
-        
+
         gameStructures.Add(new Structure(TwoDMap, GameState.QuitGame,
             1, 1, 13,
                 3, false));
@@ -90,21 +90,5 @@ public class Map
         {
             Draw.DrawHouseDoor();
         }
-        // else if (_twoDMap[x, y] == 9) // is interactable, Tutorial
-        // {
-        //     Draw.DrawHouseDoor();
-        // }
-        // else if (_twoDMap[x, y] == 11) // is interactable, fighting
-        // {
-        //     Draw.DrawHouseDoor();
-        // }
-        // else if (_twoDMap[x, y] == 6) // is interactable, shop
-        // {
-        //     Draw.DrawHouseDoor();
-        // }
-        // else if (_twoDMap[x, y] == 14) // is interactable, quit?
-        // {
-        //     Draw.DrawHouseDoor();
-        // }
     }
 }

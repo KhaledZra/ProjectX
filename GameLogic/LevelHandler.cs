@@ -18,12 +18,12 @@ public class LevelHandler
     private int CalculateExperienceToLevel()
     {
         double expResult;
-        
+
         if (Level == 1)
         {
             return _groundExperience;
         }
-        
+
         expResult = _groundExperience * Math.Pow(_levelScaler, (Level - 1));
         return (int)expResult;
     }
@@ -39,14 +39,14 @@ public class LevelHandler
         else
         {
             totalExperience += _groundExperience;
-            
+
             for (int i = 2; i < Level; i++)
             {
                 totalExperience += _groundExperience * Math.Pow(_levelScaler, (i - 1));
             }
 
             totalExperience += Experience;
-            
+
             return (int)totalExperience;
         }
     }
@@ -54,22 +54,20 @@ public class LevelHandler
     public int GainExperience(int experienceGained)
     {
         int levelsGained = 0;
-        
+
         if (experienceGained <= -1) return levelsGained;
-        
+
         Experience += experienceGained;
-        
+
         while (Experience >= CalculateExperienceToLevel())
         {
             Experience -= CalculateExperienceToLevel();
             Level++;
             levelsGained++;
         }
-        
+
         return levelsGained;
     }
-    
-    
 
     public override string ToString()
     {

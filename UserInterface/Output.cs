@@ -75,24 +75,6 @@ public class Output
         Console.WriteLine("Enter [H] and press [Enter] to let the our Priestess fully heal you for only 10 gold.");
         Console.Write("Choice: ");
     }
-    //Behåll tills vi vet om vi ska separera shopStock till buyfromshopStock
-    // public static void BuyFromShop(List<Item> shopStock, Character activePlayer)
-    // {
-    //     WriteLineMultiColored((ConsoleColor.Red, "---------"), (ConsoleColor.White, "BUY ITEM FROM SHOP"),
-    //         (ConsoleColor.Red, "---------"));
-    //     for (int itemIndex = 0; itemIndex < shopStock.Count; itemIndex++)
-    //     {
-    //         // Console.WriteLine($"[{itemIndex}]"); // {shopStock[itemIndex]}.Name}} - Buy for: {shopStock[itemIndex]}.Currency}}
-    //         WriteLineMultiColored((ConsoleColor.Red, $"[{itemIndex}] "),
-    //             (ConsoleColor.White, $"{shopStock[itemIndex].Name} - Cost: "),
-    //             (ConsoleColor.Green, $"{shopStock[itemIndex].Currency.ToString()} gold"));
-    //     }
-    //
-    //     WriteLineMultiColored((ConsoleColor.White, "Type"), (ConsoleColor.White, "\"r\" only"),
-    //         (ConsoleColor.White, "and press ENTER to return."));
-    //     WriteLineMultiColored((ConsoleColor.White, "Else, type the "), (ConsoleColor.Red, "index number"),
-    //         (ConsoleColor.White, " of the item you like to buy below:"));
-    // }
 
     public static void SellToShop(Character activePlayer)
     {
@@ -149,16 +131,6 @@ public class Output
             (ConsoleColor.White, "\nCheck back for future dlc"), (ConsoleColor.White, "!"));
         Output.WriteLineMultiColored((ConsoleColor.Red, "[R]"), (ConsoleColor.White, "eturn to "),
             (ConsoleColor.White, "map."));
-    }
-
-    public static void TutorialOutput()
-    {
-        //Console.WriteLine($"Welcome to the World of Heretics young adventurer!");
-        //Console.WriteLine($"In this map there´s 4 areas with 4 different options;");
-        //Console.WriteLine($" - North West - Our in game Shop where you can buy and sell your looted items.");
-        //Console.WriteLine($" - North East - The Mountain of adventures (to be released shortly).");
-        //Console.WriteLine($" - South West - Tutorial (Which house you just entered and found yourself in this text)");
-        //Console.WriteLine($" - South East - Fighting is where you´re able to encounter monsters, level up and loot items.");
     }
 
     public static void FightingOptions(Character player)

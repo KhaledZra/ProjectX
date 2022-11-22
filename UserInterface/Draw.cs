@@ -19,7 +19,7 @@ public class Draw // GUI class
         _oldPlayerCoords.Item1 = player.CoordX;
         _oldPlayerCoords.Item2 = player.CoordY;
     }
-    
+
     public void DrawMap()
     {
         map.ShowMap();
@@ -27,18 +27,13 @@ public class Draw // GUI class
 
     public void DrawPlayerInfo(Character player)
     {
-        WriteAt($"+------Player info------------+",map.TwoDMap.GetLength(0), 0);
-        WriteAt($"| Player name: {player.Name}, id: {player.Id}",map.TwoDMap.GetLength(0), 1);
-        WriteAt($"| Vocation: {player.Vocation.ToString()}",map.TwoDMap.GetLength(0), 2);
-        WriteAt($"| Health: {player.Health}/{player.MaxHp}",map.TwoDMap.GetLength(0), 3);
-        WriteAt($"| Level: {player.LevelStats.Level}",map.TwoDMap.GetLength(0), 4);
-        WriteAt($"| Gold: {player.Currency}",map.TwoDMap.GetLength(0), 5);
-        WriteAt($"+-----------------------------+",map.TwoDMap.GetLength(0), 6);
-
-        // for (int i = 1; i < 6; i++)
-        // {
-        //     WriteAt("|",map.TwoDMap.GetLength(0) + 28, i);
-        // }
+        WriteAt($"+------Player info------------+", map.TwoDMap.GetLength(0), 0);
+        WriteAt($"| Player name: {player.Name}, id: {player.Id}", map.TwoDMap.GetLength(0), 1);
+        WriteAt($"| Vocation: {player.Vocation.ToString()}", map.TwoDMap.GetLength(0), 2);
+        WriteAt($"| Health: {player.Health}/{player.MaxHp}", map.TwoDMap.GetLength(0), 3);
+        WriteAt($"| Level: {player.LevelStats.Level}", map.TwoDMap.GetLength(0), 4);
+        WriteAt($"| Gold: {player.Currency}", map.TwoDMap.GetLength(0), 5);
+        WriteAt($"+-----------------------------+", map.TwoDMap.GetLength(0), 6);
     }
 
     private static void CleanUpOldPlayerDraw()
@@ -72,7 +67,7 @@ public class Draw // GUI class
         Console.Write("0");
         Console.ResetColor();
     }
-    
+
     public static void DrawHouseTile()
     {
         Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -95,7 +90,7 @@ public class Draw // GUI class
         Console.Write(" ");
         Console.ResetColor();
     }
-    
+
     private static void WriteAt(string text, int x, int y)
     {
         (int, int) oldCoords = Console.GetCursorPosition();

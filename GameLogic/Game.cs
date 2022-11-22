@@ -60,7 +60,7 @@ public class Game // plumming code
 
         Save.UpdateCharacterInDb(data);
     }
-    
+
     public static void SaveCharacterInventory(Character player, Item item)
     {
         object data = new
@@ -70,7 +70,7 @@ public class Game // plumming code
         };
 
         string sqlVal = "@CharacterId, @ItemId";
-        
+
         Save.SaveCharacterToItemInDb(data, sqlVal);
     }
 
@@ -82,10 +82,9 @@ public class Game // plumming code
             CharacterId = characterId,
             ItemId = itemId
         };
-        
+
         Save.DeleteFromCharacterToItemInDb(data);
     }
-
 
     public string HandleFighting(Enemy enemy) // returns true if hero won else false
     {
