@@ -89,7 +89,7 @@ public class Game // plumming code
     public string HandleFighting(Enemy enemy) // returns true if hero won else false
     {
         string battleInfo = $"------------\n" +
-                            $"{Player.Name} VS {EnemyHandler.GetRandomEnemy(Player.LevelStats.Level).Name}" +
+                            $"{Player.Name} VS {enemy.Name}" +
                             $"\n------------\n";
         int lostHearts = 0;
         //Console.WriteLine($"{_player.Name} vs {tempEnemy.Name}");
