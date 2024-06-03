@@ -10,6 +10,7 @@ public class Game // plumming code
 
     public Game()
     {
+        Connect.RunDbMigrationSetup();
         Player = new Character("Unassigned", Load.SelectCountSqlTable("`character`", "id") + 1);
         Shop = new Shop(Player.Vocation);
     }

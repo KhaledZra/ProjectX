@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enum" />
-    <Folder Include="Interface" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Evolve" Version="3.3.0-alpha1" />
+    <PackageReference Include="MySqlConnector" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="MySqlConnector" Version="2.2.0" />
+    <Content Include="db\**\*.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
