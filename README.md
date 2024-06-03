@@ -7,3 +7,6 @@ How to play:
  - Start the docker service in docker-compose.yml (this is our database the game needs to be running)
  - Start the game by either using terminal 'dotnet run' within the MainProgram directory or using your IDE to run MainProgram
  - You can download here https://github.com/KhaledZra/ProjectX/releases/tag/v1.0
+
+
+![image](https://github.com/KhaledZra/ProjectX/assets/113167422/fad9646e-a39a-400f-abab-0c3df5ffc536)
